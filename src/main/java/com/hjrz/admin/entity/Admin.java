@@ -77,4 +77,58 @@ public class Admin {
     public void setLast_time(Date last_time) {
         this.last_time = last_time;
     }
+
+    @Override
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((admcode == null) ? 0 : admcode.hashCode());
+      result = prime * result + ((adminstate == null) ? 0 : adminstate.hashCode());
+      result = prime * result + ((admname == null) ? 0 : admname.hashCode());
+      result = prime * result + ((admpassword == null) ? 0 : admpassword.hashCode());
+      result = prime * result + ((create_time == null) ? 0 : create_time.hashCode());
+      result = prime * result + ((last_time == null) ? 0 : last_time.hashCode());
+      return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj)
+        return true;
+      if (obj == null)
+        return false;
+      if (getClass() != obj.getClass())
+        return false;
+      Admin other = (Admin) obj;
+      if (admcode == null) {
+        if (other.admcode != null)
+          return false;
+      } else if (!admcode.equals(other.admcode))
+        return false;
+      if (adminstate != other.adminstate)
+        return false;
+      if (admname == null) {
+        if (other.admname != null)
+          return false;
+      } else if (!admname.equals(other.admname))
+        return false;
+      if (admpassword == null) {
+        if (other.admpassword != null)
+          return false;
+      } else if (!admpassword.equals(other.admpassword))
+        return false;
+      if (create_time == null) {
+        if (other.create_time != null)
+          return false;
+      } else if (!create_time.equals(other.create_time))
+        return false;
+      if (last_time == null) {
+        if (other.last_time != null)
+          return false;
+      } else if (!last_time.equals(other.last_time))
+        return false;
+      return true;
+    }
+    
+    
 }

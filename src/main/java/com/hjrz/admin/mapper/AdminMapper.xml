@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hjrz.admin.dao.AdminMapper" >
-  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Admin" >
-    <constructor >
-      <idArg column="admcode" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="admname" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="admpassword" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="adminstate" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="last_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-    </constructor>
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Admin">
+    <id column="admcode" jdbcType="INTEGER" property="admcode" />
+    <result column="admname" jdbcType="VARCHAR" property="admname" />
+    <result column="admpassword" jdbcType="VARCHAR" property="admpassword" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="adminstate" jdbcType="VARCHAR" property="adminstate" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+    <result column="last_time" jdbcType="TIMESTAMP" property="last_time" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -96,6 +94,16 @@
         NOW()
     </trim>
   </insert>
+  
+  <select id="adminAccountLogin" resultMap="BaseResultMap" parameterType="com.hjrz.admin.model.AdminAccountModel" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where admname=#{admin_name,jdbcType=VARCHAR} AND admpassword=#{admin_password,jdbcType=VARCHAR}
+    limit 1
+  </select>
+  
+  
   <select id="countByExample" parameterType="com.hjrz.admin.entity.AdminExample" resultType="java.lang.Integer" >
     select count(*) from admin
     <if test="_parameter != null" >

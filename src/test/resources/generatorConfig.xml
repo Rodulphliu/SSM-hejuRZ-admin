@@ -12,7 +12,7 @@
     <!--数据库驱动包路径 -->
     <classPathEntry location="${drive.class.path}"/>
 
-    <context id="DB2Tables" targetRuntime="MyBatis3">
+    <context id="DB2Tables" defaultModelType="hierarchical"  targetRuntime="MyBatis3">
         <!--关闭注释 -->
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
@@ -25,8 +25,6 @@
 
         <!--生成的model 包路径 -->
         <javaModelGenerator targetPackage="${model.package}" targetProject="${target.project}">
-            <!-- 是否对model添加 构造函数 -->
-            <property name="constructorBased" value="true"/>
 		    	<!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="true" />
             <!-- 是否对类CHAR类型的列的数据进行trim操作 -->

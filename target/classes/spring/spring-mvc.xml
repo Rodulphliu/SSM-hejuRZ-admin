@@ -12,11 +12,21 @@
 	 
 	 
 	 <mvc:default-servlet-handler />
-	 
-	 
-     <context:component-scan base-package="com.hjrz.admin"/>
      
      
+     <context:component-scan base-package="com.hjrz.admin">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Component" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	
+	
+	
      <!-- 对模型视图添加前后缀 -->  
 	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>

@@ -9,8 +9,6 @@
 	<classpath>
 		<dir name="G:/Spring-tool-suite/RodulphLiuWorkSpace/heJuRuizeng-admin/target/classes">
 		</dir>
-		<dir name="G:/Spring-tool-suite/RodulphLiuWorkSpace/heJuRuizeng-admin/target/test-classes">
-		</dir>
 	</classpath>
 
 	<web>

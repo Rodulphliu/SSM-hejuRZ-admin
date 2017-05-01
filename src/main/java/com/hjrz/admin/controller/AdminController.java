@@ -16,7 +16,7 @@ import com.hjrz.admin.service.AdminAccService;
 
 /**
  * @ClassName AdminController
- * @Description TODO(这里用一句话描述这个类的作用)
+ * @Description TODO(管理员账号控制器)
  * @author RodulphLiu
  * @Date 2017年4月27日 下午5:54:57
  * @version 1.0.0
@@ -48,6 +48,11 @@ public class AdminController {
       return mav;
     }
     
+    /**
+     * @Description (添加管理员账号)
+     * @author RodulphLiu
+     * @Date 2017年5月1日 下午4:20:26
+     */
     @RequestMapping(value="/add.do",method=RequestMethod.POST)
     public ModelAndView add(AdminAccountModel accountModel,HttpServletRequest request)
     {
