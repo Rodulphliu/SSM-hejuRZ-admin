@@ -22,6 +22,11 @@ public class AdminAccService {
       @Autowired
       private AdminMapper adminMapper;
       
+      /**
+       * @Description (添加管理员账号)
+       * @author RodulphLiu
+       * @Date 2017年5月2日 下午1:18:37
+       */
       public void addAdminAccount(Admin admin) throws SYSException
       {
         String encryptPassword = EncryptUtil.getMD5String(admin.getAdmpassword());
