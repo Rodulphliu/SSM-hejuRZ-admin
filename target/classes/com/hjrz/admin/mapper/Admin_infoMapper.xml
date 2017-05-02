@@ -2,16 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hjrz.admin.dao.Admin_infoMapper" >
   <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Admin_info" >
-    <constructor >
-      <idArg column="adminfocode" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="realname" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="admsex" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="admphone" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="admDuty" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="headpath" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="admemail" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="admcode" jdbcType="INTEGER" javaType="java.lang.Integer" />
-    </constructor>
+    <id column="adminfocode" property="adminfocode" jdbcType="INTEGER" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="admsex" property="admsex" jdbcType="VARCHAR" />
+    <result column="admphone" property="admphone" jdbcType="VARCHAR" />
+    <result column="admDuty" property="admDuty" jdbcType="VARCHAR" />
+    <result column="headpath" property="headpath" jdbcType="VARCHAR" />
+    <result column="admemail" property="admemail" jdbcType="VARCHAR" />
+    <result column="admcode" property="admcode" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -45,14 +43,12 @@
   <sql id="Base_Column_List" >
     adminfocode, realname, admsex, admphone, admDuty, headpath, admemail, admcode
   </sql>
-  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from admin_info
     where adminfocode = #{adminfocode,jdbcType=INTEGER}
   </select>
-  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from admin_info
     where adminfocode = #{adminfocode,jdbcType=INTEGER}

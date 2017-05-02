@@ -7,16 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.hjrz.admin.constants.AdminStatusEnum;
 import com.hjrz.admin.dao.AdminMapper;
-import com.hjrz.admin.dao.Admin_infoMapper;
 import com.hjrz.admin.entity.Admin;
 import com.hjrz.admin.exception.LoginException;
 import com.hjrz.admin.exception.SYSException;
 import com.hjrz.admin.model.AdminAccountModel;
-import com.hjrz.admin.util.CookieCacheUtil;
 import com.hjrz.admin.util.EncryptUtil;
 
 /**
@@ -38,21 +35,22 @@ public class LoginService {
      * @Date 2017年4月28日 下午5:24:32
      */
     public Boolean adminLogin(AdminAccountModel adminAccountModel,HttpServletRequest request,
-        HttpServletResponse response)throws LoginException,SYSException,IllegalAccessException, InvocationTargetException
+        HttpServletResponse response)
+            throws LoginException,SYSException,IllegalAccessException, InvocationTargetException
     {
       //取得用户输入的MD5值密码与数据库中的相比较
       String encryptPassword  = EncryptUtil.getMD5String(adminAccountModel.getAdmin_password());
       adminAccountModel.setAdmin_password(encryptPassword);
       Admin admin = adminMapper.adminAccountLogin(adminAccountModel);
       if(admin == null){
-        throw new LoginException("用户名密码错误");
+        throw new LoginException("用户名或密码错误");
       }
       if(admin.getAdminstate()!=AdminStatusEnum.VALID){
         throw new LoginException("管理员账号"+admin.getAdmname()+"不可用，请联系管理员");
       }
       //获取用户详细信息
 //      Admin_info admin_info = admin_infoMapper.selectByPrimaryKey(admin.getAdmcode());
-      return true;
+       return true;
     } 
     
     
