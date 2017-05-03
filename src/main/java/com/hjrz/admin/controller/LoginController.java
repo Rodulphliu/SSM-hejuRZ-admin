@@ -41,7 +41,7 @@ public class LoginController {
     public ModelAndView loginInit(HttpServletRequest request,HttpServletResponse response)
     {
        ModelAndView modelAndView = new ModelAndView();
-       modelAndView.setViewName("admin_login");
+       modelAndView.setViewName("sys/admin_login");
        return modelAndView;
     }
     
@@ -57,7 +57,7 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         try {
             loginService.adminLogin(adminAccountModel, request, response);
-            modelAndView.setViewName("success");
+            modelAndView.setViewName("sys/sys_index");
         } catch (LoginException | IllegalAccessException | InvocationTargetException e) {
             modelAndView.addObject("message",e.getMessage());
             modelAndView.setViewName("howno");

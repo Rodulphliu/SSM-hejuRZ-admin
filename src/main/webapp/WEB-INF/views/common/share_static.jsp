@@ -6,6 +6,7 @@
 <%@ include file="../common/common.jsp" %>
 <!-- 公共静态的CSS文件 -->
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/common/Global-style.css">
 
 <!-- 公共静态的JS文件 -->
 <script type="text/javascript" src="<%=contextPath %>/javascript/jquery/jquery.js" ></script>

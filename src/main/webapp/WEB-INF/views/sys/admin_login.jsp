@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@include file="../views/common/share_static.jsp" %>
+<%@include file="../common/share_static.jsp" %>
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/admin/style_login.css">
 </head>
 <body class="login">
