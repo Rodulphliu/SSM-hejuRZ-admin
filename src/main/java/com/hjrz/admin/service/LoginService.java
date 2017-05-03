@@ -34,7 +34,7 @@ public class LoginService {
      * @author RodulphLiu
      * @Date 2017年4月28日 下午5:24:32
      */
-    public Boolean adminLogin(AdminAccountModel adminAccountModel,HttpServletRequest request,
+    public Admin adminLogin(AdminAccountModel adminAccountModel,HttpServletRequest request,
         HttpServletResponse response)
             throws LoginException,SYSException,IllegalAccessException, InvocationTargetException
     {
@@ -48,9 +48,7 @@ public class LoginService {
       if(admin.getAdminstate()!=AdminStatusEnum.VALID){
         throw new LoginException("管理员账号"+admin.getAdmname()+"不可用，请联系管理员");
       }
-      //获取用户详细信息
-//      Admin_info admin_info = admin_infoMapper.selectByPrimaryKey(admin.getAdmcode());
-       return true;
+       return admin;
     } 
     
     

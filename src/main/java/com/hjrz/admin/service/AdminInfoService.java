@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.dao.Admin_infoMapper;
+import com.hjrz.admin.entity.Admin_info;
 
 /**
  * @ClassName AdminInfoService
@@ -18,5 +19,7 @@ public class AdminInfoService {
       @Autowired
       private Admin_infoMapper admin_infoMapper;
       
-      
+      public void addAdminInfo(Admin_info admin_info)throws Exception{
+          
+      }
 }

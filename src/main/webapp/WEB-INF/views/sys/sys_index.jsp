@@ -12,7 +12,22 @@
 	 	<%@include file="../common/header.jsp"%>
 		<%@include file="../common/leftnav.jsp"%>
 		<!--正文开始-->
-			<h5>SUCCESS</h5>
+			<div class="col-xs-12 col-sm-9">
+	      			<h3>欢迎！管理员${adminname}</h3>
+					<hr style="height:10px;border:none;border-top:10px groove skyblue;"/>
+					<div class="jumbotron">
+						<h1>
+							Welcome!
+						</h1>
+						<p>
+							上次登录：xxxxx
+							新增数据：xxxxx
+						</p>
+						<p>
+							<a href="" class="btn btn-default">开始编辑</a>
+						</p>
+					</div>
+			</div>
 		<!--正文结束-->
 	 </div>
 <!-- 容器结束 -->

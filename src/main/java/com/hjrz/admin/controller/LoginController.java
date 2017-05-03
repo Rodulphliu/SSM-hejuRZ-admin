@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hjrz.admin.entity.Admin;
 import com.hjrz.admin.exception.LoginException;
 import com.hjrz.admin.model.AdminAccountModel;
 import com.hjrz.admin.service.LoginService;
@@ -37,7 +39,7 @@ public class LoginController {
      * @author RodulphLiu
      * @Date 2017年4月28日 下午5:35:07
      */
-    @RequestMapping(value="/addInit.do",method=RequestMethod.GET)
+    @RequestMapping(value="/tologin.do",method=RequestMethod.GET)
     public ModelAndView loginInit(HttpServletRequest request,HttpServletResponse response)
     {
        ModelAndView modelAndView = new ModelAndView();
@@ -55,9 +57,11 @@ public class LoginController {
         HttpServletResponse response)
     {
         ModelAndView modelAndView = new ModelAndView();
+        HttpSession session = request.getSession();
         try {
-            loginService.adminLogin(adminAccountModel, request, response);
-            modelAndView.setViewName("sys/sys_index");
+            Admin admin = loginService.adminLogin(adminAccountModel, request, response);
+            session.setAttribute("adminname",admin.getAdmname());
+            modelAndView.setViewName("redirect:/common/home/index.do");
         } catch (LoginException | IllegalAccessException | InvocationTargetException e) {
             modelAndView.addObject("message",e.getMessage());
             modelAndView.setViewName("howno");
@@ -67,6 +71,4 @@ public class LoginController {
         }
         return modelAndView;
     }
-    
-    
 }
