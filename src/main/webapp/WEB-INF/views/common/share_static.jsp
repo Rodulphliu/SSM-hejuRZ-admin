@@ -4,10 +4,31 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../common/common.jsp" %>
-<!-- 公共静态的CSS文件 -->
-<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/common/Global-style.css">
 
-<!-- 公共静态的JS文件 -->
-<script type="text/javascript" src="<%=contextPath %>/javascript/jquery/jquery.js" ></script>
-<script type="text/javascript" src="<%=contextPath %>/javascript/bootstrap/bootstrap.min.js" ></script>
+<!-- Icon图标设置 -->
+<!--<link rel="icon" href="favicon.ico" />-->
+
+<!--jquery库-->
+<script type="text/javascript" src="<%=contextPath %>/js/jquery/jquery.min.js"></script>
+
+<!--bootstrap库-->
+<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap.min.css" />
+<script type="text/javascript" src="<%=contextPath %>/js/bootstrap/bootstrap.min.js" ></script>
+
+<!--font-awesome字体库-->
+<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/font-awesome.min.css" />
+<!--页面加载进度条-->
+<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/pace/dataurl.css" />
+<script type="text/javascript" src="<%=contextPath %>/js/pace/pace.min.js" ></script>
+
+<!--jquery.hammer手势插件-->
+<script type="text/javascript" src="<%=contextPath %>/js/pace/pace.min.js" ></script>
+<script type="text/javascript" src="<%=contextPath %>/js/pace/pace.min.js" ></script>
+
+
+
+
+
+
+
+
