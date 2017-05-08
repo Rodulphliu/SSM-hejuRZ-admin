@@ -274,7 +274,7 @@
             <artifactId>hibernate-validator</artifactId>  
             <version>${hibernate.validator.version}</version>  
         </dependency>  
-         
+            
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>

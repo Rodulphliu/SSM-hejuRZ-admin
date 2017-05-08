@@ -1,5 +1,8 @@
 package com.hjrz.admin.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * @ClassName AdmInfoController
  * @Description TODO(这里用一句话描述这个类的作用)
@@ -8,6 +11,8 @@ package com.hjrz.admin.controller;
  * @version 1.0.0
  */
 
+@Controller
+@RequestMapping
 public class AdmInfoController {
 
 }

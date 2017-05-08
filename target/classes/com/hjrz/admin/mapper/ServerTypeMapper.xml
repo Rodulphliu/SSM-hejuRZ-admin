@@ -66,15 +66,10 @@
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.ServerType" >
     insert into servertype
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="typeCode != null" >
-        typeCode,
-      </if>
       <if test="typeName != null" >
         typeName,
       </if>
-      <if test="create_time != null" >
         create_time,
-      </if>
       <if test="typeTitle != null" >
         typeTitle,
       </if>
@@ -83,15 +78,10 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="typeCode != null" >
-        #{typeCode,jdbcType=INTEGER},
-      </if>
       <if test="typeName != null" >
         #{typeName,jdbcType=VARCHAR},
       </if>
-      <if test="create_time != null" >
-        #{create_time,jdbcType=TIMESTAMP},
-      </if>
+      	NOW();
       <if test="typeTitle != null" >
         #{typeTitle,jdbcType=VARCHAR},
       </if>

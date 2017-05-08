@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -53,7 +54,7 @@ public class LoginController {
      * @Date 2017年4月28日 下午5:38:19
      */
     @RequestMapping(value = "/login.do",method = {RequestMethod.POST})
-    public ModelAndView login(AdminAccountModel adminAccountModel,HttpServletRequest request,
+    public ModelAndView login(@Valid AdminAccountModel adminAccountModel,HttpServletRequest request,
         HttpServletResponse response)
     {
         ModelAndView modelAndView = new ModelAndView();

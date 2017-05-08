@@ -19,7 +19,21 @@ public class AdminInfoService {
       @Autowired
       private Admin_infoMapper admin_infoMapper;
       
+      /**
+       * @Description(管理员添加信息)
+       * @author RodulphLiu
+       * @Date 2017年5月4日 上午10:39:29
+       */
       public void addAdminInfo(Admin_info admin_info)throws Exception{
-          
+          Integer admcode = admin_info.getAdmcode();
+            if(admcode==0 ||admcode==null)
+            {
+              throw new Exception("系统异常，无法为此账号添加详细信息");
+            }
+          int successNum = admin_infoMapper.insertSelective(admin_info);
+            if(successNum<1)
+            {
+              throw new Exception("管理员信息添加失败");
+            }
       }
 }
