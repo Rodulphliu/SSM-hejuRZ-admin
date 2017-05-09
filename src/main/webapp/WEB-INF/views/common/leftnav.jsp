@@ -3,7 +3,7 @@
 <!-- 左边开始 -->
 <div class="sidebar">
 	<ul class="nav">
-		<li><a href="index.html">主页面</a></li>
+		<li id="index"><a href="index.html">主页面</a></li>
 		<li><a href="form.html">Form库</a></li>
 		<li><a href="message.html">Message库</a></li>
 		<li><a href="ui.html">UI库</a></li>

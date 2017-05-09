@@ -21,18 +21,13 @@
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/pace/dataurl.css" />
 <script type="text/javascript" src="<%=contextPath %>/js/pace/pace.min.js" ></script>
 
-<!--jquery.hammer手势插件-->
-<script type="text/javascript" src="<%=contextPath %>/js/pace/pace.min.js" ></script>
-<script type="text/javascript" src="<%=contextPath %>/js/pace/pace.min.js" ></script>
-
 <!--平滑滚动到顶部库-->
 <script type="text/javascript" src="<%=contextPath %>/js/jquery.scrolltopcontrol/scrolltopcontrol.js"></script>
 <!--主要写的jquery拓展方法-->
 <script type="text/javascript" src="<%=contextPath %>/js/jquery.extend/jquery.extend.js" ></script>
  <!--主要写的css代码-->
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/default.css" />
- <!--主要写的js代码-->
-<script type="text/javascript" src="<%=contextPath %>/js/default.js" ></script>
+
 
 
 

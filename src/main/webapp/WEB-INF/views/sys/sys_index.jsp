@@ -6,11 +6,14 @@
 <title>Insert title here</title>
 <%@include file="../common/share_static.jsp" %>
 </head>
+<script type="text/javascript">
+
+</script>
 <body>
 <!--外围容器 -->
 	 	<%@include file="../common/header.jsp"%>
 	 	<div class="container-fluid all">
-				<%@include file="../common/leftnav.jsp"%>
+			<%@include file="../common/leftnav.jsp"%>
 		<!--正文开始-->
 			<div class="maincontent row">
 	      			 <!--我是主要内容 start-->
@@ -161,5 +164,10 @@
 	 </div>
 	 <a href="#top" id="goTop"><i class="fa fa-angle-up fa-3x"></i></a>
 <!-- 容器结束 -->
+		<script>
+		$(document).ready(function(){
+			$('#index').attr('class', 'active')
+		});
+		</script>
 </body>
 </html>
