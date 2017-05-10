@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hjrz.admin.constants.CallStatusEnum;
 import com.hjrz.admin.dao.ServerTypeMapper;
 
 /**
@@ -23,15 +24,20 @@ public class ServerTypeController {
       private ServerTypeMapper serverTypeMapper;
 
       /**
-       * @Field @addInit : TODO(跳转至添加服务器类)
+       * @Description (跳转至添加服务器类)
+       * @author RudolphLiu
+       * @Date 2017年5月10日 下午5:15:31
        */
       @RequestMapping(value = "/toaddServerType.do",method=RequestMethod.GET)
       public ModelAndView addInit(){
           ModelAndView modelAndView = new ModelAndView();
           try {
-          } catch (Exception e) {
-            // TODO: handle exception
-          }
+            modelAndView.setViewName("servicer/add_servertype");
+          } catch (Exception ex) {
+            modelAndView.addObject("callStatus", CallStatusEnum.FAIL);
+            modelAndView.addObject("message", "系统错误，请联系管理员！");
+            modelAndView.setViewName("500");
+        }
           return modelAndView;
       }
 }

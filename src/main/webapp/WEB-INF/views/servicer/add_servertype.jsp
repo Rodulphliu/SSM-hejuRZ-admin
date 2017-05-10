@@ -6,6 +6,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>添加服务器类型</title>
     <%@include file="../common/share_static.jsp" %>
+    <!-- -->
+    <link href="<%=contextPath %>/css/servicer.css/save_servertype.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 		<%@include file="../common/header.jsp"%>
@@ -41,25 +43,28 @@
             <div class="page-header text-center" style="color: #31B0D5;">
                  <h2>添加服务器类型</h2>
              </div>
-            <div class="col-md-8" style="margin-left: 15.5%;">
+            <div class="col-md-5" style="margin-left: 30.0%;">
 		               <form>
 				  <div class="form-group">
 				    <label>服务器类型名称</label>
-				    <input type="text" class="form-control con-form-width-5" placeholder="请输入服务器类型的名称">
+				    <input type="text" class="form-control" placeholder="请输入服务器类型的名称">
 				  </div>
 				  <div class="form-group">
 				    <label>服务器标题简介</label>
-				    <input type="text" class="form-control con-form-width-6" placeholder="请输入服务器类型的简介">
+				    <input type="text" class="form-control" placeholder="请输入服务器类型的简介">
 				  </div>
 				  <div class="form-group">
 				    <label>服务器详细介绍</label>
-				    <textarea class="form-control con-form-width-7" rows="3" placeholder="请输入服务器类型详细介绍" style="resize:none"></textarea>
+				    <textarea class="form-control" rows="3" placeholder="请输入服务器类型详细介绍" style="resize:none"></textarea>
 				  </div>
-				   <input type="submit" value="Go" class="button button-pill button-primary">
+				  <div align="center">
+				  	 <input type="submit" value="提交" class="button button-pill button-primary">
+				 </div>
 				</form> 
             </div>
             <!--我是主要内容 end-->
         </div>
+    </div>
     </div>
     <a href="#top" id="goTop"><i class="fa fa-angle-up fa-3x"></i></a>
 </body>
