@@ -69,9 +69,6 @@
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Resource" >
     insert into resource
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="resourceCode != null" >
-        resourceCode,
-      </if>
       <if test="resourceName != null" >
         resourceName,
       </if>

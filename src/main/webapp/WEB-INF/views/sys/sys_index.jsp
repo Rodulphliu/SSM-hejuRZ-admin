@@ -6,9 +6,7 @@
 <title>Insert title here</title>
 <%@include file="../common/share_static.jsp" %>
 </head>
-<script type="text/javascript">
 
-</script>
 <body>
 <!--外围容器 -->
 	 	<%@include file="../common/header.jsp"%>

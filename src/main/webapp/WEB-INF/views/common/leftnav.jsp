@@ -3,21 +3,31 @@
 <!-- 左边开始 -->
 <div class="sidebar">
 	<ul class="nav">
-		<li id="index"><a href="index.html">主页面</a></li>
-		<li><a href="form.html">Form库</a></li>
-		<li><a href="message.html">Message库</a></li>
-		<li><a href="ui.html">UI库</a></li>
-		<li><a href="animate.html">Animate库</a></li>
-		<li><a href="carousel.html">Carousel库</a></li>
-		<li><a href="chart.html">Chart库</a></li>
-		<li class="has-sub"><a href="javascript:void(0);"><span>导航选中演示</span>
+		<li id="index"><a href="index.html">首页</a></li>
+		<li><a href="#">资源管理</a></li>
+		<li><a href="#">前台管理</a></li>
+		<li class="has-sub"><a href="javascript:void(0);"><span>服务器管理</span>
+			<i class="fa fa-caret-right fa-fw pull-right"></i></a>
+			<ul class="sub-menu">
+				<li><a href="left1.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器列表</a></li>
+				<li><a href="left2.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;添加服务器</a></li>
+			</ul>
+		</li>
+		<li><a href="#">工作站管理</a></li>
+		<li><a href="#">硬件库管理</a></li>
+		<li><a href="#">后台管理</a></li>
+		<li><a href="#">用户管理</a></li>
+		<li><a href="#">反馈处理</a></li>
+		
+		
+		<!-- <li class="has-sub"><a href="javascript:void(0);"><span>导航选中演示</span>
 			<i class="fa fa-caret-right fa-fw pull-right"></i></a>
 			<ul class="sub-menu">
 				<li><a href="left1.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left1</a></li>
 				<li><a href="left2.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left2</a></li>
 				<li><a href="left3.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left3</a></li>
 			</ul>
-		</li>
+		</li> -->
 	</ul>
 </div>
 <!-- 左边结束 -->
