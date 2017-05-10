@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Resource" >
+    <id column="resourceCode" property="resourceCode" jdbcType="INTEGER" />
+    <result column="resourceName" property="resourceName" jdbcType="VARCHAR" />
+    <result column="resourceURL" property="resourceURL" jdbcType="VARCHAR" />
+    <result column="ParentID" property="parentID" jdbcType="INTEGER" />
+    <result column="EnglishName" property="englishName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    resourceCode, resourceName, resourceURL, ParentID, EnglishName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from resource
+    where resourceCode = #{resourceCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resource
+    where resourceCode = #{resourceCode,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Resource" >
+    insert into resource (resourceCode, resourceName, resourceURL, 
+      ParentID, EnglishName)
+    values (#{resourceCode,jdbcType=INTEGER}, #{resourceName,jdbcType=VARCHAR}, #{resourceURL,jdbcType=VARCHAR}, 
+      #{parentID,jdbcType=INTEGER}, #{englishName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Resource" >
+    insert into resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceCode != null" >
+        resourceCode,
+      </if>
+      <if test="resourceName != null" >
+        resourceName,
+      </if>
+      <if test="resourceURL != null" >
+        resourceURL,
+      </if>
+      <if test="parentID != null" >
+        ParentID,
+      </if>
+      <if test="englishName != null" >
+        EnglishName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceCode != null" >
+        #{resourceCode,jdbcType=INTEGER},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceURL != null" >
+        #{resourceURL,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null" >
+        #{parentID,jdbcType=INTEGER},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.ResourceExample" resultType="java.lang.Integer" >
+    select count(*) from resource
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Resource" >
+    update resource
+    <set >
+      <if test="resourceName != null" >
+        resourceName = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceURL != null" >
+        resourceURL = #{resourceURL,jdbcType=VARCHAR},
+      </if>
+      <if test="parentID != null" >
+        ParentID = #{parentID,jdbcType=INTEGER},
+      </if>
+      <if test="englishName != null" >
+        EnglishName = #{englishName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resourceCode = #{resourceCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Resource" >
+    update resource
+    set resourceName = #{resourceName,jdbcType=VARCHAR},
+      resourceURL = #{resourceURL,jdbcType=VARCHAR},
+      ParentID = #{parentID,jdbcType=INTEGER},
+      EnglishName = #{englishName,jdbcType=VARCHAR}
+    where resourceCode = #{resourceCode,jdbcType=INTEGER}
+  </update>
+</mapper>
