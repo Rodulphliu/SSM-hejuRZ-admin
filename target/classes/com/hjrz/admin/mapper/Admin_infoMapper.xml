@@ -54,10 +54,10 @@
     where adminfocode = #{adminfocode,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hjrz.admin.entity.Admin_info" >
-    insert into admin_info (realname, admsex, 
+    insert into admin_info (adminfocode, realname, admsex, 
       admphone, admDuty, headpath, 
       admemail, admcode)
-    values (#{realname,jdbcType=VARCHAR}, #{admsex,jdbcType=VARCHAR}, 
+    values (#{adminfocode,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{admsex,jdbcType=VARCHAR}, 
       #{admphone,jdbcType=VARCHAR}, #{admDuty,jdbcType=VARCHAR}, #{headpath,jdbcType=VARCHAR}, 
       #{admemail,jdbcType=VARCHAR}, #{admcode,jdbcType=INTEGER})
   </insert>

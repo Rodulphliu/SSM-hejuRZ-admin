@@ -9,9 +9,9 @@ import com.hjrz.admin.entity.MenuItem;
 
 /**
  * @ClassName MenultemService
- * @Description TODO(这里用一句话描述这个类的作用)
- * @author RodulphLiu
- * @Date 2017年5月9日 下午5:57:20
+ * @Description TODO(菜单导航)
+ * @author RudolphLiu
+ * @Date 2017年5月10日 上午9:51:52
  * @version 1.0.0
  */
 @Service("MenultemService")

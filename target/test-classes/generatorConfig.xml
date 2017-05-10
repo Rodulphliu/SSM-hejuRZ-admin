@@ -50,7 +50,7 @@
         </javaClientGenerator>
 
         <!--对应数据库表名 -->
-       <table tableName="workstations" domainObjectName="Workstations" enableSelectByExample="false" 
+       <table tableName="admin_info" domainObjectName="Admin_info" enableSelectByExample="false" 
 	    enableDeleteByExample="false" enableUpdateByExample="false">
 	    	<property name="useActualColumnNames" value="true"/>
 	    </table>
