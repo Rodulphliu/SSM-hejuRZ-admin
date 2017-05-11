@@ -6,7 +6,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>添加服务器类型</title>
     <%@include file="../common/share_static.jsp" %>
-    <!-- -->
     <link href="<%=contextPath %>/css/servicer.css/save_servertype.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -44,21 +43,21 @@
                  <h2>添加服务器类型</h2>
              </div>
             <div class="col-md-5" style="margin-left: 30.0%;">
-		       <form action="/ServerType/addServerType.do" method="post">
+		       <form>
 				  <div class="form-group">
 				    <label>服务器类型名称</label>
-				    <input type="text" class="form-control" name="typeName" placeholder="请输入服务器类型的名称">
+				    <input type="text" class="form-control" id="typeName"  placeholder="请输入服务器类型的名称">
 				  </div>
 				  <div class="form-group">
 				    <label>服务器标题简介</label>
-				    <input type="text" class="form-control" name="typeTitle" placeholder="请输入服务器类型的简介">
+				    <input type="text" class="form-control" id="typeTitle"  placeholder="请输入服务器类型的简介">
 				  </div>
 				  <div class="form-group">
 				    <label>服务器详细介绍</label>
-				    <textarea class="form-control" rows="3" name="typeDetails" placeholder="请输入服务器类型详细介绍" style="resize:none"></textarea>
+				    <textarea class="form-control" rows="3" id="typeDetails"  placeholder="请输入服务器类型详细介绍" style="resize:none"></textarea>
 				  </div>
 				  <div align="center">
-				  	 <input type="submit" value="提交" class="button button-pill button-primary">
+				  	 <button  id="tosubmit" class="button button-pill button-primary">提交</button>
 				 </div>
 				</form> 
             </div>
@@ -67,5 +66,6 @@
     </div>
     </div>
     <a href="#top" id="goTop"><i class="fa fa-angle-up fa-3x"></i></a>
+    <script src="<%=contextPath %>/js/servicer/add_servertype.js"></script>
 </body>
 </html>

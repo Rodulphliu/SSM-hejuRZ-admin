@@ -24,11 +24,7 @@ public class ServerTypeService {
      * @author RodulphLiu
      * @Date 2017年5月8日 下午3:46:15
      */
-    public void addServerType(ServerTypeModel serverTypeModel)throws Exception{
-        ServerType serverType = new ServerType();
-        serverType.setTypeName(serverTypeModel.getTypeName());
-        serverType.setTypeTitle(serverTypeModel.getTypeTitle());
-        serverType.setTypeDetails(serverTypeModel.getTypeDetails());
+    public void addServerType(ServerType serverType)throws Exception{
         int key = serverTypeMapper.insertSelective(serverType); 
         if(key<1){
             throw new Exception("服务器类型添加失败");

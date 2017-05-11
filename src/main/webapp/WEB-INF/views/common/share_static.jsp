@@ -30,7 +30,9 @@
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/default.css" />
  <!--主要写的js代码-->
 <script src="<%=contextPath %>/js/default.js" type="text/javascript"></script>
-
+<!-- 通知提示框 -->
+<link href="<%=contextPath %>/css/jquery.toastr/toastr.min.css" rel="stylesheet" />
+<script src="<%=contextPath %>/js/jquery.toastr/toastr.min.js"></script>
 
 
 
