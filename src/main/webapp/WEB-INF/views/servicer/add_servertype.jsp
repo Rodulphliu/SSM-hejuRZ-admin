@@ -44,18 +44,18 @@
                  <h2>添加服务器类型</h2>
              </div>
             <div class="col-md-5" style="margin-left: 30.0%;">
-		               <form>
+		       <form action="/ServerType/addServerType.do" method="post">
 				  <div class="form-group">
 				    <label>服务器类型名称</label>
-				    <input type="text" class="form-control" placeholder="请输入服务器类型的名称">
+				    <input type="text" class="form-control" name="typeName" placeholder="请输入服务器类型的名称">
 				  </div>
 				  <div class="form-group">
 				    <label>服务器标题简介</label>
-				    <input type="text" class="form-control" placeholder="请输入服务器类型的简介">
+				    <input type="text" class="form-control" name="typeTitle" placeholder="请输入服务器类型的简介">
 				  </div>
 				  <div class="form-group">
 				    <label>服务器详细介绍</label>
-				    <textarea class="form-control" rows="3" placeholder="请输入服务器类型详细介绍" style="resize:none"></textarea>
+				    <textarea class="form-control" rows="3" name="typeDetails" placeholder="请输入服务器类型详细介绍" style="resize:none"></textarea>
 				  </div>
 				  <div align="center">
 				  	 <input type="submit" value="提交" class="button button-pill button-primary">

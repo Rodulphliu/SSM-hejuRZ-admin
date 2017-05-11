@@ -1,5 +1,8 @@
 package com.hjrz.admin.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.constants.CallStatusEnum;
-import com.hjrz.admin.dao.ServerTypeMapper;
+import com.hjrz.admin.data.ExchangeData;
+import com.hjrz.admin.model.ServerTypeModel;
+import com.hjrz.admin.service.ServerTypeService;
 
 /**
  * @ClassName ServerTypeController
@@ -21,7 +26,7 @@ import com.hjrz.admin.dao.ServerTypeMapper;
 public class ServerTypeController {
       
       @Autowired
-      private ServerTypeMapper serverTypeMapper;
+      private ServerTypeService serverTypeService;
 
       /**
        * @Description (跳转至添加服务器类)
@@ -37,6 +42,30 @@ public class ServerTypeController {
             modelAndView.addObject("callStatus", CallStatusEnum.FAIL);
             modelAndView.addObject("message", "系统错误，请联系管理员！");
             modelAndView.setViewName("500");
+        }
+          return modelAndView;
+      }
+      
+      
+      /**
+       * @Description (添加服务器类型方法)
+       * @author RudolphLiu
+       * @Date 2017年5月11日 上午10:51:16
+       */
+      @RequestMapping(value="/addServerType.do",method= RequestMethod.POST)
+      public ModelAndView addServerType(ServerTypeModel serverTypeModel,HttpServletRequest request,
+          HttpServletResponse response)
+      {
+        ModelAndView modelAndView = new ModelAndView();
+        ExchangeData<Object> exchangeData = new ExchangeData<Object>();
+        try {
+          serverTypeService.addServerType(serverTypeModel);
+          modelAndView.setViewName("sys/sys_index");
+        } catch (Exception e){ 
+          exchangeData.markException(e);
+          modelAndView.addObject("exchangeData",exchangeData);
+          modelAndView.addObject("message", "系统错误，请联系管理员！");
+          modelAndView.setViewName("500");
         }
           return modelAndView;
       }

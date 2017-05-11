@@ -69,25 +69,25 @@
       <if test="typeName != null" >
         typeName,
       </if>
-        create_time,
       <if test="typeTitle != null" >
         typeTitle,
       </if>
       <if test="typeDetails != null" >
         typeDetails,
       </if>
+      create_time
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="typeName != null" >
         #{typeName,jdbcType=VARCHAR},
       </if>
-      	NOW();
       <if test="typeTitle != null" >
         #{typeTitle,jdbcType=VARCHAR},
       </if>
       <if test="typeDetails != null" >
         #{typeDetails,jdbcType=LONGVARCHAR},
       </if>
+       NOW()
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.hjrz.admin.entity.ServerTypeExample" resultType="java.lang.Integer" >
