@@ -57,7 +57,7 @@
 				    <textarea class="form-control" rows="3" id="typeDetails"  placeholder="请输入服务器类型详细介绍" style="resize:none"></textarea>
 				  </div>
 				  <div align="center">
-				  	 <button  id="tosubmit" class="button button-pill button-primary">提交</button>
+				  	 <button  id="tosubmit" type="submit" class="button button-pill button-primary">提交</button>
 				 </div>
 				</form> 
             </div>
@@ -66,6 +66,6 @@
     </div>
     </div>
     <a href="#top" id="goTop"><i class="fa fa-angle-up fa-3x"></i></a>
-    <script src="<%=contextPath %>/js/servicer/add_servertype.js"></script>
+    <script src="/js/servicer/add_servertype.js"></script>
 </body>
 </html>

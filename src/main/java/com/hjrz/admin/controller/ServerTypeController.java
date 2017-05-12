@@ -3,9 +3,11 @@ package com.hjrz.admin.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.aspectj.apache.bcel.generic.ReturnaddressType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,11 +60,8 @@ public class ServerTypeController {
        * @Date 2017年5月11日 上午10:51:16
        */
       @SuppressWarnings("rawtypes")
-      @RequestMapping(value="/add.do",produces={MediaType.APPLICATION_JSON_UTF8_VALUE}
-          ,method= RequestMethod.POST)
-      public @ResponseBody ExchangeData addServerType(@RequestBody ServerType serverType,
-          HttpServletRequest request,
-          HttpServletResponse response)
+      @RequestMapping(value="/addservertype.do",method= RequestMethod.POST)
+      public ExchangeData addServerType(ServerType serverType)
       {
         ExchangeData<Object> exchangeData = new ExchangeData<Object>();
         try {
