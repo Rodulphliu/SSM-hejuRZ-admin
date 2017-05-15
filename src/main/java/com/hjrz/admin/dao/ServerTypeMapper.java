@@ -1,7 +1,10 @@
 package com.hjrz.admin.dao;
 
+import java.util.List;
+
 import com.hjrz.admin.entity.ServerType;
 import com.hjrz.admin.entity.ServerTypeExample;
+import com.hjrz.admin.form.ServerTypeQuery;
 
 public interface ServerTypeMapper {
     int countByExample(ServerTypeExample example);
@@ -19,4 +22,8 @@ public interface ServerTypeMapper {
     int updateByPrimaryKeyWithBLOBs(ServerType record);
 
     int updateByPrimaryKey(ServerType record);
+    
+    int countByQuery(ServerTypeQuery serverTypeQuery);
+    
+    List<ServerType> selectByCondition(ServerTypeQuery serverTypeQuery);
 }

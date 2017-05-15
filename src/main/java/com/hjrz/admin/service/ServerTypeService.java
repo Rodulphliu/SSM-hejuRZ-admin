@@ -1,10 +1,13 @@
 package com.hjrz.admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.dao.ServerTypeMapper;
 import com.hjrz.admin.entity.ServerType;
+import com.hjrz.admin.form.ServerTypeQuery;
 import com.hjrz.admin.model.ServerTypeModel;
 
 /**
@@ -19,6 +22,27 @@ public class ServerTypeService {
     
     @Autowired
     private ServerTypeMapper serverTypeMapper;
+    
+    /**
+     * @Description (显示全部/条件查询)
+     * @author RudolphLiu
+     * @Date 2017年5月15日 下午5:34:04
+     */
+    public List<ServerType> findbyContion(ServerTypeQuery serverTypeQuery){
+      List<ServerType> serverTypes = serverTypeMapper.selectByCondition(serverTypeQuery);
+      return serverTypes;
+    }
+
+    /**
+     * @Description (根据条件查询/获取结果数量)
+     * @author RudolphLiu
+     * @Date 2017年5月15日 下午5:58:24
+     */
+    public int countByQuery(ServerTypeQuery serverTypeQuery){
+        int total = serverTypeMapper.countByQuery(serverTypeQuery);
+        return total;
+    }
+    
     /**
      * @Description (添加服务器类型)
      * @author RodulphLiu

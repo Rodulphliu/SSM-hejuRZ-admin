@@ -129,4 +129,50 @@
       typeTitle = #{typeTitle,jdbcType=VARCHAR}
     where typeCode = #{typeCode,jdbcType=INTEGER}
   </update>
+  
+   <select id="countByQuery" parameterType="com.hjrz.admin.form.ServerTypeQuery" resultType="int">
+    select 
+    count(typeCode)
+    from serverType
+    <where> 
+	 	<if test="typeName!=null">
+			and (typeName like CONCAT('%',#{typeName,jdbcType=VARCHAR},'%')
+		</if> 
+		<if test="typeCode!=null">
+  			and typeCode = #{typeCode,jdbcType=BIGINT}
+  		</if>
+  		<if test="typeTitle!=null">
+  			and typeTitle = #{typeTitle,jdbcType=VARCHAR}
+  		</if>
+  		<if test="typeDetails!=null">
+  			and typeDetails = #{typeDetails,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+  </select>
+  
+  
+  
+  <select id="selectByCondition" resultMap="BaseResultMap"  
+  	parameterType="com.hjrz.admin.form.ServerTypeQuery">
+  	select
+  	 <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+  	from serverType
+  	<where> 
+	 	<if test="typeName!=null">
+			and (typeName like CONCAT('%',#{typeName,jdbcType=VARCHAR},'%')
+		</if> 
+		<if test="typeCode!=null">
+  			and typeCode = #{typeCode,jdbcType=BIGINT}
+  		</if>
+  		<if test="typeTitle!=null">
+  			and typeTitle = #{brandNo,jdbcType=VARCHAR}
+  		</if>
+  		<if test="typeDetails!=null">
+  			and typeDetails = #{typeDetails,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+  	<!--limit #{pager.limit,jdbcType=INTEGER} offset #{pager.offset,jdbcType=INTEGER}-->
+  </select>
 </mapper>

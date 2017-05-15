@@ -28,6 +28,9 @@ public class ServerTypeController {
       @Autowired
       private ServerTypeService serverTypeService;
 
+      
+      
+      
       /**
        * @Description (跳转至添加服务器类)
        * @author RudolphLiu
