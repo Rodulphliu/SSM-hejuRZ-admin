@@ -13,6 +13,11 @@
 
 	<web>
 		<link target="/">
+			<dir name="G:/Spring-tool-suite/RodulphLiuWorkSpace/heJuRuizeng-admin/target/m2e-wtp/web-resources">
+				<exclude name="/"/>
+			</dir>
+		</link>
+		<link target="/">
 			<dir name="G:/Spring-tool-suite/RodulphLiuWorkSpace/heJuRuizeng-admin/src/main/webapp">
 			</dir>
 		</link>

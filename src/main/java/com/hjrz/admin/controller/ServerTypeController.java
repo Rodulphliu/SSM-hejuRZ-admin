@@ -1,5 +1,8 @@
 package com.hjrz.admin.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.constants.CallStatusEnum;
+import com.hjrz.admin.data.ExchangeData;
+import com.hjrz.admin.entity.ServerType;
 import com.hjrz.admin.service.ServerTypeService;
 
 /**
@@ -48,36 +53,22 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月11日 上午10:51:16
        */
-      /*@SuppressWarnings("rawtypes")
       @RequestMapping(value="/addservertype.do",method= RequestMethod.POST)
-      public ExchangeData addServerType(ServerType serverType)
+      public ModelAndView addServerType(ServerType serverType,HttpServletRequest request
+          ,HttpServletResponse response)
       {
+        ModelAndView modelAndView = new ModelAndView();
         ExchangeData<Object> exchangeData = new ExchangeData<Object>();
         try {
           serverTypeService.addServerType(serverType);
+          modelAndView.addObject("exchangeData", exchangeData);
+          modelAndView.setViewName("servicer/add_servertype");
         } catch (Exception e){ 
-          exchangeData.markException(e);
+          modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
+          modelAndView.addObject("message", "系统错误，请联系管理员！");
+          modelAndView.setViewName("500");
         }
-        return exchangeData;
-      }*/
-        
-      @RequestMapping(value="/gotoajax")
-      public String gotoaddAjax()
-      {
-        return "tohello";
-      }
-      
-      
-      @RequestMapping(value="/adserver.do",method= RequestMethod.POST)
-      public ModelAndView addserverType(String username,String password)
-      {
-          ModelAndView modelAndView = new ModelAndView("");
-          try {
-            modelAndView.setViewName("");
-          } catch (Exception e) {
-            // TODO: handle exception
-          }
-          return modelAndView;
+        return modelAndView;
       }
       
 }
