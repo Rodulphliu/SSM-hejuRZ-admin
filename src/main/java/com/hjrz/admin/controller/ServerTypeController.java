@@ -1,7 +1,10 @@
 package com.hjrz.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ListModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hjrz.admin.constants.CallStatusEnum;
 import com.hjrz.admin.data.ExchangeData;
 import com.hjrz.admin.entity.ServerType;
+import com.hjrz.admin.form.ServerTypeQuery;
 import com.hjrz.admin.service.ServerTypeService;
+import com.mysql.fabric.Server;
 
 /**
  * @ClassName ServerTypeController
@@ -27,9 +32,46 @@ public class ServerTypeController {
       
       @Autowired
       private ServerTypeService serverTypeService;
-
       
+      /**
+       * @Description (初始化护服务器类型表)
+       * @author RudolphLiu
+       * @Date 2017年5月16日 下午2:27:32
+       */
+      @RequestMapping(value="/queryServerTypeInit.do",method=RequestMethod.GET)
+      public ModelAndView findInit()
+      {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+          modelAndView.setViewName("servier/list_servertype");
+        } catch (Exception e) {
+          modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
+          modelAndView.addObject("message","系统凑无，请联系管理与！");
+          modelAndView.setViewName("500");
+        }
+        return modelAndView;
+      }
       
+      /**
+       * @Description (查询服务器类型)
+       * @author RudolphLiu
+       * @Date 2017年5月16日 下午3:34:05
+       */
+      public ModelAndView queryServerType(ServerTypeQuery serverTypeQuery,
+          HttpServletRequest request,HttpServletResponse response)
+      {
+         ModelAndView modelAndView = new ModelAndView();
+        try {
+          List<ServerType> serverTypes = serverTypeService.findbyContion(serverTypeQuery);
+          int total = serverTypeService.countByQuery(serverTypeQuery);
+          modelAndView.addObject("serverTypeList",serverTypes);
+          modelAndView.addObject("serverTypetotal",total);
+        } catch (Exception e) {
+          modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
+          modelAndView.addObject("message","服务器类型查询异常，请联系管理员");
+        }
+        return modelAndView;
+      }
       
       /**
        * @Description (跳转至添加服务器类)
@@ -41,7 +83,6 @@ public class ServerTypeController {
           ModelAndView modelAndView = new ModelAndView();
           try {
             modelAndView.setViewName("servicer/add_servertype");
-            
           } catch (Exception ex) {
             modelAndView.addObject("callStatus", CallStatusEnum.FAIL);
             modelAndView.addObject("message", "系统错误，请联系管理员！");
@@ -49,7 +90,6 @@ public class ServerTypeController {
         }
           return modelAndView;
       }
-      
       
       /**
        * @Description (添加服务器类型方法)
@@ -64,9 +104,9 @@ public class ServerTypeController {
         ExchangeData<Object> exchangeData = new ExchangeData<Object>();
         try {
           serverTypeService.addServerType(serverType);
-          modelAndView.addObject("exchangeData", exchangeData);
+          modelAndView.addObject("exchangeData",exchangeData);
           modelAndView.setViewName("servicer/add_servertype");
-        } catch (Exception e){ 
+        } catch (Exception e){
           modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
           modelAndView.addObject("message", "系统错误，请联系管理员！");
           modelAndView.setViewName("500");

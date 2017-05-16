@@ -6,7 +6,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>添加服务器类型</title>
     <%@include file="../common/share_static.jsp" %>
-    <link href="<%=contextPath %>/css/servicer.css/save_servertype.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 		<%@include file="../common/header.jsp"%>
@@ -66,6 +65,33 @@
     </div>
     </div>
     <a href="#top" id="goTop"><i class="fa fa-angle-up fa-3x"></i></a>
-    <script src="/js/servicer/add_servertype.js"></script>
+   	<script type="text/javascript">
+   	$(document).ready(function() {
+   		toastr.options = {
+   				"progressBar": true,
+   				"positionClass": "toast-bottom-right",
+   			};
+   		
+   		//当添加完成返回页面时
+   		if("${exchangeData.callStatus}" == 'SUCCESS')
+   		{
+   			Command: toastr["success"]("添加服务器类型成功");
+   		}
+   		if("${exchangeData.callStatus}" == 'FAIL')
+   		{
+   			Command: toastr["error"]("添加失败，请联系管理员");
+   		}
+   		
+   		
+   		//绑定表单验证
+   		 $("#subform").click(function(){
+   			 if($("#typeName").val()=="" || $("#typeTitle").val()=="" || $("#typeDetails").val()==""){
+   				 Command: toastr["info"]("请输入完整的表单");
+   				 return false;
+   			 }
+   		 })
+   	})
+   	
+   	</script>
 </body>
 </html>
