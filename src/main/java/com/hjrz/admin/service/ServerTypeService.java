@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.hjrz.admin.dao.ServerTypeMapper;
 import com.hjrz.admin.entity.ServerType;
 import com.hjrz.admin.form.ServerTypeQuery;
-import com.hjrz.admin.model.ServerTypeModel;
 
 /**
  * @ClassName ServerTypeService
@@ -55,5 +54,26 @@ public class ServerTypeService {
         }
     }
     
+    /**
+     * @Description (根据ID获取详细信息)
+     * @author RudolphLiu
+     * @Date 2017年5月18日 上午11:24:35
+     */
+    public ServerType get(Integer id)throws Exception{
+        ServerType serverType = serverTypeMapper.selectByPrimaryKey(id);
+        return serverType;
+    }
     
+    
+    /**
+     * @Description (修改)
+     * @author RudolphLiu
+     * @Date 2017年5月18日 上午11:24:51
+     */
+    public void modifyServerType(ServerType serverType)throws Exception{
+        int key = serverTypeMapper.updateByPrimaryKeySelective(serverType);
+        if(key<1){
+            throw new Exception("修改品牌失败");
+        } 
+    }
 }

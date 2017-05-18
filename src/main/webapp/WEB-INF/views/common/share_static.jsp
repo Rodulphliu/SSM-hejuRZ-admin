@@ -26,6 +26,8 @@
 <script type="text/javascript" src="<%=contextPath %>/js/jquery.extend/jquery.extend.js" ></script>
  <!--主要写的css代码-->
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/default.css" />
+<!-- 主要JS -->
+<script type="text/javascript" src="<%=contextPath %>/js/default.js"></script>
 <!-- 通知提示框 -->
 <link href="<%=contextPath %>/css/jquery.toastr/toastr.min.css" rel="stylesheet" />
 <script src="<%=contextPath %>/js/jquery.toastr/toastr.min.js"></script>

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.ListModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import com.hjrz.admin.data.ExchangeData;
 import com.hjrz.admin.entity.ServerType;
 import com.hjrz.admin.form.ServerTypeQuery;
 import com.hjrz.admin.service.ServerTypeService;
-import com.mysql.fabric.Server;
 
 /**
  * @ClassName ServerTypeController
@@ -33,30 +31,13 @@ public class ServerTypeController {
       @Autowired
       private ServerTypeService serverTypeService;
       
-      /**
-       * @Description (初始化护服务器类型表)
-       * @author RudolphLiu
-       * @Date 2017年5月16日 下午2:27:32
-       */
-      @RequestMapping(value="/queryServerTypeInit.do",method=RequestMethod.GET)
-      public ModelAndView findInit()
-      {
-        ModelAndView modelAndView = new ModelAndView();
-        try {
-          modelAndView.setViewName("servier/list_servertype");
-        } catch (Exception e) {
-          modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
-          modelAndView.addObject("message","系统凑无，请联系管理与！");
-          modelAndView.setViewName("500");
-        }
-        return modelAndView;
-      }
       
       /**
-       * @Description (查询服务器类型)
+       * @Description (查询服务器类型列表)
        * @author RudolphLiu
        * @Date 2017年5月16日 下午3:34:05
        */
+      @RequestMapping(value="/queryServerTypeInit.do",method=RequestMethod.GET)
       public ModelAndView queryServerType(ServerTypeQuery serverTypeQuery,
           HttpServletRequest request,HttpServletResponse response)
       {
@@ -66,6 +47,7 @@ public class ServerTypeController {
           int total = serverTypeService.countByQuery(serverTypeQuery);
           modelAndView.addObject("serverTypeList",serverTypes);
           modelAndView.addObject("serverTypetotal",total);
+          modelAndView.setViewName("servicer/list_servertype");
         } catch (Exception e) {
           modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
           modelAndView.addObject("message","服务器类型查询异常，请联系管理员");
@@ -88,6 +70,66 @@ public class ServerTypeController {
             modelAndView.addObject("message", "系统错误，请联系管理员！");
             modelAndView.setViewName("500");
         }
+          return modelAndView;
+      }
+      
+      /**
+       * @Description (获取服务器类型详细信息)
+       * @author RudolphLiu
+       * @Date 2017年5月18日 上午11:35:15
+       */
+      public ModelAndView getInit(Integer TypeCode,HttpServletRequest request){
+          ModelAndView modelAndView = new ModelAndView();
+          try {
+            ServerType serverType = serverTypeService.get(TypeCode);
+            modelAndView.addObject("serverType",serverType);
+            modelAndView.setViewName("servicer/detail_serverType");
+          } catch (Exception e) {
+            modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
+            modelAndView.addObject("message", "获取信息失败！");
+            modelAndView.setViewName("500");
+          }
+          return modelAndView;
+      }
+      
+      /**
+       * @Description (初始化编辑界面)
+       * @author RudolphLiu
+       * @Date 2017年5月18日 上午11:48:13
+       */
+      public ModelAndView modifyInit(Integer id,HttpServletRequest request,
+          HttpServletResponse response){
+          ModelAndView modelAndView = new ModelAndView();
+          try {
+            ServerType serverType = serverTypeService.get(id);
+            modelAndView.addObject("serverType",serverType);
+            modelAndView.setViewName("servicer/modify_serverType");
+          } catch (Exception e) {
+            modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
+            modelAndView.addObject("message","获取信息失败！");
+            modelAndView.setViewName("500");
+          }
+          return modelAndView;
+      }
+      
+      /**
+       * @Description (修改服务器类型信息)
+       * @author RudolphLiu
+       * @Date 2017年5月18日 上午11:59:32
+       */
+      public ModelAndView modifyServerType(ServerType serverType,HttpServletRequest request,
+          HttpServletResponse response)
+      {
+          ModelAndView modelAndView = new ModelAndView();
+          ExchangeData<Object> exchangeData = new ExchangeData<Object>();
+          try {
+            serverTypeService.modifyServerType(serverType);
+            modelAndView.addObject("exchangeData",exchangeData);
+            modelAndView.setViewName("redirect:/ServerType/queryServerTypeInit.do");
+          } catch (Exception e) {
+            modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
+            modelAndView.addObject("message","修改服务器类型");
+          }
           return modelAndView;
       }
       
