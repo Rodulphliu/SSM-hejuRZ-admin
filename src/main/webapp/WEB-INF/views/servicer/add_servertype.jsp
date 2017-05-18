@@ -16,7 +16,7 @@
                 <li id="index"><a href="index.html">首页</a></li>
 		<li><a href="#">资源管理</a></li>
 		<li><a href="#">前台管理</a></li>
-		 <li class="has-sub active">
+		<li class="has-sub active">
 			<a href="javascript:void(0);"><span>服务器管理</span>
 			<i class="fa fa-caret-right fa-fw pull-right"></i></a>
 			<ul class="sub-menu" style="display: block;">
