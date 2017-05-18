@@ -71,9 +71,7 @@
       <if test="serverState != null" >
         serverState,
       </if>
-      <if test="create_time != null" >
-        create_time,
-      </if>
+        create_time
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="serverCode != null" >
@@ -88,9 +86,7 @@
       <if test="serverState != null" >
         #{serverState,jdbcType=VARCHAR},
       </if>
-      <if test="create_time != null" >
-        #{create_time,jdbcType=TIMESTAMP},
-      </if>
+      NOW()
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.hjrz.admin.entity.ServicerExample" resultType="java.lang.Integer" >
