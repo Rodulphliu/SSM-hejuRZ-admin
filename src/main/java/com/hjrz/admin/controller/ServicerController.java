@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.constants.CallStatusEnum;
+import com.hjrz.admin.service.ServerTypeService;
 import com.hjrz.admin.service.ServicerService;
 
 /**
@@ -22,6 +23,9 @@ public class ServicerController {
       @Autowired
       private ServicerService servicerService;
 
+      @Autowired
+      private ServerTypeService serverTypeService;
+      
       /**
        * @Description (跳转至添加服务器页面)
        * @author RudolphLiu
@@ -36,10 +40,8 @@ public class ServicerController {
             modelAndView.addObject("message", "系统错误，请联系管理员！");
             modelAndView.setViewName("500");
           }
-          return modelAndView;
+          return modelAndView; 
       }
-      
-      
       
 }
 
