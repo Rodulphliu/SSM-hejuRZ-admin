@@ -16,7 +16,7 @@ import com.hjrz.admin.util.EncryptUtil;
  * @Date 2017年4月27日 下午3:11:08
  * @version 1.0.0
  */
-@Service
+@Service("AdminAccService")
 public class AdminAccService {
     
       @Autowired
