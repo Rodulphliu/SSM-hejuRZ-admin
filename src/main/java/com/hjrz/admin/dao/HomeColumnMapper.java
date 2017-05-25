@@ -1,5 +1,7 @@
 package com.hjrz.admin.dao;
 
+import java.util.List;
+
 import com.hjrz.admin.entity.HomeColumn;
 import com.hjrz.admin.entity.HomeColumnExample;
 
@@ -19,4 +21,6 @@ public interface HomeColumnMapper {
     int updateByPrimaryKeyWithBLOBs(HomeColumn record);
 
     int updateByPrimaryKey(HomeColumn record);
+    
+    List<HomeColumn> selectByCondition(HomeColumn homeColumn);
 }
