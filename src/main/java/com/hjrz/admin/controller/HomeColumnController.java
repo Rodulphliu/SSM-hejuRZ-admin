@@ -82,7 +82,7 @@ public class HomeColumnController {
       }
       
       
-     public ModelAndView modifyInit(int id){
+      public ModelAndView modifyInit(int id){
          ModelAndView modelAndView = new ModelAndView();
          try {
           
@@ -90,5 +90,5 @@ public class HomeColumnController {
           // TODO: handle exception
         }
          return modelAndView;
-     }
+      }
 }
