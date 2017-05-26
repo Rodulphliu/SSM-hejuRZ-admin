@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.HomeColumnMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.HomeColumn" >
+    <id column="columnId" property="columnId" jdbcType="INTEGER" />
+    <result column="columnTitle" property="columnTitle" jdbcType="VARCHAR" />
+    <result column="belongColumn" property="belongColumn" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.HomeColumn" extends="BaseResultMap" >
+    <result column="columnContent" property="columnContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    columnId, columnTitle, belongColumn, create_time, columnContent
+  </sql>
+  <sql id="Blob_Column_List" >
+    columnContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from homecolumn
+    where columnId = #{columnId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from homecolumn
+    where columnId = #{columnId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.HomeColumn" >
+    insert into homecolumn (columnId, columnTitle, belongColumn, 
+      create_time, columnContent)
+    values (#{columnId,jdbcType=INTEGER}, #{columnTitle,jdbcType=VARCHAR}, #{belongColumn,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{columnContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.HomeColumn" >
+    insert into homecolumn
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="columnId != null" >
+        columnId,
+      </if>
+      <if test="columnTitle != null" >
+        columnTitle,
+      </if>
+      <if test="belongColumn != null" >
+        belongColumn,
+      </if>
+      <if test="columnContent != null" >
+        columnContent,
+      </if>
+       create_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="columnId != null" >
+	        #{columnId,jdbcType=INTEGER},
+	      </if>
+	      <if test="columnTitle != null" >
+	        #{columnTitle,jdbcType=VARCHAR},
+	      </if>
+	      <if test="belongColumn != null" >
+	        #{belongColumn,jdbcType=VARCHAR},
+	      </if>
+	      <if test="columnContent != null" >
+	        #{columnContent,jdbcType=LONGVARCHAR},
+	      </if>
+	      NOW()
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.HomeColumnExample" resultType="java.lang.Integer" >
+    select count(*) from homecolumn
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.HomeColumn" >
+    update homecolumn
+    <set >
+      <if test="columnTitle != null" >
+        columnTitle = #{columnTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="belongColumn != null" >
+        belongColumn = #{belongColumn,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="columnContent != null" >
+        columnContent = #{columnContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where columnId = #{columnId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.HomeColumn" >
+    update homecolumn
+    set columnTitle = #{columnTitle,jdbcType=VARCHAR},
+      belongColumn = #{belongColumn,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      columnContent = #{columnContent,jdbcType=LONGVARCHAR}
+    where columnId = #{columnId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.HomeColumn" >
+    update homecolumn
+    set columnTitle = #{columnTitle,jdbcType=VARCHAR},
+      belongColumn = #{belongColumn,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP}
+    where columnId = #{columnId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByCondition" resultMap="ResultMapWithBLOBs"  
+  	parameterType="com.hjrz.admin.entity.HomeColumn">
+  	select
+  	<include refid="Base_Column_List"/>	
+  	from homeColumn
+  	<where> 
+	 	<if test="columnId!=null">
+			and columnId = #{columnId,jdbcType=INT}
+		</if> 
+		<if test="columnTitle!=null">
+  			and columnTitle = #{columnTitle,jdbcType=VARCHAR}
+  		</if>
+  		<if test="columnContent!=null">
+  			and columnContent = #{columnContent,jdbcType=LONGVARCHAR}
+  		</if>
+  		<if test="belongColumn!=null">
+  			and belongColumn = #{belongColumn,jdbcType=VARCHAR}
+  		</if>
+  		<if test="create_time!=null">
+  			and create_time = #{create_time,jdbcType=timestamp}
+  		</if>
+  	</where>
+  	<!--  limit #{pager.limit,jdbcType=INTEGER} offset #{pager.offset,jdbcType=INTEGER}-->
+  </select>
+  
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.AdminMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Admin">
+    <id column="admcode" jdbcType="INTEGER" property="admcode" />
+    <result column="admname" jdbcType="VARCHAR" property="admname" />
+    <result column="admpassword" jdbcType="VARCHAR" property="admpassword" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="adminstate" jdbcType="VARCHAR" property="adminstate" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+    <result column="last_time" jdbcType="TIMESTAMP" property="last_time" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    admcode, admname, admpassword, create_time, adminstate, last_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where admcode = #{admcode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin
+    where admcode = #{admcode,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Admin" >
+    insert into admin (admcode, admname, admpassword, 
+      create_time, adminstate, last_time
+      )
+    values (#{admcode,jdbcType=INTEGER}, #{admname,jdbcType=VARCHAR}, #{admpassword,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{adminstate,jdbcType=VARCHAR}, #{last_time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Admin" >
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="admcode != null" >
+        admcode,
+      </if>
+      <if test="admname != null" >
+        admname,
+      </if>
+      <if test="admpassword != null" >
+        admpassword,
+      </if>
+      <if test="adminstate != null" >
+        adminstate,
+      </if>
+        last_time,
+      	create_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="admcode != null" >
+        #{admcode,jdbcType=INTEGER},
+      </if>
+      <if test="admname != null" >
+        #{admname,jdbcType=VARCHAR},
+      </if>
+      <if test="admpassword != null" >
+        #{admpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminstate != null" >
+        #{adminstate,jdbcType=VARCHAR},
+      </if>
+     	NOW(),
+        NOW()
+    </trim>
+  </insert>
+  
+  <select id="adminAccountLogin" resultMap="BaseResultMap" parameterType="com.hjrz.admin.model.AdminAccountModel" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where admname=#{admin_name,jdbcType=VARCHAR} AND admpassword=#{admin_password,jdbcType=VARCHAR}
+    limit 1
+  </select>
+  
+  
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.AdminExample" resultType="java.lang.Integer" >
+    select count(*) from admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Admin" >
+    update admin
+    <set >
+      <if test="admname != null" >
+        admname = #{admname,jdbcType=VARCHAR},
+      </if>
+      <if test="admpassword != null" >
+        admpassword = #{admpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminstate != null" >
+        adminstate = #{adminstate,jdbcType=VARCHAR},
+      </if>
+      <if test="last_time != null" >
+        last_time = #{last_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where admcode = #{admcode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Admin" >
+    update admin
+    set admname = #{admname,jdbcType=VARCHAR},
+      admpassword = #{admpassword,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      adminstate = #{adminstate,jdbcType=VARCHAR},
+      last_time = #{last_time,jdbcType=TIMESTAMP}
+    where admcode = #{admcode,jdbcType=INTEGER}
+  </update>
+</mapper>

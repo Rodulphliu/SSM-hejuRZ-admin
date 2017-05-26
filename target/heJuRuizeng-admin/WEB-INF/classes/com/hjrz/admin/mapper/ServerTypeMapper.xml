@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.ServerTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.ServerType" >
+    <id column="typeCode" property="typeCode" jdbcType="INTEGER" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="typeTitle" property="typeTitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.ServerType" extends="BaseResultMap" >
+    <result column="typeDetails" property="typeDetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    typeCode, typeName, create_time, typeTitle
+  </sql>
+  <sql id="Blob_Column_List" >
+    typeDetails
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from servertype
+    where typeCode = #{typeCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from servertype
+    where typeCode = #{typeCode,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.ServerType" >
+    insert into servertype (typeCode, typeName, create_time, 
+      typeTitle, typeDetails)
+    values (#{typeCode,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{typeTitle,jdbcType=VARCHAR}, #{typeDetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.ServerType" >
+    insert into servertype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeName != null" >
+        typeName,
+      </if>
+      <if test="typeTitle != null" >
+        typeTitle,
+      </if>
+      <if test="typeDetails != null" >
+        typeDetails,
+      </if>
+      create_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeTitle != null" >
+        #{typeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="typeDetails != null" >
+        #{typeDetails,jdbcType=LONGVARCHAR},
+      </if>
+       NOW()
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.ServerTypeExample" resultType="java.lang.Integer" >
+    select count(*) from servertype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.ServerType" >
+    update servertype
+    <set >
+      <if test="typeName != null" >
+        typeName = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="typeTitle != null" >
+        typeTitle = #{typeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="typeDetails != null" >
+        typeDetails = #{typeDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where typeCode = #{typeCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.ServerType" >
+    update servertype
+    set typeName = #{typeName,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      typeTitle = #{typeTitle,jdbcType=VARCHAR},
+      typeDetails = #{typeDetails,jdbcType=LONGVARCHAR}
+    where typeCode = #{typeCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.ServerType" >
+    update servertype
+    set typeName = #{typeName,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      typeTitle = #{typeTitle,jdbcType=VARCHAR}
+    where typeCode = #{typeCode,jdbcType=INTEGER}
+  </update>
+  
+   <select id="countByQuery" parameterType="com.hjrz.admin.form.ServerTypeQuery" resultType="int">
+    select 
+    count(typeCode)
+    from serverType
+    <where> 
+	 	<if test="typeName!=null">
+			and (typeName like CONCAT('%',#{typeName,jdbcType=VARCHAR},'%')
+		</if> 
+		<if test="typeCode!=null">
+  			and typeCode = #{typeCode,jdbcType=BIGINT}
+  		</if>
+  		<if test="typeTitle!=null">
+  			and typeTitle = #{typeTitle,jdbcType=VARCHAR}
+  		</if>
+  		<if test="typeDetails!=null">
+  			and typeDetails = #{typeDetails,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+  </select>
+  
+  
+  
+  <select id="selectByCondition" resultMap="BaseResultMap"  
+  	parameterType="com.hjrz.admin.form.ServerTypeQuery">
+  	select
+  	 <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+  	from serverType
+  	<where> 
+	 	<if test="typeName!=null">
+			and (typeName like CONCAT('%',#{typeName,jdbcType=VARCHAR},'%')
+		</if> 
+		<if test="typeCode!=null">
+  			and typeCode = #{typeCode,jdbcType=BIGINT}
+  		</if>
+  		<if test="typeTitle!=null">
+  			and typeTitle = #{brandNo,jdbcType=VARCHAR}
+  		</if>
+  		<if test="typeDetails!=null">
+  			and typeDetails = #{typeDetails,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+  	<!--limit #{pager.limit,jdbcType=INTEGER} offset #{pager.offset,jdbcType=INTEGER}-->
+  </select>
+</mapper>

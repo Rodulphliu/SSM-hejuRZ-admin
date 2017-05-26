@@ -49,16 +49,16 @@ public class HomeColumnController {
         return modelAndView;
       }
       
-      
       /**
        * @Description (初始化管理页面)
        * @author RudolphLiu
        * @Date 2017年5月25日 下午4:20:29
        */
+      @RequestMapping(value="/toadd.do",method=RequestMethod.GET)
       public ModelAndView addInIt(){
           ModelAndView modelAndView = new ModelAndView();
           try {
-            modelAndView.setViewName("reception/homecolumn");
+            modelAndView.setViewName("reception/addcolumn");
           } catch (Exception e) {
             modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
             modelAndView.addObject("message","系统错误，请联系管理员！");
@@ -67,8 +67,7 @@ public class HomeColumnController {
           return modelAndView;
       }
       
-      @ResponseBody
-      @RequestMapping(value="/add.do",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
+      @RequestMapping(value="/add.do",method=RequestMethod.POST)
       public ModelAndView add(HomeColumn homeColumn){
           ModelAndView modelAndView = new ModelAndView();
           ExchangeData<Object> exchangeData = new ExchangeData<Object>();
@@ -81,6 +80,7 @@ public class HomeColumnController {
           }
           return modelAndView;
       }
+      
       
      public ModelAndView modifyInit(int id){
          ModelAndView modelAndView = new ModelAndView();
