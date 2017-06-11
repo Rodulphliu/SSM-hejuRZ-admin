@@ -13,6 +13,8 @@ public interface Admin_infoMapper {
     int insertSelective(Admin_info record);
 
     Admin_info selectByPrimaryKey(Integer adminfocode);
+    
+    Admin_info selectByAdmCode(Integer admcode);
 
     int updateByPrimaryKeySelective(Admin_info record);
 

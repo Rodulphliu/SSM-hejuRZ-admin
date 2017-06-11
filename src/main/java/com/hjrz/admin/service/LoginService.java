@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.constants.AdminStatusEnum;
 import com.hjrz.admin.constants.CachekeyPrefix;
-import com.hjrz.admin.dao.AbstractCacheService;
 import com.hjrz.admin.dao.AdminMapper;
 import com.hjrz.admin.dao.Admin_infoMapper;
 import com.hjrz.admin.entity.Admin;
@@ -20,6 +19,7 @@ import com.hjrz.admin.exception.LoginException;
 import com.hjrz.admin.exception.SYSException;
 import com.hjrz.admin.form.LoginForm;
 import com.hjrz.admin.model.AdminAccountModel;
+import com.hjrz.admin.util.AbstractCacheService;
 import com.hjrz.admin.util.EncryptUtil;
 
 /**
@@ -61,7 +61,7 @@ public class LoginService {
             if(admin.getAdminstate()!=AdminStatusEnum.VALID){
               throw new LoginException("管理员账号"+admin.getAdmname()+"不可用，请联系管理员");
             }
-            Admin_info admin_info = admin_infoMapper.selectByPrimaryKey(admin.getAdmcode());
+            Admin_info admin_info = admin_infoMapper.selectByAdmCode(admin.getAdmcode());
             //赋值给AdminAccountModel
             BeanUtilsBean2.getInstance().copyProperties(aam, admin);
             BeanUtilsBean2.getInstance().copyProperties(aam, admin_info);

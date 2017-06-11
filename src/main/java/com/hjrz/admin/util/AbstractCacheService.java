@@ -1,4 +1,4 @@
-package com.hjrz.admin.dao;
+package com.hjrz.admin.util;
 
 import java.util.Set;
 
@@ -15,6 +15,7 @@ public interface AbstractCacheService {
         
         //一天
         public static int ONEDAY = 24 * 60 * 60;
+        
         //半天
         public static int HALFDAY = 12 * 60 * 60;
         
@@ -26,11 +27,13 @@ public interface AbstractCacheService {
         
         //一小时
         public static int ONEHOUR = 60 * 60;
+        
         //半小时
         public static int HALFHOUR = 30 * 60;
         
         //10分钟
         public static int TENMINUTES = 10 * 60;
+        
         //5分钟
         public static int FIVEMINUTES = 5 * 60;
         
@@ -40,7 +43,7 @@ public interface AbstractCacheService {
          * @author RudolphLiu
          * @Date 2017年6月16日 上午10:14:30
          */
-        public void pubkey(String key,Object value);
+        public void putKey(String key,Object value);
         
         
         /**

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.DynamicMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Dynamic" >
+    <id column="dyCode" property="dyCode" jdbcType="INTEGER" />
+    <result column="dyTitle" property="dyTitle" jdbcType="VARCHAR" />
+    <result column="dyimageCover" property="dyimageCover" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="create_admin" property="create_admin" jdbcType="VARCHAR" />
+    <result column="dyAliveState" property="dyAliveState" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Dynamic" extends="BaseResultMap" >
+    <result column="dycontent" property="dycontent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    dyCode, dyTitle, dyimageCover, create_time, create_admin, dyAliveState
+  </sql>
+  <sql id="Blob_Column_List" >
+    dycontent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dynamic
+    where dyCode = #{dyCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dynamic
+    where dyCode = #{dyCode,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Dynamic" >
+    <selectKey resultType="java.lang.Integer" keyProperty="dyCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dynamic (dyTitle, dyimageCover, create_time, 
+      create_admin, dyAliveState, dycontent
+      )
+    values (#{dyTitle,jdbcType=VARCHAR}, #{dyimageCover,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{create_admin,jdbcType=VARCHAR}, #{dyAliveState,jdbcType=VARCHAR}, #{dycontent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Dynamic" >
+    <selectKey resultType="java.lang.Integer" keyProperty="dyCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dynamic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dyTitle != null" >
+        dyTitle,
+      </if>
+      <if test="dyimageCover != null" >
+        dyimageCover,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="create_admin != null" >
+        create_admin,
+      </if>
+      <if test="dyAliveState != null" >
+        dyAliveState,
+      </if>
+      <if test="dycontent != null" >
+        dycontent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dyTitle != null" >
+        #{dyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dyimageCover != null" >
+        #{dyimageCover,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_admin != null" >
+        #{create_admin,jdbcType=VARCHAR},
+      </if>
+      <if test="dyAliveState != null" >
+        #{dyAliveState,jdbcType=VARCHAR},
+      </if>
+      <if test="dycontent != null" >
+        #{dycontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.DynamicExample" resultType="java.lang.Integer" >
+    select count(*) from dynamic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Dynamic" >
+    update dynamic
+    <set >
+      <if test="dyTitle != null" >
+        dyTitle = #{dyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="dyimageCover != null" >
+        dyimageCover = #{dyimageCover,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create_admin != null" >
+        create_admin = #{create_admin,jdbcType=VARCHAR},
+      </if>
+      <if test="dyAliveState != null" >
+        dyAliveState = #{dyAliveState,jdbcType=VARCHAR},
+      </if>
+      <if test="dycontent != null" >
+        dycontent = #{dycontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where dyCode = #{dyCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.Dynamic" >
+    update dynamic
+    set dyTitle = #{dyTitle,jdbcType=VARCHAR},
+      dyimageCover = #{dyimageCover,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_admin = #{create_admin,jdbcType=VARCHAR},
+      dyAliveState = #{dyAliveState,jdbcType=VARCHAR},
+      dycontent = #{dycontent,jdbcType=LONGVARCHAR}
+    where dyCode = #{dyCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Dynamic" >
+    update dynamic
+    set dyTitle = #{dyTitle,jdbcType=VARCHAR},
+      dyimageCover = #{dyimageCover,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_admin = #{create_admin,jdbcType=VARCHAR},
+      dyAliveState = #{dyAliveState,jdbcType=VARCHAR}
+    where dyCode = #{dyCode,jdbcType=INTEGER}
+  </update>
+</mapper>

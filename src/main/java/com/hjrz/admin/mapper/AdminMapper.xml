@@ -51,14 +51,23 @@
     delete from admin
     where admcode = #{admcode,jdbcType=INTEGER}
   </delete>
+  
+  
   <insert id="insert" parameterType="com.hjrz.admin.entity.Admin" >
-    insert into admin (admcode, admname, admpassword, 
-      create_time, adminstate, last_time
-      )
-    values (#{admcode,jdbcType=INTEGER}, #{admname,jdbcType=VARCHAR}, #{admpassword,jdbcType=VARCHAR}, 
-      #{create_time,jdbcType=TIMESTAMP}, #{adminstate,jdbcType=VARCHAR}, #{last_time,jdbcType=TIMESTAMP}
-      )
+	  	<selectKey resultType="java.lang.Integer" keyProperty="admcode" order="AFTER" >
+	      select last_insert_id()
+	    </selectKey>
+	    insert into admin (admname, admpassword, adminstate,
+	      create_time,last_time
+	      )
+	    values (#{admname,jdbcType=VARCHAR}, 
+	    			#{admpassword,jdbcType=VARCHAR}, 
+	     			#{adminstate,jdbcType=VARCHAR}, 
+	     			NOW(),
+	     			NOW())
   </insert>
+  
+  
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Admin" >
     insert into admin
     <trim prefix="(" suffix=")" suffixOverrides="," >

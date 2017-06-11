@@ -2,8 +2,6 @@ package com.hjrz.admin.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.constants.CallStatusEnum;
-import com.hjrz.admin.dao.AbstractCacheService;
 import com.hjrz.admin.data.ExchangeData;
-import com.hjrz.admin.entity.Admin;
-import com.hjrz.admin.exception.AdminException;
 import com.hjrz.admin.model.AdminAccountModel;
 import com.hjrz.admin.service.AdminAccService;
 
@@ -41,16 +36,7 @@ public class AdminController {
     @RequestMapping(value="/addInit.do")
     public String addInIt(HttpServletRequest request,HttpServletResponse response)
     {
-          try {
-                HttpSession session = request.getSession();
-              adminAccService.AuthorizationVerification((AdminAccountModel) session.getAttribute("adminAccountModel"));
-              return "add_admin";
-          } catch (AdminException e) {
-              request.setAttribute("", e.getMessage());
-          }catch (Exception e) {
-              request.setAttribute("message", "");
-          }
-          return null;
+          return "add_admin";
     }
     
     /**
@@ -74,5 +60,4 @@ public class AdminController {
             }
             return modelAndView;
     }
-    
 }

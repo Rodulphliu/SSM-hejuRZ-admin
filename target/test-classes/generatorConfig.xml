@@ -53,6 +53,7 @@
        <table tableName="${table.tablename}" domainObjectName="${table.classname}" enableSelectByExample="false" 
 	    enableDeleteByExample="false" enableUpdateByExample="false">
 	    	<property name="useActualColumnNames" value="true"/>
+	    	<generatedKey column="${table.tableid}" sqlStatement="MySql" identity="true"/>
 	    </table>
     </context>
 </generatorConfiguration>
