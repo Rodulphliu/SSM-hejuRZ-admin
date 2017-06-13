@@ -10,22 +10,16 @@
 
 	 <mvc:annotation-driven />
 	 
-	 
 	 <mvc:default-servlet-handler />
      
-      <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-     
-     <context:component-scan base-package="com.hjrz.admin">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Component" />
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Repository" />
-		<context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Service" />
+    <context:component-scan base-package="com.hjrz.admin.controller">
 	</context:component-scan>
 	
+	<mvc:resources mapping="*.css" location="/" />
+	<mvc:resources mapping="*.js" location="/" />
+	<mvc:resources mapping="*.jpg" location="/" />
+	<mvc:resources mapping="*.png" location="/" />
+	<mvc:resources mapping="*.jpeg" location="/" />
 	
      <!-- 对模型视图添加前后缀 -->  
 	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
