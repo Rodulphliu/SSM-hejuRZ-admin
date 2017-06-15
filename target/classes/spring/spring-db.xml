@@ -32,11 +32,14 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
     
+    <import resource="spring-redis.xml"/>
+    
 	 <!-- 引入配置文件 -->  
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
         <property name="locations">  
             <list>  
-                <value>classpath*:application.properties</value>  
+                <value>classpath*:application.properties</value> 
+                <value>classpath*:redis.properties</value>
             </list>  
         </property>  
     </bean>  

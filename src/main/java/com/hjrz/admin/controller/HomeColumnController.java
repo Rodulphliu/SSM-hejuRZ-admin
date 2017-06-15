@@ -81,14 +81,4 @@ public class HomeColumnController {
           return modelAndView;
       }
       
-      
-      public ModelAndView modifyInit(int id){
-         ModelAndView modelAndView = new ModelAndView();
-         try {
-          
-        } catch (Exception e) {
-          // TODO: handle exception
-        }
-         return modelAndView;
-      }
 }
