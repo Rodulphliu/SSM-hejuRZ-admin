@@ -11,7 +11,7 @@
                         aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">核聚瑞增后台管理系统</a>
+                <a  href="index.html"><img src="<%=request.getContextPath() %>/images/common/adminhjrzlogo.png" style="height:30px;width:220px;margin-top:11px;"/></a>
             </div>
              <div id="navbar" class="collapse navbar-collapse">
              		<ul class="nav navbar-nav navbar-right">
