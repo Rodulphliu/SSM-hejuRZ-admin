@@ -1,0 +1,661 @@
+package com.hjrz.admin.entity;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class BgresourceExample {
+    protected String orderByClause;
+
+    protected boolean distinct;
+
+    protected List<Criteria> oredCriteria;
+
+    public BgresourceExample() {
+        oredCriteria = new ArrayList<Criteria>();
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setDistinct(boolean distinct) {
+        this.distinct = distinct;
+    }
+
+    public boolean isDistinct() {
+        return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
+        }
+
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
+
+        public List<Criterion> getAllCriteria() {
+            return criteria;
+        }
+
+        public List<Criterion> getCriteria() {
+            return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
+            }
+            criteria.add(new Criterion(condition));
+        }
+
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value));
+        }
+
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        public Criteria andResourceCodeIsNull() {
+            addCriterion("resourceCode is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeIsNotNull() {
+            addCriterion("resourceCode is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeEqualTo(Integer value) {
+            addCriterion("resourceCode =", value, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeNotEqualTo(Integer value) {
+            addCriterion("resourceCode <>", value, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeGreaterThan(Integer value) {
+            addCriterion("resourceCode >", value, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("resourceCode >=", value, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeLessThan(Integer value) {
+            addCriterion("resourceCode <", value, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeLessThanOrEqualTo(Integer value) {
+            addCriterion("resourceCode <=", value, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeIn(List<Integer> values) {
+            addCriterion("resourceCode in", values, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeNotIn(List<Integer> values) {
+            addCriterion("resourceCode not in", values, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeBetween(Integer value1, Integer value2) {
+            addCriterion("resourceCode between", value1, value2, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceCodeNotBetween(Integer value1, Integer value2) {
+            addCriterion("resourceCode not between", value1, value2, "resourceCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameIsNull() {
+            addCriterion("resourceName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameIsNotNull() {
+            addCriterion("resourceName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameEqualTo(String value) {
+            addCriterion("resourceName =", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameNotEqualTo(String value) {
+            addCriterion("resourceName <>", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameGreaterThan(String value) {
+            addCriterion("resourceName >", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameGreaterThanOrEqualTo(String value) {
+            addCriterion("resourceName >=", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameLessThan(String value) {
+            addCriterion("resourceName <", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameLessThanOrEqualTo(String value) {
+            addCriterion("resourceName <=", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameLike(String value) {
+            addCriterion("resourceName like", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameNotLike(String value) {
+            addCriterion("resourceName not like", value, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameIn(List<String> values) {
+            addCriterion("resourceName in", values, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameNotIn(List<String> values) {
+            addCriterion("resourceName not in", values, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameBetween(String value1, String value2) {
+            addCriterion("resourceName between", value1, value2, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceNameNotBetween(String value1, String value2) {
+            addCriterion("resourceName not between", value1, value2, "resourceName");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLIsNull() {
+            addCriterion("resourceURL is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLIsNotNull() {
+            addCriterion("resourceURL is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLEqualTo(String value) {
+            addCriterion("resourceURL =", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLNotEqualTo(String value) {
+            addCriterion("resourceURL <>", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLGreaterThan(String value) {
+            addCriterion("resourceURL >", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLGreaterThanOrEqualTo(String value) {
+            addCriterion("resourceURL >=", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLLessThan(String value) {
+            addCriterion("resourceURL <", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLLessThanOrEqualTo(String value) {
+            addCriterion("resourceURL <=", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLLike(String value) {
+            addCriterion("resourceURL like", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLNotLike(String value) {
+            addCriterion("resourceURL not like", value, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLIn(List<String> values) {
+            addCriterion("resourceURL in", values, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLNotIn(List<String> values) {
+            addCriterion("resourceURL not in", values, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLBetween(String value1, String value2) {
+            addCriterion("resourceURL between", value1, value2, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceURLNotBetween(String value1, String value2) {
+            addCriterion("resourceURL not between", value1, value2, "resourceURL");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidIsNull() {
+            addCriterion("parentid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidIsNotNull() {
+            addCriterion("parentid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidEqualTo(Integer value) {
+            addCriterion("parentid =", value, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidNotEqualTo(Integer value) {
+            addCriterion("parentid <>", value, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidGreaterThan(Integer value) {
+            addCriterion("parentid >", value, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("parentid >=", value, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidLessThan(Integer value) {
+            addCriterion("parentid <", value, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidLessThanOrEqualTo(Integer value) {
+            addCriterion("parentid <=", value, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidIn(List<Integer> values) {
+            addCriterion("parentid in", values, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidNotIn(List<Integer> values) {
+            addCriterion("parentid not in", values, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidBetween(Integer value1, Integer value2) {
+            addCriterion("parentid between", value1, value2, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentidNotBetween(Integer value1, Integer value2) {
+            addCriterion("parentid not between", value1, value2, "parentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeIsNull() {
+            addCriterion("describe is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeIsNotNull() {
+            addCriterion("describe is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeEqualTo(String value) {
+            addCriterion("describe =", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeNotEqualTo(String value) {
+            addCriterion("describe <>", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeGreaterThan(String value) {
+            addCriterion("describe >", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeGreaterThanOrEqualTo(String value) {
+            addCriterion("describe >=", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeLessThan(String value) {
+            addCriterion("describe <", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeLessThanOrEqualTo(String value) {
+            addCriterion("describe <=", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeLike(String value) {
+            addCriterion("describe like", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeNotLike(String value) {
+            addCriterion("describe not like", value, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeIn(List<String> values) {
+            addCriterion("describe in", values, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeNotIn(List<String> values) {
+            addCriterion("describe not in", values, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeBetween(String value1, String value2) {
+            addCriterion("describe between", value1, value2, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescribeNotBetween(String value1, String value2) {
+            addCriterion("describe not between", value1, value2, "describe");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVIsNull() {
+            addCriterion("resourceLV is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVIsNotNull() {
+            addCriterion("resourceLV is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVEqualTo(String value) {
+            addCriterion("resourceLV =", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVNotEqualTo(String value) {
+            addCriterion("resourceLV <>", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVGreaterThan(String value) {
+            addCriterion("resourceLV >", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVGreaterThanOrEqualTo(String value) {
+            addCriterion("resourceLV >=", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVLessThan(String value) {
+            addCriterion("resourceLV <", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVLessThanOrEqualTo(String value) {
+            addCriterion("resourceLV <=", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVLike(String value) {
+            addCriterion("resourceLV like", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVNotLike(String value) {
+            addCriterion("resourceLV not like", value, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVIn(List<String> values) {
+            addCriterion("resourceLV in", values, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVNotIn(List<String> values) {
+            addCriterion("resourceLV not in", values, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVBetween(String value1, String value2) {
+            addCriterion("resourceLV between", value1, value2, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andResourceLVNotBetween(String value1, String value2) {
+            addCriterion("resourceLV not between", value1, value2, "resourceLV");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeIsNull() {
+            addCriterion("create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeIsNotNull() {
+            addCriterion("create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeEqualTo(Date value) {
+            addCriterion("create_time =", value, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeLessThan(Date value) {
+            addCriterion("create_time <", value, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeIn(List<Date> values) {
+            addCriterion("create_time in", values, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "create_time");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreate_timeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "create_time");
+            return (Criteria) this;
+        }
+    }
+
+    public static class Criteria extends GeneratedCriteria {
+
+        protected Criteria() {
+            super();
+        }
+    }
+
+    public static class Criterion {
+        private String condition;
+
+        private Object value;
+
+        private Object secondValue;
+
+        private boolean noValue;
+
+        private boolean singleValue;
+
+        private boolean betweenValue;
+
+        private boolean listValue;
+
+        private String typeHandler;
+
+        public String getCondition() {
+            return condition;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Object getSecondValue() {
+            return secondValue;
+        }
+
+        public boolean isNoValue() {
+            return noValue;
+        }
+
+        public boolean isSingleValue() {
+            return singleValue;
+        }
+
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
+
+        public boolean isListValue() {
+            return listValue;
+        }
+
+        public String getTypeHandler() {
+            return typeHandler;
+        }
+
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
+
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
+
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
+
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}
