@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @ClassName RedisObjectMapper
- * @Description TODO(这里用一句话描述这个类的作用)
+ * @Description TODO(RedisMapper)
  * @author RudolphLiu
  * @Date 2017年6月15日 下午6:12:54
  * @version 1.0.0
@@ -18,10 +18,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class RedisObjectMapper extends  ObjectMapper {
       
   public RedisObjectMapper() {
-    super();
-    setTimeZone(TimeZone.getDefault());
-    configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    setSerializationInclusion(Include.NON_NULL);
-    enableDefaultTyping(DefaultTyping.NON_FINAL, As.PROPERTY);
+        super();
+        setTimeZone(TimeZone.getDefault());
+        configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        setSerializationInclusion(Include.NON_NULL);
+        enableDefaultTyping(DefaultTyping.NON_FINAL, As.PROPERTY);
   }
 }
