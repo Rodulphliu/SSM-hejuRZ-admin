@@ -1,5 +1,7 @@
 package com.hjrz.admin.service;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.lang.reflect.InvocationTargetException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,9 +12,12 @@ import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.constants.AdminStatusEnum;
 import com.hjrz.admin.dao.AdminMapper;
+import com.hjrz.admin.dao.Admin_infoMapper;
 import com.hjrz.admin.entity.Admin;
+import com.hjrz.admin.entity.Admin_info;
 import com.hjrz.admin.exception.LoginException;
 import com.hjrz.admin.exception.SYSException;
+import com.hjrz.admin.form.LoginForm;
 import com.hjrz.admin.model.AdminAccountModel;
 import com.hjrz.admin.util.EncryptUtil;
 
@@ -23,32 +28,40 @@ import com.hjrz.admin.util.EncryptUtil;
  * @Date 2017年4月28日 下午3:41:38
  * @version 1.0.0
  */
-@Service
+@Service("LoginService")
 public class LoginService {
     
     @Autowired
     private AdminMapper adminMapper;
+    
+    @Autowired
+    private Admin_infoMapper admin_infoMapper;
     
     /**
      * @Description (登录)
      * @author RodulphLiu
      * @Date 2017年4月28日 下午5:24:32
      */
-    public Admin adminLogin(AdminAccountModel adminAccountModel,HttpServletRequest request,
+    public AdminAccountModel adminLogin(LoginForm loginForm,HttpServletRequest request,
         HttpServletResponse response)
             throws LoginException,SYSException,IllegalAccessException, InvocationTargetException
     {
+      AdminAccountModel aam = new AdminAccountModel();
       //取得用户输入的MD5值密码与数据库中的相比较
-      String encryptPassword  = EncryptUtil.getMD5String(adminAccountModel.getAdmin_password());
-      adminAccountModel.setAdmin_password(encryptPassword);
-      Admin admin = adminMapper.adminAccountLogin(adminAccountModel);
+      String encryptPassword  = EncryptUtil.getMD5String(loginForm.getAdmpassword());
+      loginForm.setAdmpassword(encryptPassword);
+      Admin admin = adminMapper.adminAccountLogin(loginForm);
       if(admin == null){
-        throw new LoginException("用户名或密码错误");
+        throw new LoginException("用户名或密码不正确");
       }
       if(admin.getAdminstate()!=AdminStatusEnum.VALID){
         throw new LoginException("管理员账号"+admin.getAdmname()+"不可用，请联系管理员");
       }
-       return admin;
+      Admin_info admin_info = admin_infoMapper.selectByPrimaryKey(admin.getAdmcode());
+      
+      
+      
+       return null;
     } 
     
     

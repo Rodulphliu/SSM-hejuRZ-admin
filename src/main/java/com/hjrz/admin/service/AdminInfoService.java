@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.dao.Admin_infoMapper;
+import com.hjrz.admin.entity.Admin;
 import com.hjrz.admin.entity.Admin_info;
+import com.hjrz.admin.exception.SYSException;
 
 /**
  * @ClassName AdminInfoService
@@ -13,7 +15,7 @@ import com.hjrz.admin.entity.Admin_info;
  * @Date 2017年5月2日 下午2:37:48
  * @version 1.0.0
  */
-@Service
+@Service("AdminInfoService")
 public class AdminInfoService {
     
       @Autowired
@@ -36,4 +38,14 @@ public class AdminInfoService {
               throw new Exception("管理员信息添加失败");
             }
       }
+      
+        /**
+         * @Description (根据adminCode获取用户详细信息)
+         * @author RudolphLiu
+         * @Date 2017年6月16日 下午6:08:14
+         */
+        public Admin_info getInfoByID(Integer adminfocode)throws SYSException{
+            Admin_info admin_info =  admin_infoMapper.selectByPrimaryKey(adminfocode);
+            return admin_info;
+        } 
 }

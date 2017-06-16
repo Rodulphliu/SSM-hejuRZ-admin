@@ -95,11 +95,11 @@
     </trim>
   </insert>
   
-  <select id="adminAccountLogin" resultMap="BaseResultMap" parameterType="com.hjrz.admin.model.AdminAccountModel" >
+  <select id="adminAccountLogin" resultMap="BaseResultMap" parameterType="com.hjrz.admin.entity.Admin" >
     select 
     <include refid="Base_Column_List" />
     from admin
-    where admname=#{admin_name,jdbcType=VARCHAR} AND admpassword=#{admin_password,jdbcType=VARCHAR}
+    where admname=#{admname,jdbcType=VARCHAR} AND admpassword=#{admpassword,jdbcType=VARCHAR}
     limit 1
   </select>
   

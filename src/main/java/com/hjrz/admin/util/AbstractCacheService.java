@@ -18,6 +18,11 @@ public interface AbstractCacheService {
         //半天
         public static int HALFDAY = 12 * 60 * 60;
         
+        //一周
+        public static int ONEWEEK = 7 * ONEDAY;
+        
+        //一个月
+        public static int ONEMONTH = 30 * ONEDAY;
         
         //一小时
         public static int ONEHOUR = 60 * 60;

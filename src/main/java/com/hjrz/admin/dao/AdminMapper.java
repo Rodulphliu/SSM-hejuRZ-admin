@@ -2,6 +2,7 @@ package com.hjrz.admin.dao;
 
 import com.hjrz.admin.entity.Admin;
 import com.hjrz.admin.entity.AdminExample;
+import com.hjrz.admin.form.LoginForm;
 import com.hjrz.admin.model.AdminAccountModel;
 
 public interface AdminMapper {
@@ -13,7 +14,7 @@ public interface AdminMapper {
 
     int insertSelective(Admin record);
     
-    Admin adminAccountLogin(AdminAccountModel adminAccountModel);
+    Admin adminAccountLogin(LoginForm loginForm);
     
     Admin selectByPrimaryKey(Integer admcode);
 
