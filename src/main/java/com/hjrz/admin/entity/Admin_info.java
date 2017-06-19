@@ -1,5 +1,7 @@
 package com.hjrz.admin.entity;
 
+import com.hjrz.admin.constants.AdminAuthEnum;
+
 public class Admin_info {
     private Integer adminfocode;
 
@@ -9,7 +11,7 @@ public class Admin_info {
 
     private String admphone;
 
-    private String admDuty;
+    private AdminAuthEnum admDuty;
 
     private String headpath;
 
@@ -49,12 +51,12 @@ public class Admin_info {
         this.admphone = admphone == null ? null : admphone.trim();
     }
 
-    public String getAdmDuty() {
-        return admDuty;
+    public AdminAuthEnum getAdmDuty() {
+      return admDuty;
     }
 
-    public void setAdmDuty(String admDuty) {
-        this.admDuty = admDuty == null ? null : admDuty.trim();
+    public void setAdmDuty(AdminAuthEnum admDuty) {
+      this.admDuty = admDuty;
     }
 
     public String getHeadpath() {

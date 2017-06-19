@@ -10,7 +10,7 @@ package com.hjrz.admin.constants;
 public class CachekeyPrefix {
       
          /**************ADMIN缓存key******************/
-          private static String ADMIN_COMMON = "ADMIN_COMMON";
+          private static String ADMIN_COMMON = "ADMIN_COMMON_";
           public  static String ADMIN_REGION  = ADMIN_COMMON + "PARENT_REGION_";
-          
+          public static String ADMIN_ACC_CORE = ADMIN_COMMON+"ACC_CORE_";
 }

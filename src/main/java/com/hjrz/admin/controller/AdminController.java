@@ -59,8 +59,8 @@ public class AdminController {
             ModelAndView modelAndView = new ModelAndView();
             ExchangeData<Object> exchangeData = new ExchangeData<Object>();
             Admin admin = new Admin();
-            admin.setAdmname(accountModel.getAdmin_name());
-            admin.setAdmpassword(accountModel.getAdmin_password());
+            admin.setAdmname(accountModel.getAdmname());
+            admin.setAdmpassword(accountModel.getAdmpassword());
             try {
               adminAccService.addAdminAccount(admin);
               modelAndView.setViewName("success");

@@ -1,4 +1,4 @@
-package com.hjrz.admin.util;
+package com.hjrz.admin.dao;
 
 import java.util.Set;
 

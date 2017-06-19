@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.entity.Admin;
 import com.hjrz.admin.exception.LoginException;
+import com.hjrz.admin.form.LoginForm;
 import com.hjrz.admin.model.AdminAccountModel;
 import com.hjrz.admin.service.LoginService;
 
@@ -54,14 +55,14 @@ public class LoginController {
      * @Date 2017年4月28日 下午5:38:19
      */
     @RequestMapping(value = "/login.do",method = {RequestMethod.POST})
-    public ModelAndView login(@Valid AdminAccountModel adminAccountModel,HttpServletRequest request,
+    public ModelAndView login(LoginForm loginForm,HttpServletRequest request,
         HttpServletResponse response)
     {
         ModelAndView modelAndView = new ModelAndView();
         HttpSession session = request.getSession();
         try {
-            Admin admin = loginService.adminLogin(adminAccountModel, request, response);
-            session.setAttribute("adminname",admin.getAdmname());
+            AdminAccountModel  adminAccountModel = loginService.adminLogin(loginForm, request, response);
+            session.setAttribute("adminname",adminAccountModel.getAdmname());
             modelAndView.setViewName("redirect:/common/home/index.do");
         } catch (LoginException | IllegalAccessException | InvocationTargetException e) {
             modelAndView.addObject("message",e.getMessage());

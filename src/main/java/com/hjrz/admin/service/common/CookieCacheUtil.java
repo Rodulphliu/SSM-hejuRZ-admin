@@ -1,4 +1,4 @@
-package com.hjrz.admin.util;
+package com.hjrz.admin.service.common;
 
 /**
  * @ClassName CookieCacheUtil

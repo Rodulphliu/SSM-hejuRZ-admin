@@ -18,8 +18,8 @@ public class AdminAccountModel implements Serializable{
    private static final long serialVersionUID = 7741550805343358749L;
 
    //基本信息
-    private String admin_name;
-    private String admin_password;
+    private String admname;
+    private String admpassword;
     private AdminStatusEnum   adminstate;
     private Date last_time;
     
@@ -32,17 +32,17 @@ public class AdminAccountModel implements Serializable{
     private String headpath;
     private String admemail;
     
-    public String getAdmin_name() {
-      return admin_name;
+    public String getAdmname() {
+      return admname;
     }
-    public void setAdmin_name(String admin_name) {
-      this.admin_name = admin_name;
+    public void setAdmname(String admname) {
+      this.admname = admname;
     }
-    public String getAdmin_password() {
-      return admin_password;
+    public String getAdmpassword() {
+      return admpassword;
     }
-    public void setAdmin_password(String admin_password) {
-      this.admin_password = admin_password;
+    public void setAdmpassword(String admpassword) {
+      this.admpassword = admpassword;
     }
     public AdminStatusEnum getAdminstate() {
       return adminstate;
