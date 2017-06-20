@@ -1,14 +1,20 @@
 package com.hjrz.admin.service;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.constants.AdminAuthEnum;
 import com.hjrz.admin.constants.AdminStatusEnum;
 import com.hjrz.admin.dao.AdminMapper;
+import com.hjrz.admin.dao.Admin_infoMapper;
 import com.hjrz.admin.entity.Admin;
+import com.hjrz.admin.entity.Admin_info;
 import com.hjrz.admin.exception.AdminException;
 import com.hjrz.admin.exception.SYSException;
+import com.hjrz.admin.model.AdminAccountModel;
 import com.hjrz.admin.util.EncryptUtil;
 
 /**
@@ -24,29 +30,46 @@ public class AdminAccService {
       @Autowired
       private AdminMapper adminMapper;
       
+      @Autowired
+      private Admin_infoMapper admin_infoMapper;
+      
       /**
-       * @Description (管理员权限验证)
+       * @Description (管理员资格验证)
        * @author RudolphLiu
        * @Date 2017年6月16日 下午3:36:17
        */
-      public void AuthorizationVerification(AdminAuthEnum authEnum)throws SYSException,AdminException,Exception
+      public void AuthorizationVerification(AdminAccountModel adminAccountModel)throws SYSException,AdminException,Exception
       {
+            AdminAuthEnum authEnum = adminAccountModel.getAdmDuty();
+            AdminStatusEnum statusEnum = adminAccountModel.getAdminstate();
             if(authEnum.equals(AdminAuthEnum.ORDINARY)){
-                    throw new AdminException("添加失败，添加管理员账号需要高级管理员权限");
+                    throw new AdminException("普通管理员没有权限添加管理员");
+            }
+            if(!statusEnum.equals(AdminStatusEnum.VALID)){
+                    throw new AdminException("当前管理员账号不可用");
             }
       }
       
       /**
        * @Description (添加管理员账号)
        * @author RodulphLiu
+       * @throws InvocationTargetException 
+       * @throws IllegalAccessException 
        * @Date 2017年5月2日 下午1:18:37
        */
-      public void addAdminAccount(Admin admin) throws SYSException,AdminException
+      public void addAdminAccount(AdminAccountModel  adminAccountModel) 
+          throws SYSException,AdminException, IllegalAccessException, InvocationTargetException
       {
-            String encryptPassword = EncryptUtil.getMD5String(admin.getAdmpassword());
-            admin.setAdmpassword(encryptPassword);
+            String encryptPassword = EncryptUtil.getMD5String(adminAccountModel.getAdmpassword());
+            adminAccountModel.setAdmpassword(encryptPassword);
+            Admin admin = new Admin();
             admin.setAdminstate(AdminStatusEnum.VALID);
-            adminMapper.insertSelective(admin);
+            BeanUtils.copyProperties(admin,adminAccountModel);
+            adminMapper.insert(admin);
+            Admin_info admin_info = new Admin_info();
+            admin_info.setAdmDuty(AdminAuthEnum.ORDINARY);
+            BeanUtils.copyProperties(admin_info,adminAccountModel);
+            admin_infoMapper.insert(admin_info);
       }
       
       

@@ -1,6 +1,9 @@
 package com.hjrz.admin.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.constants.CallStatusEnum;
+import com.hjrz.admin.dao.AbstractCacheService;
 import com.hjrz.admin.data.ExchangeData;
 import com.hjrz.admin.entity.Admin;
+import com.hjrz.admin.exception.AdminException;
 import com.hjrz.admin.model.AdminAccountModel;
 import com.hjrz.admin.service.AdminAccService;
 
@@ -33,19 +38,19 @@ public class AdminController {
      * @author RodulphLiu
      * @Date 2017年4月27日 下午6:00:39
      */
-    @RequestMapping(value="/addInit.do", method=RequestMethod.GET)
-    public ModelAndView addInIt()
+    @RequestMapping(value="/addInit.do")
+    public String addInIt(HttpServletRequest request,HttpServletResponse response)
     {
-      ModelAndView mav = new ModelAndView();
-      try{
-        mav.setViewName("add_admin");
-      }
-      catch (Exception e) {
-        mav.addObject("callStatus",CallStatusEnum.FAIL);
-        mav.addObject("message","系统错误，请联系管理员！");
-        mav.setViewName("500");
-      }
-      return mav;
+          try {
+                HttpSession session = request.getSession();
+              adminAccService.AuthorizationVerification((AdminAccountModel) session.getAttribute("adminAccountModel"));
+              return "add_admin";
+          } catch (AdminException e) {
+              request.setAttribute("", e.getMessage());
+          }catch (Exception e) {
+              request.setAttribute("message", "");
+          }
+          return null;
     }
     
     /**
@@ -54,15 +59,12 @@ public class AdminController {
      * @Date 2017年5月1日 下午4:20:26
      */
     @RequestMapping(value="/add.do",method=RequestMethod.POST)
-    public ModelAndView add(AdminAccountModel accountModel,HttpServletRequest request)
+    public ModelAndView add(AdminAccountModel adminAccountModel,HttpServletRequest request)
     {
             ModelAndView modelAndView = new ModelAndView();
             ExchangeData<Object> exchangeData = new ExchangeData<Object>();
-            Admin admin = new Admin();
-            admin.setAdmname(accountModel.getAdmname());
-            admin.setAdmpassword(accountModel.getAdmpassword());
             try {
-              adminAccService.addAdminAccount(admin);
+              adminAccService.addAdminAccount(adminAccountModel);
               modelAndView.setViewName("success");
               modelAndView.addObject("exchangeData",exchangeData);
             } catch (Exception e) {
