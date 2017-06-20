@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+body.login {
+	background: url(/images/loginview/login_bgx.gif);
+}
+
+.login_m {
+	width: 403px;
+	height: 375px;
+	margin-top: 160px;
+	margin-right: 100px;
+	float: right;
+}
+
+.ad_m {
+	width: 160px;
+	height: 80px;
+	margin-top: 100px;
+	margin-left:100px;
+	float: left;
+}
+
+.login_boder {
+	background: url(/images/loginview/login_m_bg.png) no-repeat;
+	height: 302px;
+	overflow: hidden;
+}
+
+.login_padding {
+	padding: 47px 47px 20px 47px;
+}
