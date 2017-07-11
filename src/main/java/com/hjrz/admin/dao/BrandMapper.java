@@ -1,5 +1,7 @@
 package com.hjrz.admin.dao;
 
+import java.util.List;
+
 import com.hjrz.admin.entity.Brand;
 
 public interface BrandMapper {
@@ -14,4 +16,6 @@ public interface BrandMapper {
     int updateByPrimaryKeySelective(Brand record);
 
     int updateByPrimaryKey(Brand record);
+    
+    List<Brand> selectByCondition(Brand brand);
 }

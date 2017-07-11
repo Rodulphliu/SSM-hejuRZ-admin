@@ -92,6 +92,7 @@
     </set>
     where brandCode = #{brandCode,jdbcType=BIGINT}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Brand" >
     update brand
     set brandName = #{brandName,jdbcType=VARCHAR},
@@ -101,4 +102,20 @@
       create_time = #{create_time,jdbcType=TIMESTAMP}
     where brandCode = #{brandCode,jdbcType=BIGINT}
   </update>
+  
+  <select id="selectByCondition" resultMap="BaseResultMap"
+  	parameterType="com.hjrz.admin.entity.Brand">
+  	select
+  	 <include refid="Base_Column_List" />
+  	from brand
+  	<where> 
+	 	<if test="brandName!=null">
+			and brandName like CONCAT('%',#{brandName,jdbcType=VARCHAR},'%')
+		</if> 
+		<if test="brandIntroduction!=null">
+  			and brandIntroduction like CONCAT('%',#{brandIntroduction,jdbcType=VARCHAR},'%')
+  		</if>
+  	</where>
+  </select>
+  
 </mapper>

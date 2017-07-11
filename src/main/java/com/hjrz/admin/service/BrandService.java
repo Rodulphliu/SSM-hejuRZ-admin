@@ -27,8 +27,17 @@ public class BrandService {
 		brandMapper.insertSelective(brand);
 	}
 	
+	/** 
+	 * @Title findbyContion 
+	 * @Description TODO(获取全部/条件查询) 
+	 * @author RodulphLiu
+	 * @Date 2017年8月28日
+	 */
 	public List<Brand> findbyContion(Brand brand)
 	{
-		return null;
+		List<Brand> brands = brandMapper.selectByCondition(brand);
+		return brands;
 	}
+	
+	
 }
