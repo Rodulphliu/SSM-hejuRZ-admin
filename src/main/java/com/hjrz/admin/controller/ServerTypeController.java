@@ -6,9 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.constants.CallStatusEnum;
@@ -37,16 +40,14 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月16日 下午3:34:05
        */
-      @RequestMapping(value="/queryServerTypeInit.do",method=RequestMethod.GET)
+      @RequestMapping(value="/queryServerTypeInit.do")
       public ModelAndView queryServerType(ServerTypeQuery serverTypeQuery,
           HttpServletRequest request,HttpServletResponse response)
       {
          ModelAndView modelAndView = new ModelAndView();
         try {
           List<ServerType> serverTypes = serverTypeService.findbyContion(serverTypeQuery);
-          int total = serverTypeService.countByQuery(serverTypeQuery);
           modelAndView.addObject("serverTypeList",serverTypes);
-          modelAndView.addObject("serverTypetotal",total);
           modelAndView.setViewName("servicer/list_servertype");
         } catch (Exception e) {
           modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
@@ -134,26 +135,20 @@ public class ServerTypeController {
       }
       
       /**
-       * @Description (添加服务器类型方法)
+       * @Description (添加服务器类型)
        * @author RudolphLiu
        * @Date 2017年5月11日 上午10:51:16
        */
-      @RequestMapping(value="/addservertype.do",method= RequestMethod.POST)
-      public ModelAndView addServerType(ServerType serverType,HttpServletRequest request
-          ,HttpServletResponse response)
+    @SuppressWarnings("rawtypes")
+	@RequestMapping(value="/addservertype.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+      public @ResponseBody ExchangeData addServerType(@RequestBody ServerType serverType,HttpServletRequest request)
       {
-        ModelAndView modelAndView = new ModelAndView();
         ExchangeData<Object> exchangeData = new ExchangeData<Object>();
         try {
           serverTypeService.addServerType(serverType);
-          modelAndView.addObject("exchangeData",exchangeData);
-          modelAndView.setViewName("servicer/add_servertype");
         } catch (Exception e){
-          modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
-          modelAndView.addObject("message", "系统错误，请联系管理员！");
-          modelAndView.setViewName("500");
+          exchangeData.markException(e);
         }
-        return modelAndView;
+        return exchangeData;
       }
-      
 }

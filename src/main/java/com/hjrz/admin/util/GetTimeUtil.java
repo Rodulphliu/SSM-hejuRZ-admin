@@ -14,7 +14,7 @@ public class GetTimeUtil {
     
       public static Date date = new Date();
       
-    //获取标准的时间(字符串)
+      //获取标准的时间(字符串)
       public static String getStandardTime()
       {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式

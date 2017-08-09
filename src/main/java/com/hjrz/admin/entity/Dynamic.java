@@ -2,6 +2,8 @@ package com.hjrz.admin.entity;
 
 import java.util.Date;
 
+import com.hjrz.admin.constants.DynamicStatusEnum;
+
 public class Dynamic {
     private Integer dyCode;
 
@@ -13,7 +15,7 @@ public class Dynamic {
 
     private String create_admin;
 
-    private String dyAliveState;
+    private DynamicStatusEnum dyAliveState;
 
     private String dycontent;
 
@@ -56,13 +58,13 @@ public class Dynamic {
     public void setCreate_admin(String create_admin) {
         this.create_admin = create_admin == null ? null : create_admin.trim();
     }
-
-    public String getDyAliveState() {
-        return dyAliveState;
+    
+    public DynamicStatusEnum getDyAliveState() {
+      return dyAliveState;
     }
 
-    public void setDyAliveState(String dyAliveState) {
-        this.dyAliveState = dyAliveState == null ? null : dyAliveState.trim();
+    public void setDyAliveState(DynamicStatusEnum dyAliveState) {
+      this.dyAliveState = dyAliveState;
     }
 
     public String getDycontent() {

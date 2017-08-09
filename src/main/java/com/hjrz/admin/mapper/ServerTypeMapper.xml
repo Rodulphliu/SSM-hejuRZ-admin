@@ -4,14 +4,14 @@
   <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.ServerType" >
     <id column="typeCode" property="typeCode" jdbcType="INTEGER" />
     <result column="typeName" property="typeName" jdbcType="VARCHAR" />
-    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" />
     <result column="typeTitle" property="typeTitle" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.ServerType" extends="BaseResultMap" >
     <result column="typeDetails" property="typeDetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
-    <where >
+  <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
           <trim prefix="(" suffix=")" prefixOverrides="and" >
@@ -30,6 +30,25 @@
                   and ${criterion.condition}
                   <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+            <foreach collection="criteria.brandStatusCriteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value,typeHandler=org.apache.ibatis.type.EnumTypeHandler} and #{criterion.secondValue,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem,typeHandler=org.apache.ibatis.type.EnumTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -152,7 +171,7 @@
   
   
   
-  <select id="selectByCondition" resultMap="BaseResultMap"  
+  <select id="selectByCondition" resultMap="BaseResultMap"
   	parameterType="com.hjrz.admin.form.ServerTypeQuery">
   	select
   	 <include refid="Base_Column_List" />
@@ -161,16 +180,16 @@
   	from serverType
   	<where> 
 	 	<if test="typeName!=null">
-			and (typeName like CONCAT('%',#{typeName,jdbcType=VARCHAR},'%')
+			and typeName like CONCAT('%',#{typeName,jdbcType=VARCHAR},'%')
 		</if> 
 		<if test="typeCode!=null">
   			and typeCode = #{typeCode,jdbcType=BIGINT}
   		</if>
   		<if test="typeTitle!=null">
-  			and typeTitle = #{brandNo,jdbcType=VARCHAR}
+  			and typeTitle like CONCAT('%',#{typeTitle,jdbcType=VARCHAR},'%')
   		</if>
   		<if test="typeDetails!=null">
-  			and typeDetails = #{typeDetails,jdbcType=VARCHAR}
+  			and typeDetails like CONCAT('%',#{typeDetails,jdbcType=VARCHAR},'%')
   		</if>
   	</where>
   	<!--limit #{pager.limit,jdbcType=INTEGER} offset #{pager.offset,jdbcType=INTEGER}-->

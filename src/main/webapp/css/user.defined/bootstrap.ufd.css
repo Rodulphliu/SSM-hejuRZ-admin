@@ -1,0 +1,10 @@
+/*自定义面板颜色*/
+.panel-ufd-aqua > .panel-heading{
+    color: #FFFFFF;
+    background-color:#00C5CD;
+    		
+} 
+.panel-ufd-aqua {
+    border-color:#00C5CD ;
+}
+

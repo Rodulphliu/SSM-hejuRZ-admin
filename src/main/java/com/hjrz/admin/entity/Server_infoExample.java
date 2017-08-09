@@ -114,463 +114,673 @@ public class Server_infoExample {
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeEqualTo(Integer value) {
+        public Criteria andSiCodeEqualTo(Long value) {
             addCriterion("siCode =", value, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeNotEqualTo(Integer value) {
+        public Criteria andSiCodeNotEqualTo(Long value) {
             addCriterion("siCode <>", value, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeGreaterThan(Integer value) {
+        public Criteria andSiCodeGreaterThan(Long value) {
             addCriterion("siCode >", value, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSiCodeGreaterThanOrEqualTo(Long value) {
             addCriterion("siCode >=", value, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeLessThan(Integer value) {
+        public Criteria andSiCodeLessThan(Long value) {
             addCriterion("siCode <", value, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeLessThanOrEqualTo(Integer value) {
+        public Criteria andSiCodeLessThanOrEqualTo(Long value) {
             addCriterion("siCode <=", value, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeIn(List<Integer> values) {
+        public Criteria andSiCodeIn(List<Long> values) {
             addCriterion("siCode in", values, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeNotIn(List<Integer> values) {
+        public Criteria andSiCodeNotIn(List<Long> values) {
             addCriterion("siCode not in", values, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeBetween(Integer value1, Integer value2) {
+        public Criteria andSiCodeBetween(Long value1, Long value2) {
             addCriterion("siCode between", value1, value2, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andSiCodeNotBetween(Integer value1, Integer value2) {
+        public Criteria andSiCodeNotBetween(Long value1, Long value2) {
             addCriterion("siCode not between", value1, value2, "siCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeIsNull() {
-            addCriterion("servercode is null");
+        public Criteria andServerCodeIsNull() {
+            addCriterion("serverCode is null");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeIsNotNull() {
-            addCriterion("servercode is not null");
+        public Criteria andServerCodeIsNotNull() {
+            addCriterion("serverCode is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeEqualTo(Integer value) {
-            addCriterion("servercode =", value, "servercode");
+        public Criteria andServerCodeEqualTo(Integer value) {
+            addCriterion("serverCode =", value, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeNotEqualTo(Integer value) {
-            addCriterion("servercode <>", value, "servercode");
+        public Criteria andServerCodeNotEqualTo(Integer value) {
+            addCriterion("serverCode <>", value, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeGreaterThan(Integer value) {
-            addCriterion("servercode >", value, "servercode");
+        public Criteria andServerCodeGreaterThan(Integer value) {
+            addCriterion("serverCode >", value, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("servercode >=", value, "servercode");
+        public Criteria andServerCodeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("serverCode >=", value, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeLessThan(Integer value) {
-            addCriterion("servercode <", value, "servercode");
+        public Criteria andServerCodeLessThan(Integer value) {
+            addCriterion("serverCode <", value, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeLessThanOrEqualTo(Integer value) {
-            addCriterion("servercode <=", value, "servercode");
+        public Criteria andServerCodeLessThanOrEqualTo(Integer value) {
+            addCriterion("serverCode <=", value, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeIn(List<Integer> values) {
-            addCriterion("servercode in", values, "servercode");
+        public Criteria andServerCodeIn(List<Integer> values) {
+            addCriterion("serverCode in", values, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeNotIn(List<Integer> values) {
-            addCriterion("servercode not in", values, "servercode");
+        public Criteria andServerCodeNotIn(List<Integer> values) {
+            addCriterion("serverCode not in", values, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeBetween(Integer value1, Integer value2) {
-            addCriterion("servercode between", value1, value2, "servercode");
+        public Criteria andServerCodeBetween(Integer value1, Integer value2) {
+            addCriterion("serverCode between", value1, value2, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andServercodeNotBetween(Integer value1, Integer value2) {
-            addCriterion("servercode not between", value1, value2, "servercode");
+        public Criteria andServerCodeNotBetween(Integer value1, Integer value2) {
+            addCriterion("serverCode not between", value1, value2, "serverCode");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformIsNull() {
-            addCriterion("platform is null");
+        public Criteria andSiProcessorIsNull() {
+            addCriterion("siProcessor is null");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformIsNotNull() {
-            addCriterion("platform is not null");
+        public Criteria andSiProcessorIsNotNull() {
+            addCriterion("siProcessor is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformEqualTo(String value) {
-            addCriterion("platform =", value, "platform");
+        public Criteria andSiProcessorEqualTo(String value) {
+            addCriterion("siProcessor =", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformNotEqualTo(String value) {
-            addCriterion("platform <>", value, "platform");
+        public Criteria andSiProcessorNotEqualTo(String value) {
+            addCriterion("siProcessor <>", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformGreaterThan(String value) {
-            addCriterion("platform >", value, "platform");
+        public Criteria andSiProcessorGreaterThan(String value) {
+            addCriterion("siProcessor >", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformGreaterThanOrEqualTo(String value) {
-            addCriterion("platform >=", value, "platform");
+        public Criteria andSiProcessorGreaterThanOrEqualTo(String value) {
+            addCriterion("siProcessor >=", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformLessThan(String value) {
-            addCriterion("platform <", value, "platform");
+        public Criteria andSiProcessorLessThan(String value) {
+            addCriterion("siProcessor <", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformLessThanOrEqualTo(String value) {
-            addCriterion("platform <=", value, "platform");
+        public Criteria andSiProcessorLessThanOrEqualTo(String value) {
+            addCriterion("siProcessor <=", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformLike(String value) {
-            addCriterion("platform like", value, "platform");
+        public Criteria andSiProcessorLike(String value) {
+            addCriterion("siProcessor like", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformNotLike(String value) {
-            addCriterion("platform not like", value, "platform");
+        public Criteria andSiProcessorNotLike(String value) {
+            addCriterion("siProcessor not like", value, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformIn(List<String> values) {
-            addCriterion("platform in", values, "platform");
+        public Criteria andSiProcessorIn(List<String> values) {
+            addCriterion("siProcessor in", values, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformNotIn(List<String> values) {
-            addCriterion("platform not in", values, "platform");
+        public Criteria andSiProcessorNotIn(List<String> values) {
+            addCriterion("siProcessor not in", values, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformBetween(String value1, String value2) {
-            addCriterion("platform between", value1, value2, "platform");
+        public Criteria andSiProcessorBetween(String value1, String value2) {
+            addCriterion("siProcessor between", value1, value2, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andPlatformNotBetween(String value1, String value2) {
-            addCriterion("platform not between", value1, value2, "platform");
+        public Criteria andSiProcessorNotBetween(String value1, String value2) {
+            addCriterion("siProcessor not between", value1, value2, "siProcessor");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberIsNull() {
-            addCriterion("CPUnumber is null");
+        public Criteria andCpuMixNumberIsNull() {
+            addCriterion("cpuMixNumber is null");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberIsNotNull() {
-            addCriterion("CPUnumber is not null");
+        public Criteria andCpuMixNumberIsNotNull() {
+            addCriterion("cpuMixNumber is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberEqualTo(String value) {
-            addCriterion("CPUnumber =", value, "CPUnumber");
+        public Criteria andCpuMixNumberEqualTo(String value) {
+            addCriterion("cpuMixNumber =", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberNotEqualTo(String value) {
-            addCriterion("CPUnumber <>", value, "CPUnumber");
+        public Criteria andCpuMixNumberNotEqualTo(String value) {
+            addCriterion("cpuMixNumber <>", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberGreaterThan(String value) {
-            addCriterion("CPUnumber >", value, "CPUnumber");
+        public Criteria andCpuMixNumberGreaterThan(String value) {
+            addCriterion("cpuMixNumber >", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberGreaterThanOrEqualTo(String value) {
-            addCriterion("CPUnumber >=", value, "CPUnumber");
+        public Criteria andCpuMixNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("cpuMixNumber >=", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberLessThan(String value) {
-            addCriterion("CPUnumber <", value, "CPUnumber");
+        public Criteria andCpuMixNumberLessThan(String value) {
+            addCriterion("cpuMixNumber <", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberLessThanOrEqualTo(String value) {
-            addCriterion("CPUnumber <=", value, "CPUnumber");
+        public Criteria andCpuMixNumberLessThanOrEqualTo(String value) {
+            addCriterion("cpuMixNumber <=", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberLike(String value) {
-            addCriterion("CPUnumber like", value, "CPUnumber");
+        public Criteria andCpuMixNumberLike(String value) {
+            addCriterion("cpuMixNumber like", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberNotLike(String value) {
-            addCriterion("CPUnumber not like", value, "CPUnumber");
+        public Criteria andCpuMixNumberNotLike(String value) {
+            addCriterion("cpuMixNumber not like", value, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberIn(List<String> values) {
-            addCriterion("CPUnumber in", values, "CPUnumber");
+        public Criteria andCpuMixNumberIn(List<String> values) {
+            addCriterion("cpuMixNumber in", values, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberNotIn(List<String> values) {
-            addCriterion("CPUnumber not in", values, "CPUnumber");
+        public Criteria andCpuMixNumberNotIn(List<String> values) {
+            addCriterion("cpuMixNumber not in", values, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberBetween(String value1, String value2) {
-            addCriterion("CPUnumber between", value1, value2, "CPUnumber");
+        public Criteria andCpuMixNumberBetween(String value1, String value2) {
+            addCriterion("cpuMixNumber between", value1, value2, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andCPUnumberNotBetween(String value1, String value2) {
-            addCriterion("CPUnumber not between", value1, value2, "CPUnumber");
+        public Criteria andCpuMixNumberNotBetween(String value1, String value2) {
+            addCriterion("cpuMixNumber not between", value1, value2, "cpuMixNumber");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMIsNull() {
-            addCriterion("maxRAM is null");
+        public Criteria andSibrandNameIsNull() {
+            addCriterion("sibrandName is null");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMIsNotNull() {
-            addCriterion("maxRAM is not null");
+        public Criteria andSibrandNameIsNotNull() {
+            addCriterion("sibrandName is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMEqualTo(String value) {
-            addCriterion("maxRAM =", value, "maxRAM");
+        public Criteria andSibrandNameEqualTo(String value) {
+            addCriterion("sibrandName =", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMNotEqualTo(String value) {
-            addCriterion("maxRAM <>", value, "maxRAM");
+        public Criteria andSibrandNameNotEqualTo(String value) {
+            addCriterion("sibrandName <>", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMGreaterThan(String value) {
-            addCriterion("maxRAM >", value, "maxRAM");
+        public Criteria andSibrandNameGreaterThan(String value) {
+            addCriterion("sibrandName >", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMGreaterThanOrEqualTo(String value) {
-            addCriterion("maxRAM >=", value, "maxRAM");
+        public Criteria andSibrandNameGreaterThanOrEqualTo(String value) {
+            addCriterion("sibrandName >=", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMLessThan(String value) {
-            addCriterion("maxRAM <", value, "maxRAM");
+        public Criteria andSibrandNameLessThan(String value) {
+            addCriterion("sibrandName <", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMLessThanOrEqualTo(String value) {
-            addCriterion("maxRAM <=", value, "maxRAM");
+        public Criteria andSibrandNameLessThanOrEqualTo(String value) {
+            addCriterion("sibrandName <=", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMLike(String value) {
-            addCriterion("maxRAM like", value, "maxRAM");
+        public Criteria andSibrandNameLike(String value) {
+            addCriterion("sibrandName like", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMNotLike(String value) {
-            addCriterion("maxRAM not like", value, "maxRAM");
+        public Criteria andSibrandNameNotLike(String value) {
+            addCriterion("sibrandName not like", value, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMIn(List<String> values) {
-            addCriterion("maxRAM in", values, "maxRAM");
+        public Criteria andSibrandNameIn(List<String> values) {
+            addCriterion("sibrandName in", values, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMNotIn(List<String> values) {
-            addCriterion("maxRAM not in", values, "maxRAM");
+        public Criteria andSibrandNameNotIn(List<String> values) {
+            addCriterion("sibrandName not in", values, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMBetween(String value1, String value2) {
-            addCriterion("maxRAM between", value1, value2, "maxRAM");
+        public Criteria andSibrandNameBetween(String value1, String value2) {
+            addCriterion("sibrandName between", value1, value2, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andMaxRAMNotBetween(String value1, String value2) {
-            addCriterion("maxRAM not between", value1, value2, "maxRAM");
+        public Criteria andSibrandNameNotBetween(String value1, String value2) {
+            addCriterion("sibrandName not between", value1, value2, "sibrandName");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrIsNull() {
-            addCriterion("HDattr is null");
+        public Criteria andSiSizeIsNull() {
+            addCriterion("siSize is null");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrIsNotNull() {
-            addCriterion("HDattr is not null");
+        public Criteria andSiSizeIsNotNull() {
+            addCriterion("siSize is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrEqualTo(String value) {
-            addCriterion("HDattr =", value, "HDattr");
+        public Criteria andSiSizeEqualTo(String value) {
+            addCriterion("siSize =", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrNotEqualTo(String value) {
-            addCriterion("HDattr <>", value, "HDattr");
+        public Criteria andSiSizeNotEqualTo(String value) {
+            addCriterion("siSize <>", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrGreaterThan(String value) {
-            addCriterion("HDattr >", value, "HDattr");
+        public Criteria andSiSizeGreaterThan(String value) {
+            addCriterion("siSize >", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrGreaterThanOrEqualTo(String value) {
-            addCriterion("HDattr >=", value, "HDattr");
+        public Criteria andSiSizeGreaterThanOrEqualTo(String value) {
+            addCriterion("siSize >=", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrLessThan(String value) {
-            addCriterion("HDattr <", value, "HDattr");
+        public Criteria andSiSizeLessThan(String value) {
+            addCriterion("siSize <", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrLessThanOrEqualTo(String value) {
-            addCriterion("HDattr <=", value, "HDattr");
+        public Criteria andSiSizeLessThanOrEqualTo(String value) {
+            addCriterion("siSize <=", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrLike(String value) {
-            addCriterion("HDattr like", value, "HDattr");
+        public Criteria andSiSizeLike(String value) {
+            addCriterion("siSize like", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrNotLike(String value) {
-            addCriterion("HDattr not like", value, "HDattr");
+        public Criteria andSiSizeNotLike(String value) {
+            addCriterion("siSize not like", value, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrIn(List<String> values) {
-            addCriterion("HDattr in", values, "HDattr");
+        public Criteria andSiSizeIn(List<String> values) {
+            addCriterion("siSize in", values, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrNotIn(List<String> values) {
-            addCriterion("HDattr not in", values, "HDattr");
+        public Criteria andSiSizeNotIn(List<String> values) {
+            addCriterion("siSize not in", values, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrBetween(String value1, String value2) {
-            addCriterion("HDattr between", value1, value2, "HDattr");
+        public Criteria andSiSizeBetween(String value1, String value2) {
+            addCriterion("siSize between", value1, value2, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDattrNotBetween(String value1, String value2) {
-            addCriterion("HDattr not between", value1, value2, "HDattr");
+        public Criteria andSiSizeNotBetween(String value1, String value2) {
+            addCriterion("siSize not between", value1, value2, "siSize");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceIsNull() {
-            addCriterion("HDplace is null");
+        public Criteria andSihardamountIsNull() {
+            addCriterion("sihardamount is null");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceIsNotNull() {
-            addCriterion("HDplace is not null");
+        public Criteria andSihardamountIsNotNull() {
+            addCriterion("sihardamount is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceEqualTo(String value) {
-            addCriterion("HDplace =", value, "HDplace");
+        public Criteria andSihardamountEqualTo(String value) {
+            addCriterion("sihardamount =", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceNotEqualTo(String value) {
-            addCriterion("HDplace <>", value, "HDplace");
+        public Criteria andSihardamountNotEqualTo(String value) {
+            addCriterion("sihardamount <>", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceGreaterThan(String value) {
-            addCriterion("HDplace >", value, "HDplace");
+        public Criteria andSihardamountGreaterThan(String value) {
+            addCriterion("sihardamount >", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceGreaterThanOrEqualTo(String value) {
-            addCriterion("HDplace >=", value, "HDplace");
+        public Criteria andSihardamountGreaterThanOrEqualTo(String value) {
+            addCriterion("sihardamount >=", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceLessThan(String value) {
-            addCriterion("HDplace <", value, "HDplace");
+        public Criteria andSihardamountLessThan(String value) {
+            addCriterion("sihardamount <", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceLessThanOrEqualTo(String value) {
-            addCriterion("HDplace <=", value, "HDplace");
+        public Criteria andSihardamountLessThanOrEqualTo(String value) {
+            addCriterion("sihardamount <=", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceLike(String value) {
-            addCriterion("HDplace like", value, "HDplace");
+        public Criteria andSihardamountLike(String value) {
+            addCriterion("sihardamount like", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceNotLike(String value) {
-            addCriterion("HDplace not like", value, "HDplace");
+        public Criteria andSihardamountNotLike(String value) {
+            addCriterion("sihardamount not like", value, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceIn(List<String> values) {
-            addCriterion("HDplace in", values, "HDplace");
+        public Criteria andSihardamountIn(List<String> values) {
+            addCriterion("sihardamount in", values, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceNotIn(List<String> values) {
-            addCriterion("HDplace not in", values, "HDplace");
+        public Criteria andSihardamountNotIn(List<String> values) {
+            addCriterion("sihardamount not in", values, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceBetween(String value1, String value2) {
-            addCriterion("HDplace between", value1, value2, "HDplace");
+        public Criteria andSihardamountBetween(String value1, String value2) {
+            addCriterion("sihardamount between", value1, value2, "sihardamount");
             return (Criteria) this;
         }
 
-        public Criteria andHDplaceNotBetween(String value1, String value2) {
-            addCriterion("HDplace not between", value1, value2, "HDplace");
+        public Criteria andSihardamountNotBetween(String value1, String value2) {
+            addCriterion("sihardamount not between", value1, value2, "sihardamount");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemIsNull() {
+            addCriterion("sioperSystem is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemIsNotNull() {
+            addCriterion("sioperSystem is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemEqualTo(String value) {
+            addCriterion("sioperSystem =", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemNotEqualTo(String value) {
+            addCriterion("sioperSystem <>", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemGreaterThan(String value) {
+            addCriterion("sioperSystem >", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemGreaterThanOrEqualTo(String value) {
+            addCriterion("sioperSystem >=", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemLessThan(String value) {
+            addCriterion("sioperSystem <", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemLessThanOrEqualTo(String value) {
+            addCriterion("sioperSystem <=", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemLike(String value) {
+            addCriterion("sioperSystem like", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemNotLike(String value) {
+            addCriterion("sioperSystem not like", value, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemIn(List<String> values) {
+            addCriterion("sioperSystem in", values, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemNotIn(List<String> values) {
+            addCriterion("sioperSystem not in", values, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemBetween(String value1, String value2) {
+            addCriterion("sioperSystem between", value1, value2, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSioperSystemNotBetween(String value1, String value2) {
+            addCriterion("sioperSystem not between", value1, value2, "sioperSystem");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMIsNull() {
+            addCriterion("siCPURAM is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMIsNotNull() {
+            addCriterion("siCPURAM is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMEqualTo(String value) {
+            addCriterion("siCPURAM =", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMNotEqualTo(String value) {
+            addCriterion("siCPURAM <>", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMGreaterThan(String value) {
+            addCriterion("siCPURAM >", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMGreaterThanOrEqualTo(String value) {
+            addCriterion("siCPURAM >=", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMLessThan(String value) {
+            addCriterion("siCPURAM <", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMLessThanOrEqualTo(String value) {
+            addCriterion("siCPURAM <=", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMLike(String value) {
+            addCriterion("siCPURAM like", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMNotLike(String value) {
+            addCriterion("siCPURAM not like", value, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMIn(List<String> values) {
+            addCriterion("siCPURAM in", values, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMNotIn(List<String> values) {
+            addCriterion("siCPURAM not in", values, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMBetween(String value1, String value2) {
+            addCriterion("siCPURAM between", value1, value2, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andSiCPURAMNotBetween(String value1, String value2) {
+            addCriterion("siCPURAM not between", value1, value2, "siCPURAM");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescIsNull() {
+            addCriterion("productdesc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescIsNotNull() {
+            addCriterion("productdesc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescEqualTo(String value) {
+            addCriterion("productdesc =", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescNotEqualTo(String value) {
+            addCriterion("productdesc <>", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescGreaterThan(String value) {
+            addCriterion("productdesc >", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescGreaterThanOrEqualTo(String value) {
+            addCriterion("productdesc >=", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescLessThan(String value) {
+            addCriterion("productdesc <", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescLessThanOrEqualTo(String value) {
+            addCriterion("productdesc <=", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescLike(String value) {
+            addCriterion("productdesc like", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescNotLike(String value) {
+            addCriterion("productdesc not like", value, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescIn(List<String> values) {
+            addCriterion("productdesc in", values, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescNotIn(List<String> values) {
+            addCriterion("productdesc not in", values, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescBetween(String value1, String value2) {
+            addCriterion("productdesc between", value1, value2, "productdesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdescNotBetween(String value1, String value2) {
+            addCriterion("productdesc not between", value1, value2, "productdesc");
             return (Criteria) this;
         }
     }

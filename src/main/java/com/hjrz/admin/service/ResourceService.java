@@ -1,14 +1,9 @@
 package com.hjrz.admin.service;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.dao.ResourceMapper;
-import com.hjrz.admin.entity.Resource;
 
 /**
  * @ClassName ResourceService
@@ -22,5 +17,8 @@ public class ResourceService {
     
       @Autowired
      private ResourceMapper resourceMapper;
-    
+      
+     
+     
+     
 }

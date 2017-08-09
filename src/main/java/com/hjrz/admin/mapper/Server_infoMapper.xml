@@ -2,17 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hjrz.admin.dao.Server_infoMapper" >
   <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Server_info" >
-    <id column="siCode" property="siCode" jdbcType="INTEGER" />
-    <result column="servercode" property="servercode" jdbcType="INTEGER" />
-    <result column="platform" property="platform" jdbcType="VARCHAR" />
-    <result column="CPUnumber" property="CPUnumber" jdbcType="VARCHAR" />
-    <result column="maxRAM" property="maxRAM" jdbcType="VARCHAR" />
-    <result column="HDattr" property="HDattr" jdbcType="VARCHAR" />
-    <result column="HDplace" property="HDplace" jdbcType="VARCHAR" />
+    <id column="siCode" property="siCode" jdbcType="BIGINT" />
+    <result column="serverCode" property="serverCode" jdbcType="INTEGER" />
+    <result column="siProcessor" property="siProcessor" jdbcType="VARCHAR" />
+    <result column="cpuMixNumber" property="cpuMixNumber" jdbcType="VARCHAR" />
+    <result column="sibrandName" property="sibrandName" jdbcType="VARCHAR" />
+    <result column="siSize" property="siSize" jdbcType="VARCHAR" />
+    <result column="sihardamount" property="sihardamount" jdbcType="VARCHAR" />
+    <result column="sioperSystem" property="sioperSystem" jdbcType="VARCHAR" />
+    <result column="siCPURAM" property="siCPURAM" jdbcType="VARCHAR" />
+    <result column="productdesc" property="productdesc" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Server_infoWithBLOBs" extends="BaseResultMap" >
-    <result column="sifeatures" property="sifeatures" jdbcType="LONGVARCHAR" />
-    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Server_info" extends="BaseResultMap" >
+    <result column="siDetails" property="siDetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -44,91 +46,104 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    siCode, servercode, platform, CPUnumber, maxRAM, HDattr, HDplace
+    siCode, serverCode, siProcessor, cpuMixNumber, sibrandName, siSize, sihardamount, 
+    sioperSystem, siCPURAM, productdesc
   </sql>
   <sql id="Blob_Column_List" >
-    sifeatures, description
+    siDetails
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from server_info
-    where siCode = #{siCode,jdbcType=INTEGER}
+    where siCode = #{siCode,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from server_info
-    where siCode = #{siCode,jdbcType=INTEGER}
+    where siCode = #{siCode,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hjrz.admin.entity.Server_infoWithBLOBs" >
-    insert into server_info (siCode, servercode, platform, 
-      CPUnumber, maxRAM, HDattr, 
-      HDplace, sifeatures, description
-      )
-    values (#{siCode,jdbcType=INTEGER}, #{servercode,jdbcType=INTEGER}, #{platform,jdbcType=VARCHAR}, 
-      #{CPUnumber,jdbcType=VARCHAR}, #{maxRAM,jdbcType=VARCHAR}, #{HDattr,jdbcType=VARCHAR}, 
-      #{HDplace,jdbcType=VARCHAR}, #{sifeatures,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
-      )
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Server_info" >
+    <selectKey resultType="java.lang.Long" keyProperty="siCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into server_info (serverCode, siProcessor, cpuMixNumber, 
+      sibrandName, siSize, sihardamount, 
+      sioperSystem, siCPURAM, productdesc, 
+      siDetails)
+    values (#{serverCode,jdbcType=INTEGER}, #{siProcessor,jdbcType=VARCHAR}, #{cpuMixNumber,jdbcType=VARCHAR}, 
+      #{sibrandName,jdbcType=VARCHAR}, #{siSize,jdbcType=VARCHAR}, #{sihardamount,jdbcType=VARCHAR}, 
+      #{sioperSystem,jdbcType=VARCHAR}, #{siCPURAM,jdbcType=VARCHAR}, #{productdesc,jdbcType=VARCHAR}, 
+      #{siDetails,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Server_infoWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Server_info" >
+    <selectKey resultType="java.lang.Long" keyProperty="siCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into server_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="siCode != null" >
-        siCode,
+      <if test="serverCode != null" >
+        serverCode,
       </if>
-      <if test="servercode != null" >
-        servercode,
+      <if test="siProcessor != null" >
+        siProcessor,
       </if>
-      <if test="platform != null" >
-        platform,
+      <if test="cpuMixNumber != null" >
+        cpuMixNumber,
       </if>
-      <if test="CPUnumber != null" >
-        CPUnumber,
+      <if test="sibrandName != null" >
+        sibrandName,
       </if>
-      <if test="maxRAM != null" >
-        maxRAM,
+      <if test="siSize != null" >
+        siSize,
       </if>
-      <if test="HDattr != null" >
-        HDattr,
+      <if test="sihardamount != null" >
+        sihardamount,
       </if>
-      <if test="HDplace != null" >
-        HDplace,
+      <if test="sioperSystem != null" >
+        sioperSystem,
       </if>
-      <if test="sifeatures != null" >
-        sifeatures,
+      <if test="siCPURAM != null" >
+        siCPURAM,
       </if>
-      <if test="description != null" >
-        description,
+      <if test="productdesc != null" >
+        productdesc,
+      </if>
+      <if test="siDetails != null" >
+        siDetails,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="siCode != null" >
-        #{siCode,jdbcType=INTEGER},
+      <if test="serverCode != null" >
+        #{serverCode,jdbcType=INTEGER},
       </if>
-      <if test="servercode != null" >
-        #{servercode,jdbcType=INTEGER},
+      <if test="siProcessor != null" >
+        #{siProcessor,jdbcType=VARCHAR},
       </if>
-      <if test="platform != null" >
-        #{platform,jdbcType=VARCHAR},
+      <if test="cpuMixNumber != null" >
+        #{cpuMixNumber,jdbcType=VARCHAR},
       </if>
-      <if test="CPUnumber != null" >
-        #{CPUnumber,jdbcType=VARCHAR},
+      <if test="sibrandName != null" >
+        #{sibrandName,jdbcType=VARCHAR},
       </if>
-      <if test="maxRAM != null" >
-        #{maxRAM,jdbcType=VARCHAR},
+      <if test="siSize != null" >
+        #{siSize,jdbcType=VARCHAR},
       </if>
-      <if test="HDattr != null" >
-        #{HDattr,jdbcType=VARCHAR},
+      <if test="sihardamount != null" >
+        #{sihardamount,jdbcType=VARCHAR},
       </if>
-      <if test="HDplace != null" >
-        #{HDplace,jdbcType=VARCHAR},
+      <if test="sioperSystem != null" >
+        #{sioperSystem,jdbcType=VARCHAR},
       </if>
-      <if test="sifeatures != null" >
-        #{sifeatures,jdbcType=LONGVARCHAR},
+      <if test="siCPURAM != null" >
+        #{siCPURAM,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
-        #{description,jdbcType=LONGVARCHAR},
+      <if test="productdesc != null" >
+        #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="siDetails != null" >
+        #{siDetails,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -138,56 +153,67 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Server_infoWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Server_info" >
     update server_info
     <set >
-      <if test="servercode != null" >
-        servercode = #{servercode,jdbcType=INTEGER},
+      <if test="serverCode != null" >
+        serverCode = #{serverCode,jdbcType=INTEGER},
       </if>
-      <if test="platform != null" >
-        platform = #{platform,jdbcType=VARCHAR},
+      <if test="siProcessor != null" >
+        siProcessor = #{siProcessor,jdbcType=VARCHAR},
       </if>
-      <if test="CPUnumber != null" >
-        CPUnumber = #{CPUnumber,jdbcType=VARCHAR},
+      <if test="cpuMixNumber != null" >
+        cpuMixNumber = #{cpuMixNumber,jdbcType=VARCHAR},
       </if>
-      <if test="maxRAM != null" >
-        maxRAM = #{maxRAM,jdbcType=VARCHAR},
+      <if test="sibrandName != null" >
+        sibrandName = #{sibrandName,jdbcType=VARCHAR},
       </if>
-      <if test="HDattr != null" >
-        HDattr = #{HDattr,jdbcType=VARCHAR},
+      <if test="siSize != null" >
+        siSize = #{siSize,jdbcType=VARCHAR},
       </if>
-      <if test="HDplace != null" >
-        HDplace = #{HDplace,jdbcType=VARCHAR},
+      <if test="sihardamount != null" >
+        sihardamount = #{sihardamount,jdbcType=VARCHAR},
       </if>
-      <if test="sifeatures != null" >
-        sifeatures = #{sifeatures,jdbcType=LONGVARCHAR},
+      <if test="sioperSystem != null" >
+        sioperSystem = #{sioperSystem,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=LONGVARCHAR},
+      <if test="siCPURAM != null" >
+        siCPURAM = #{siCPURAM,jdbcType=VARCHAR},
+      </if>
+      <if test="productdesc != null" >
+        productdesc = #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="siDetails != null" >
+        siDetails = #{siDetails,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where siCode = #{siCode,jdbcType=INTEGER}
+    where siCode = #{siCode,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.Server_infoWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.Server_info" >
     update server_info
-    set servercode = #{servercode,jdbcType=INTEGER},
-      platform = #{platform,jdbcType=VARCHAR},
-      CPUnumber = #{CPUnumber,jdbcType=VARCHAR},
-      maxRAM = #{maxRAM,jdbcType=VARCHAR},
-      HDattr = #{HDattr,jdbcType=VARCHAR},
-      HDplace = #{HDplace,jdbcType=VARCHAR},
-      sifeatures = #{sifeatures,jdbcType=LONGVARCHAR},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where siCode = #{siCode,jdbcType=INTEGER}
+    set serverCode = #{serverCode,jdbcType=INTEGER},
+      siProcessor = #{siProcessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{cpuMixNumber,jdbcType=VARCHAR},
+      sibrandName = #{sibrandName,jdbcType=VARCHAR},
+      siSize = #{siSize,jdbcType=VARCHAR},
+      sihardamount = #{sihardamount,jdbcType=VARCHAR},
+      sioperSystem = #{sioperSystem,jdbcType=VARCHAR},
+      siCPURAM = #{siCPURAM,jdbcType=VARCHAR},
+      productdesc = #{productdesc,jdbcType=VARCHAR},
+      siDetails = #{siDetails,jdbcType=LONGVARCHAR}
+    where siCode = #{siCode,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Server_info" >
     update server_info
-    set servercode = #{servercode,jdbcType=INTEGER},
-      platform = #{platform,jdbcType=VARCHAR},
-      CPUnumber = #{CPUnumber,jdbcType=VARCHAR},
-      maxRAM = #{maxRAM,jdbcType=VARCHAR},
-      HDattr = #{HDattr,jdbcType=VARCHAR},
-      HDplace = #{HDplace,jdbcType=VARCHAR}
-    where siCode = #{siCode,jdbcType=INTEGER}
+    set serverCode = #{serverCode,jdbcType=INTEGER},
+      siProcessor = #{siProcessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{cpuMixNumber,jdbcType=VARCHAR},
+      sibrandName = #{sibrandName,jdbcType=VARCHAR},
+      siSize = #{siSize,jdbcType=VARCHAR},
+      sihardamount = #{sihardamount,jdbcType=VARCHAR},
+      sioperSystem = #{sioperSystem,jdbcType=VARCHAR},
+      siCPURAM = #{siCPURAM,jdbcType=VARCHAR},
+      productdesc = #{productdesc,jdbcType=VARCHAR}
+    where siCode = #{siCode,jdbcType=BIGINT}
   </update>
 </mapper>

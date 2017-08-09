@@ -1,74 +1,114 @@
 package com.hjrz.admin.entity;
 
 public class Server_info {
-    private Integer siCode;
+    private Long siCode;
 
-    private Integer servercode;
+    private Integer serverCode;
 
-    private String platform;
+    private String siProcessor;
 
-    private String CPUnumber;
+    private String cpuMixNumber;
 
-    private String maxRAM;
+    private String sibrandName;
 
-    private String HDattr;
+    private String siSize;
 
-    private String HDplace;
+    private String sihardamount;
 
-    public Integer getSiCode() {
+    private String sioperSystem;
+
+    private String siCPURAM;
+
+    private String productdesc;
+
+    private String siDetails;
+
+    public Long getSiCode() {
         return siCode;
     }
 
-    public void setSiCode(Integer siCode) {
+    public void setSiCode(Long siCode) {
         this.siCode = siCode;
     }
 
-    public Integer getServercode() {
-        return servercode;
+    public Integer getServerCode() {
+        return serverCode;
     }
 
-    public void setServercode(Integer servercode) {
-        this.servercode = servercode;
+    public void setServerCode(Integer serverCode) {
+        this.serverCode = serverCode;
     }
 
-    public String getPlatform() {
-        return platform;
+    public String getSiProcessor() {
+        return siProcessor;
     }
 
-    public void setPlatform(String platform) {
-        this.platform = platform == null ? null : platform.trim();
+    public void setSiProcessor(String siProcessor) {
+        this.siProcessor = siProcessor == null ? null : siProcessor.trim();
     }
 
-    public String getCPUnumber() {
-        return CPUnumber;
+    public String getCpuMixNumber() {
+        return cpuMixNumber;
     }
 
-    public void setCPUnumber(String CPUnumber) {
-        this.CPUnumber = CPUnumber == null ? null : CPUnumber.trim();
+    public void setCpuMixNumber(String cpuMixNumber) {
+        this.cpuMixNumber = cpuMixNumber == null ? null : cpuMixNumber.trim();
     }
 
-    public String getMaxRAM() {
-        return maxRAM;
+    public String getSibrandName() {
+        return sibrandName;
     }
 
-    public void setMaxRAM(String maxRAM) {
-        this.maxRAM = maxRAM == null ? null : maxRAM.trim();
+    public void setSibrandName(String sibrandName) {
+        this.sibrandName = sibrandName == null ? null : sibrandName.trim();
     }
 
-    public String getHDattr() {
-        return HDattr;
+    public String getSiSize() {
+        return siSize;
     }
 
-    public void setHDattr(String HDattr) {
-        this.HDattr = HDattr == null ? null : HDattr.trim();
+    public void setSiSize(String siSize) {
+        this.siSize = siSize == null ? null : siSize.trim();
     }
 
-    public String getHDplace() {
-        return HDplace;
+    public String getSihardamount() {
+        return sihardamount;
     }
 
-    public void setHDplace(String HDplace) {
-        this.HDplace = HDplace == null ? null : HDplace.trim();
+    public void setSihardamount(String sihardamount) {
+        this.sihardamount = sihardamount == null ? null : sihardamount.trim();
+    }
+
+    public String getSioperSystem() {
+        return sioperSystem;
+    }
+
+    public void setSioperSystem(String sioperSystem) {
+        this.sioperSystem = sioperSystem == null ? null : sioperSystem.trim();
+    }
+
+    public String getSiCPURAM() {
+        return siCPURAM;
+    }
+
+    public void setSiCPURAM(String siCPURAM) {
+        this.siCPURAM = siCPURAM == null ? null : siCPURAM.trim();
+    }
+
+    public String getProductdesc() {
+        return productdesc;
+    }
+
+    public void setProductdesc(String productdesc) {
+        this.productdesc = productdesc == null ? null : productdesc.trim();
+    }
+
+    public String getSiDetails() {
+        return siDetails;
+    }
+
+    public void setSiDetails(String siDetails) {
+        this.siDetails = siDetails == null ? null : siDetails.trim();
     }
 
     @Override
@@ -84,12 +124,16 @@ public class Server_info {
         }
         Server_info other = (Server_info) that;
         return (this.getSiCode() == null ? other.getSiCode() == null : this.getSiCode().equals(other.getSiCode()))
-            && (this.getServercode() == null ? other.getServercode() == null : this.getServercode().equals(other.getServercode()))
-            && (this.getPlatform() == null ? other.getPlatform() == null : this.getPlatform().equals(other.getPlatform()))
-            && (this.getCPUnumber() == null ? other.getCPUnumber() == null : this.getCPUnumber().equals(other.getCPUnumber()))
-            && (this.getMaxRAM() == null ? other.getMaxRAM() == null : this.getMaxRAM().equals(other.getMaxRAM()))
-            && (this.getHDattr() == null ? other.getHDattr() == null : this.getHDattr().equals(other.getHDattr()))
-            && (this.getHDplace() == null ? other.getHDplace() == null : this.getHDplace().equals(other.getHDplace()));
+            && (this.getServerCode() == null ? other.getServerCode() == null : this.getServerCode().equals(other.getServerCode()))
+            && (this.getSiProcessor() == null ? other.getSiProcessor() == null : this.getSiProcessor().equals(other.getSiProcessor()))
+            && (this.getCpuMixNumber() == null ? other.getCpuMixNumber() == null : this.getCpuMixNumber().equals(other.getCpuMixNumber()))
+            && (this.getSibrandName() == null ? other.getSibrandName() == null : this.getSibrandName().equals(other.getSibrandName()))
+            && (this.getSiSize() == null ? other.getSiSize() == null : this.getSiSize().equals(other.getSiSize()))
+            && (this.getSihardamount() == null ? other.getSihardamount() == null : this.getSihardamount().equals(other.getSihardamount()))
+            && (this.getSioperSystem() == null ? other.getSioperSystem() == null : this.getSioperSystem().equals(other.getSioperSystem()))
+            && (this.getSiCPURAM() == null ? other.getSiCPURAM() == null : this.getSiCPURAM().equals(other.getSiCPURAM()))
+            && (this.getProductdesc() == null ? other.getProductdesc() == null : this.getProductdesc().equals(other.getProductdesc()))
+            && (this.getSiDetails() == null ? other.getSiDetails() == null : this.getSiDetails().equals(other.getSiDetails()));
     }
 
     @Override
@@ -97,12 +141,16 @@ public class Server_info {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getSiCode() == null) ? 0 : getSiCode().hashCode());
-        result = prime * result + ((getServercode() == null) ? 0 : getServercode().hashCode());
-        result = prime * result + ((getPlatform() == null) ? 0 : getPlatform().hashCode());
-        result = prime * result + ((getCPUnumber() == null) ? 0 : getCPUnumber().hashCode());
-        result = prime * result + ((getMaxRAM() == null) ? 0 : getMaxRAM().hashCode());
-        result = prime * result + ((getHDattr() == null) ? 0 : getHDattr().hashCode());
-        result = prime * result + ((getHDplace() == null) ? 0 : getHDplace().hashCode());
+        result = prime * result + ((getServerCode() == null) ? 0 : getServerCode().hashCode());
+        result = prime * result + ((getSiProcessor() == null) ? 0 : getSiProcessor().hashCode());
+        result = prime * result + ((getCpuMixNumber() == null) ? 0 : getCpuMixNumber().hashCode());
+        result = prime * result + ((getSibrandName() == null) ? 0 : getSibrandName().hashCode());
+        result = prime * result + ((getSiSize() == null) ? 0 : getSiSize().hashCode());
+        result = prime * result + ((getSihardamount() == null) ? 0 : getSihardamount().hashCode());
+        result = prime * result + ((getSioperSystem() == null) ? 0 : getSioperSystem().hashCode());
+        result = prime * result + ((getSiCPURAM() == null) ? 0 : getSiCPURAM().hashCode());
+        result = prime * result + ((getProductdesc() == null) ? 0 : getProductdesc().hashCode());
+        result = prime * result + ((getSiDetails() == null) ? 0 : getSiDetails().hashCode());
         return result;
     }
 }

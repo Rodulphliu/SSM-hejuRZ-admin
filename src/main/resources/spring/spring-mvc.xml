@@ -31,7 +31,14 @@
     <!-- 配置springMVC处理上传文件的信息 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="utf-8"/>
-        <property name="maxUploadSize" value="10485760000"/>
-        <property name="maxInMemorySize" value="40960"/>
+        <!-- 单位是字节，不设置默认不限制总的上传文件大小，这里设置总的上传文件大小不超过1M（1*1024*1024） -->
+        <property name="maxUploadSize" value="1048576000000"/>
+        <!-- 跟maxUploadSize差不多，不过maxUploadSizePerFile是限制每个上传文件的大小，而maxUploadSize是限制总的上传文件大小 -->
+        <property name="maxUploadSizePerFile" value="104857600000"/>
+    </bean>
+    
+    <!-- 异常解析器，当文件上传超过设置大小的时候，则会跳转至以下控制器页面 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="/error.jsp"/>
     </bean>
 </beans>

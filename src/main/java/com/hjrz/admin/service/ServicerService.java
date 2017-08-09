@@ -3,34 +3,36 @@ package com.hjrz.admin.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hjrz.admin.dao.Server_infoMapper;
 import com.hjrz.admin.dao.ServicerMapper;
+import com.hjrz.admin.entity.Server_info;
 import com.hjrz.admin.entity.Servicer;
-import com.hjrz.admin.exception.ServicerException;
+import com.hjrz.admin.model.ServicerModel;
 
 /**
  * @ClassName ServicerService
- * @Description TODO(这里用一句话描述这个类的作用)
+ * @Description TODO(服务器管理服务类)
  * @author RudolphLiu
  * @Date 2017年5月17日 下午3:47:59
  * @version 1.0.0
  */
-@Service
+@Service("ServicerService")
 public class ServicerService {
-    
+      
+	  @Autowired
+	  private ServicerMapper servicermapper;
+	
       @Autowired
-      private ServicerMapper servicerMapper;
-      
+      private Server_infoMapper server_infoMapper;
+     
       /**
-       * @Description (添加服务器)
-       * @author RudolphLiu
-       * @Date 2017年5月18日 下午5:45:46
+       * 添加服务器
+       * @param servicer
+       * @param server_info
+       * @throws Exception
        */
-      public void addServicer(Servicer servicer)throws Exception{
-          int key = servicerMapper.insertSelective(servicer);
-          if(key<1){
-            throw new ServicerException("添加服务器失败");
-          }
+      public void addServicer(ServicerModel servicerModel)throws Exception{
+    	  servicermapper.insertSelective(servicer);
       }
-      
       
 }
