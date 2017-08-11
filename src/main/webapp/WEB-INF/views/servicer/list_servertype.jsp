@@ -84,17 +84,16 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody>	
 					<c:forEach items="${serverTypeList}" var="s" begin="0" varStatus="status">
 						<tr>
 							<td>${status.index+1}</td>
 							<td>${s.typeName}</td>
 							<td>${fn:substring(s.typeTitle, 0, 15)}...</td>
 							<td>${fn:substring(s.typeDetails, 0, 30)}...</td>
-							<td>${s.create_time}</td>
+							<td><fmt:formatDate value="${s.create_time}" pattern="yyyy年 MM月 dd日 HH:mm"/></td>
 							<td>
-								<button type="button" class="btn btn-default">查看</button>
-								<button type="button" class="btn btn-default">编辑</button>
+								<button type="button" class="btn btn-default" onclick="window.location.href='/ServerType/ServerTypeDetail.do?TypeCode=${s.typeCode}'" >查看</button>
 								<button type="button" class="btn btn-default">编辑</button>
 							</td>
 						</tr>

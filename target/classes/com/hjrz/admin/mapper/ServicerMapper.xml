@@ -5,7 +5,7 @@
     <id column="serverCode" property="serverCode" jdbcType="INTEGER" />
     <result column="serverName" property="serverName" jdbcType="VARCHAR" />
     <result column="serverType" property="serverType" jdbcType="INTEGER" />
-    <result column="serverState" property="serverState" jdbcType="VARCHAR" />
+    <result column="serverState" property="serverState" jdbcType="VARCHAR" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
     <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -51,10 +51,10 @@
     where serverCode = #{serverCode,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hjrz.admin.entity.Servicer" >
-    insert into servicer (serverCode, serverName, serverType, 
+    insert into servicer (serverName, serverType, 
       serverState, create_time)
-    values (#{serverCode,jdbcType=INTEGER}, #{serverName,jdbcType=VARCHAR}, #{serverType,jdbcType=INTEGER}, 
-      #{serverState,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP})
+    values (#{serverName,jdbcType=VARCHAR}, #{serverType,jdbcType=INTEGER}, 
+      #{serverState,jdbcType=VARCHAR}, NOW())
   </insert>
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Servicer" >
     insert into servicer

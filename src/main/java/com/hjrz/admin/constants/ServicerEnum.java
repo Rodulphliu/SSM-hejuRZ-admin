@@ -8,7 +8,7 @@ package com.hjrz.admin.constants;
  * @version 1.0.0
  */
 public enum ServicerEnum {
-    EXIST(1,"存在"),INVALID(2,"失效");
+    EXIST(1,"存在"),INVALID(2,"失效"),DELETED(3,"已删除");
     
     private int code;
     

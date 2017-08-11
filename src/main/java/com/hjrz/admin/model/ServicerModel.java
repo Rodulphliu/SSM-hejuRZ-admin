@@ -1,9 +1,39 @@
 package com.hjrz.admin.model;
 
+import com.hjrz.admin.constants.ServicerEnum;
+
 public class ServicerModel {
 	private String serverName;
 	
 	private String serverType;
+	
+	private ServicerEnum serverState;
+	
+	public ServicerEnum getServerState() {
+		return serverState;
+	}
+
+	public void setServerState(ServicerEnum serverState) {
+		this.serverState = serverState;
+	}
+
+	private String siProcessor;
+	
+	private String cpuMixNumber;
+	
+	private String sibrandName;
+	
+	private String siSize;
+	
+	private String sihardamount;
+	
+	private String sioperSystem;
+	
+	private String siCPURAM;
+	
+	private String productdesc;
+	
+	private String siDetails;
 	
 	public String getServerName() {
 		return serverName;
@@ -92,22 +122,4 @@ public class ServicerModel {
 	public void setSiDetails(String siDetails) {
 		this.siDetails = siDetails;
 	}
-
-	private String siProcessor;
-	
-	private String cpuMixNumber;
-	
-	private String sibrandName;
-	
-	private String siSize;
-	
-	private String sihardamount;
-	
-	private String sioperSystem;
-	
-	private String siCPURAM;
-	
-	private String productdesc;
-	
-	private String siDetails;
 }

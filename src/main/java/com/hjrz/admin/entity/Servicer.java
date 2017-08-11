@@ -2,6 +2,8 @@ package com.hjrz.admin.entity;
 
 import java.util.Date;
 
+import com.hjrz.admin.constants.ServicerEnum;
+
 public class Servicer {
     private Integer serverCode;
 
@@ -9,7 +11,7 @@ public class Servicer {
 
     private Integer serverType;
 
-    private String serverState;
+    private ServicerEnum serverState;
 
     private Date create_time;
 
@@ -37,15 +39,15 @@ public class Servicer {
         this.serverType = serverType;
     }
 
-    public String getServerState() {
-        return serverState;
-    }
+    public ServicerEnum getServerState() {
+		return serverState;
+	}
 
-    public void setServerState(String serverState) {
-        this.serverState = serverState == null ? null : serverState.trim();
-    }
+	public void setServerState(ServicerEnum serverState) {
+		this.serverState = serverState;
+	}
 
-    public Date getCreate_time() {
+	public Date getCreate_time() {
         return create_time;
     }
 

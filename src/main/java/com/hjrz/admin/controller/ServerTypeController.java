@@ -79,6 +79,7 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月18日 上午11:35:15
        */
+      @RequestMapping(value="/ServerTypeDetail.do")
       public ModelAndView getInit(Integer TypeCode,HttpServletRequest request){
           ModelAndView modelAndView = new ModelAndView();
           try {
@@ -98,6 +99,7 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月18日 上午11:48:13
        */
+      @RequestMapping(value="/ServerTypeModify.do")
       public ModelAndView modifyInit(Integer id,HttpServletRequest request,
           HttpServletResponse response){
           ModelAndView modelAndView = new ModelAndView();
@@ -118,20 +120,18 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月18日 上午11:59:32
        */
-      public ModelAndView modifyServerType(ServerType serverType,HttpServletRequest request,
+      @SuppressWarnings("rawtypes")
+      @RequestMapping(value="/ModifyInfo.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+      public @ResponseBody ExchangeData modifyServerType(ServerType serverType,HttpServletRequest request,
           HttpServletResponse response)
       {
-          ModelAndView modelAndView = new ModelAndView();
           ExchangeData<Object> exchangeData = new ExchangeData<Object>();
           try {
             serverTypeService.modifyServerType(serverType);
-            modelAndView.addObject("exchangeData",exchangeData);
-            modelAndView.setViewName("redirect:/ServerType/queryServerTypeInit.do");
           } catch (Exception e) {
-            modelAndView.addObject("callStatus",CallStatusEnum.FAIL);
-            modelAndView.addObject("message","修改服务器类型");
+        	  exchangeData.markException(e);
           }
-          return modelAndView;
+          return exchangeData;
       }
       
       /**

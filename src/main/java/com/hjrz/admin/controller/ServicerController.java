@@ -55,10 +55,11 @@ public class ServicerController {
       {
     	  ExchangeData<Object> exchangeData = new ExchangeData<Object>();
     	  try {
-			servicerService.addServicer(servicer, server_info);
+			servicerService.addServicer(servicerModel);
 		} catch (Exception e) {
-			// TODO: handle exception
+			exchangeData.markException(e);
 		}
+    	  return exchangeData;
       }
 }
 
