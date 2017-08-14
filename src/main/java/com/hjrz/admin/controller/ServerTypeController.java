@@ -122,8 +122,7 @@ public class ServerTypeController {
        */
       @SuppressWarnings("rawtypes")
       @RequestMapping(value="/ModifyInfo.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-      public @ResponseBody ExchangeData modifyServerType(ServerType serverType,HttpServletRequest request,
-          HttpServletResponse response)
+      public @ResponseBody ExchangeData modifyServerType(@RequestBody ServerType serverType,HttpServletRequest request)
       {
           ExchangeData<Object> exchangeData = new ExchangeData<Object>();
           try {
@@ -151,4 +150,6 @@ public class ServerTypeController {
         }
         return exchangeData;
       }
+    
+    
 }

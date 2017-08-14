@@ -43,9 +43,10 @@ public class ServicerService {
       {
     	  Servicer servicer = new Servicer();
     	  servicer.setServerState(ServicerEnum.EXIST);
-    	  BeanUtils.copyProperties(servicer, servicerModel);
+    	  BeanUtils.copyProperties(servicer,servicerModel);
     	  servicermapper.insert(servicer);
     	  Server_info server_info = new Server_info();
+    	  server_info.setServerCode(servicer.getServerCode());
     	  BeanUtils.copyProperties(server_info,servicerModel);
     	  server_infoMapper.insert(server_info);
       }

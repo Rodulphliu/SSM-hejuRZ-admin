@@ -68,25 +68,14 @@
     <selectKey resultType="java.lang.Long" keyProperty="siCode" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into server_info (
-	    	  siProcessor, 
-	    	  cpuMixNumber, 
-		      sibrandName, 
-		      siSize, 
-		      sihardamount, 
-		      sioperSystem, 
-		      siCPURAM, 
-		      productdesc, 
-		      siDetails)
-    values (#{siProcessor,jdbcType=VARCHAR}, 
-    		#{cpuMixNumber,jdbcType=VARCHAR}, 
-      		#{sibrandName,jdbcType=VARCHAR}, 
-      		#{siSize,jdbcType=VARCHAR}, 
-      		#{sihardamount,jdbcType=VARCHAR}, 
-	        #{sioperSystem,jdbcType=VARCHAR}, 
-	        #{siCPURAM,jdbcType=VARCHAR},
-	        #{productdesc,jdbcType=VARCHAR}, 
-	        #{siDetails,jdbcType=LONGVARCHAR})
+    insert into server_info (serverCode, siProcessor, cpuMixNumber, 
+      sibrandName, siSize, sihardamount, 
+      sioperSystem, siCPURAM, productdesc, 
+      siDetails)
+    values (#{serverCode,jdbcType=INTEGER}, #{siProcessor,jdbcType=VARCHAR}, #{cpuMixNumber,jdbcType=VARCHAR}, 
+      #{sibrandName,jdbcType=VARCHAR}, #{siSize,jdbcType=VARCHAR}, #{sihardamount,jdbcType=VARCHAR}, 
+      #{sioperSystem,jdbcType=VARCHAR}, #{siCPURAM,jdbcType=VARCHAR}, #{productdesc,jdbcType=VARCHAR}, 
+      #{siDetails,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Server_info" >
     <selectKey resultType="java.lang.Long" keyProperty="siCode" order="AFTER" >

@@ -1,16 +1,21 @@
 package com.hjrz.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.hjrz.admin.constants.CallStatusEnum;
 import com.hjrz.admin.data.ExchangeData;
+import com.hjrz.admin.entity.ServerType;
+import com.hjrz.admin.form.ServerTypeQuery;
 import com.hjrz.admin.model.ServicerModel;
 import com.hjrz.admin.service.ServerTypeService;
 import com.hjrz.admin.service.ServicerService;
@@ -37,21 +42,23 @@ public class ServicerController {
        * @author RudolphLiu
        * @Date 2017年5月18日 下午5:59:38
        */
-      @RequestMapping(value="/toaddservicer")
-      public ModelAndView addInit(){
-          ModelAndView modelAndView = new ModelAndView();
-          try {
-            modelAndView.setViewName("servicer/addServicer");
-          } catch (Exception e) {
-            modelAndView.addObject("callStatus", CallStatusEnum.FAIL);
-            modelAndView.addObject("message", "系统错误，请联系管理员！");
-            modelAndView.setViewName("500");
-          }
-          return modelAndView; 
+      @RequestMapping(value="/toaddservicer.do")
+      public String addInit(ServerTypeQuery serverTypeQuery,HttpServletRequest request,HttpServletResponse response){
+    	  List<ServerType> serverTypes = serverTypeService.findbyContion(serverTypeQuery);
+    	  request.setAttribute("serverTypes",serverTypes);
+    	  return "servicer/add_servicer";
       }
       
-      public @ResponseBody ExchangeData addServicer(@RequestBody ServicerModel servicerModel,
-    		  HttpServletRequest request)
+      
+    /** 
+     * @Title addServicer 
+     * @Description TODO(添加服务器属性) 
+     * @author RodulphLiu
+     * @Date 2017年8月11日
+     */
+      @SuppressWarnings("rawtypes")
+      @RequestMapping(value="/addservicer.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+      public @ResponseBody ExchangeData addServicer(@RequestBody ServicerModel servicerModel,HttpServletRequest request)
       {
     	  ExchangeData<Object> exchangeData = new ExchangeData<Object>();
     	  try {
@@ -62,4 +69,3 @@ public class ServicerController {
     	  return exchangeData;
       }
 }
-

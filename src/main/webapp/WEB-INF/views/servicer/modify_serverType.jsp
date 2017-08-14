@@ -50,6 +50,7 @@
 						  <div class="panel-body">
 						  	<form id="formbur">
 							  	<div class="form-group">
+							  	<input type="hidden" value="${serverType.typeCode}" id="typeCode"/>
 			              		 <label>类型名称</label>
 			   					 <input type="text" class="form-control" id="typeName" name="typeName" placeholder="请输入完整的类型名称" value="${serverType.typeName}">
 			   					 
@@ -98,4 +99,5 @@
        	</div>
       </div>
 </body>
+<script type="text/javascript" src="/js/admin/servicer/modify_servertype.js"></script>
 </html>
