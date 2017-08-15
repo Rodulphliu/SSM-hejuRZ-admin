@@ -41,7 +41,7 @@
 		                <li class="active">添加服务器属性</li>
 		            </ul>
 		            <div class="row" id="form-datepicker">
-		            	<div class="col-xs-5 col-md-5" style="margin-left:20.0%;">
+		            	<div class="col-xs-7 col-md-7" style="margin-left:15.0%;">
 		            		<div class="component">
 		            			<form>
               				<div class="form-horizontal">
@@ -166,5 +166,5 @@
 	       	 </div>
        </div>
 </body>
-<script type="text/javascript" src="/js/admin/servicer/add_servicer.js"></script>
+<script src="<%=contextPath %>/js/admin/servicer/add_servicer.js"></script>
 </html>

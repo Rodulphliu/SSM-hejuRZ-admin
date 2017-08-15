@@ -25,7 +25,7 @@
 			<ul class="sub-menu" style="display: block;">
 				<li><a href="<%=basePath %>#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器管理</a></li>
 				<li class="active"><a href="<%=basePath %>/ServerType/queryServerTypeInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器类型管理</a></li>
-				<li><a href="<%=basePath %>/ServerType/toaddServerType.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器属性管理</a></li>
+				<li><a href="<%=basePath %>/servicer/queryServerInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器属性管理</a></li>
 			</ul>
 		</li>
 			<li><a href="#">工作站管理</a></li>

@@ -27,7 +27,7 @@ public class ServerTypeService {
      * @author RudolphLiu
      * @Date 2017年5月15日 下午5:34:04
      */
-    public List<ServerType> findbyContion(ServerTypeQuery serverTypeQuery){
+    public List<ServerType> findbyContion(ServerTypeQuery serverTypeQuery)throws Exception{
       List<ServerType> serverTypes = serverTypeMapper.selectByCondition(serverTypeQuery);
       return serverTypes;
     }
@@ -37,7 +37,7 @@ public class ServerTypeService {
      * @author RudolphLiu
      * @Date 2017年5月15日 下午5:58:24
      */
-    public int countByQuery(ServerTypeQuery serverTypeQuery){
+    public int countByQuery(ServerTypeQuery serverTypeQuery)throws Exception{
         int total = serverTypeMapper.countByQuery(serverTypeQuery);
         return total;
     }

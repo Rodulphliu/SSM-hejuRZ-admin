@@ -1,5 +1,7 @@
 package com.hjrz.admin.model;
 
+import java.util.HashMap;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 

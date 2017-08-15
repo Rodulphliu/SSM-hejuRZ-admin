@@ -1,6 +1,7 @@
 package com.hjrz.admin.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import com.hjrz.admin.constants.ServicerEnum;
 
@@ -15,7 +16,18 @@ public class Servicer {
 
     private Date create_time;
 
-    public Integer getServerCode() {
+    private List<Server_info> server_infos;
+    
+    
+    public List<Server_info> getServer_infos() {
+		return server_infos;
+	}
+
+	public void setServer_infos(List<Server_info> server_infos) {
+		this.server_infos = server_infos;
+	}
+
+	public Integer getServerCode() {
         return serverCode;
     }
 

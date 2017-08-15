@@ -1,22 +1,27 @@
 package com.hjrz.admin.model;
 
-import com.hjrz.admin.constants.ServicerEnum;
+import java.sql.Date;
 
 public class ServicerModel {
+	
+	private Integer serverCode;
+	
 	private String serverName;
 	
-	private String serverType;
+	private Integer serverType; 
 	
-	private ServicerEnum serverState;
-	
-	public ServicerEnum getServerState() {
-		return serverState;
+	public Integer getServerType() {
+		return serverType;
 	}
 
-	public void setServerState(ServicerEnum serverState) {
-		this.serverState = serverState;
+	public void setServerType(Integer serverType) {
+		this.serverType = serverType;
 	}
 
+	private String typeName;
+	
+	private Date create_time;
+	
 	private String siProcessor;
 	
 	private String cpuMixNumber;
@@ -34,7 +39,16 @@ public class ServicerModel {
 	private String productdesc;
 	
 	private String siDetails;
+
 	
+	public Integer getServerCode() {
+		return serverCode;
+	}
+
+	public void setServerCode(Integer serverCode) {
+		this.serverCode = serverCode;
+	}
+
 	public String getServerName() {
 		return serverName;
 	}
@@ -43,12 +57,20 @@ public class ServicerModel {
 		this.serverName = serverName;
 	}
 
-	public String getServerType() {
-		return serverType;
+	public String getTypeName() {
+		return typeName;
 	}
 
-	public void setServerType(String serverType) {
-		this.serverType = serverType;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+
+	public Date getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 
 	public String getSiProcessor() {
@@ -122,4 +144,5 @@ public class ServicerModel {
 	public void setSiDetails(String siDetails) {
 		this.siDetails = siDetails;
 	}
+	
 }

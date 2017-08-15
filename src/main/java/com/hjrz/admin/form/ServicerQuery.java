@@ -6,9 +6,9 @@ public class ServicerQuery {
 	
 	//根据名称搜索
 	private String serverName;
-	
-	//根据类型搜索
-	private String serverType;
+
+	//根据类型名称搜索
+	private String typeName;
 	
 	//根据服务器处理器名称或类型来换
 	private String siProcessor;
@@ -53,12 +53,12 @@ public class ServicerQuery {
 		this.serverName = serverName;
 	}
 
-	public String getServerType() {
-		return serverType;
+	public String getTypeName() {
+		return typeName;
 	}
 
-	public void setServerType(String serverType) {
-		this.serverType = serverType;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
 
 	public String getSiProcessor() {

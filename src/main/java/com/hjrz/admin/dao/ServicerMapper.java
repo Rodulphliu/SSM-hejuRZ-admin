@@ -22,5 +22,7 @@ public interface ServicerMapper {
 
     int updateByPrimaryKey(Servicer record);
     
-    List<ServicerModel> selectByCondition(ServicerQuery servicerQuery);
+    List<ServicerModel> queryforServerInfo(ServicerQuery servicerQuery);
+    
+    ServicerModel selectByServerCode(Integer serverCode);
 }

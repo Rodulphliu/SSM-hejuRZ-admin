@@ -5,9 +5,103 @@
     <id column="serverCode" property="serverCode" jdbcType="INTEGER" />
     <result column="serverName" property="serverName" jdbcType="VARCHAR" />
     <result column="serverType" property="serverType" jdbcType="INTEGER" />
-    <result column="serverState" property="serverState" jdbcType="VARCHAR" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+    <result column="serverState" property="serverState" jdbcType="VARCHAR" />
     <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
   </resultMap>
+  
+   <resultMap id="QueryforListMap" type="com.hjrz.admin.model.ServicerModel" >
+    <id column="serverCode" property="serverCode" jdbcType="INTEGER" />
+    <result column="serverName" property="serverName" jdbcType="VARCHAR" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="siProcessor" property="siProcessor" jdbcType="VARCHAR" />
+    <result column="cpuMixNumber" property="cpuMixNumber" jdbcType="VARCHAR" />
+    <result column="sibrandName" property="sibrandName" jdbcType="VARCHAR" />
+    <result column="siSize" property="siSize" jdbcType="VARCHAR" />
+    <result column="sihardamount" property="sihardamount" jdbcType="VARCHAR" />
+    <result column="sioperSystem" property="sioperSystem" jdbcType="VARCHAR" />
+    <result column="siCPURAM" property="siCPURAM" jdbcType="VARCHAR" />
+    <result column="productdesc" property="productdesc" jdbcType="VARCHAR" />
+  </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.model.ServicerModel" extends="QueryforListMap" >
+    <result column="siDetails" property="siDetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="queryforServerInfo" resultMap="QueryforListMap" 
+  		parameterType="com.hjrz.admin.form.ServicerQuery">  
+      SELECT
+			s.serverCode,
+			s.serverName,
+			st.typeName,
+			s.create_time,
+			si.siProcessor,
+			si.cpuMixNumber,
+			si.sibrandName,
+			si.siSize,
+			si.sihardamount,
+			si.sioperSystem,
+			si.siCPURAM,
+			si.productdesc,
+			si.siDetails
+		FROM
+			servicer s
+		LEFT JOIN server_info si ON s.serverCode = si.serverCode
+		LEFT JOIN servertype st ON s.serverType = st.typeCode
+        <where>
+	        <if test="serverName!=null">
+				and s.serverName like CONCAT('%',#{serverName,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="typeName!=null">
+  				and st.typeName = like CONCAT('%',#{typeName,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="sibrandName!=null">
+	  			and si.sibrandName = like CONCAT('%',#{sibrandName,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="siSize!=null">
+	  			and si.siSize = like CONCAT('%',#{siSize,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="sihardamount!=null">
+	  			and si.sihardamount = like CONCAT('%',#{sihardamount,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="sioperSystem!=null">
+	  			and si.sioperSystem = like CONCAT('%',#{sioperSystem,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="siCPURAM!=null">
+	  			and si.siCPURAM = like CONCAT('%',#{siCPURAM,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="productdesc!=null">
+	  			and si.productdesc = like CONCAT('%',#{productdesc,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="siDetails!=null">
+	  			and si.siDetails = like CONCAT('%',#{siDetails,jdbcType=VARCHAR},'%')
+	  		</if>
+        </where>
+    </select>
+    
+   <select id="selectByServerCode" resultMap="ResultMapWithBLOBs" 
+  		parameterType="java.lang.Integer">
+   		SELECT
+			s.serverCode,
+			s.serverName,
+			st.typeName,
+			s.create_time,
+			si.siProcessor,
+			si.cpuMixNumber,
+			si.sibrandName,
+			si.siSize,
+			si.sihardamount,
+			si.sioperSystem,
+			si.siCPURAM,
+			si.productdesc,
+			si.siDetails
+		FROM
+			servicer s
+		LEFT JOIN server_info si ON s.serverCode = si.serverCode
+		LEFT JOIN servertype st ON s.serverType = st.typeCode
+		where
+			s.serverCode = #{serverCode,jdbcType=INTEGER}
+   </select>
+    
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -51,17 +145,20 @@
     where serverCode = #{serverCode,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hjrz.admin.entity.Servicer" >
-    insert into servicer (serverName, serverType, 
-      serverState, create_time)
-    values (#{serverName,jdbcType=VARCHAR}, #{serverType,jdbcType=INTEGER}, 
-      #{serverState,jdbcType=VARCHAR}, NOW())
+    <selectKey resultType="java.lang.Integer" keyProperty="serverCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into servicer (serverName, serverType, serverState, 
+      create_time)
+    values (#{serverName,jdbcType=VARCHAR}, #{serverType,jdbcType=INTEGER}, #{serverState,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Servicer" >
+    <selectKey resultType="java.lang.Integer" keyProperty="serverCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into servicer
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="serverCode != null" >
-        serverCode,
-      </if>
       <if test="serverName != null" >
         serverName,
       </if>
@@ -71,12 +168,11 @@
       <if test="serverState != null" >
         serverState,
       </if>
-        create_time
+      <if test="create_time != null" >
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="serverCode != null" >
-        #{serverCode,jdbcType=INTEGER},
-      </if>
       <if test="serverName != null" >
         #{serverName,jdbcType=VARCHAR},
       </if>
@@ -86,7 +182,9 @@
       <if test="serverState != null" >
         #{serverState,jdbcType=VARCHAR},
       </if>
-      NOW()
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.hjrz.admin.entity.ServicerExample" resultType="java.lang.Integer" >
@@ -121,22 +219,4 @@
       create_time = #{create_time,jdbcType=TIMESTAMP}
     where serverCode = #{serverCode,jdbcType=INTEGER}
   </update>
-  
-  <select id="selectByCondition" resultMap="BaseResultMap" 
-  		parameterType="com.hjrz.admin.entity.Servicer">
-  		select 
-  		<include refid="Base_Column_List" />
-  		from servicer
-  		<where> 
-	 	<if test="serverName!=null">
-			and serverName like CONCAT('%',#{serverName,jdbcType=VARCHAR},'%')
-		</if> 
-		<if test="serverType!=null">
-  			and serverType = #{serverType,jdbcType=INTEGER}
-  		</if>
-  		<if test="serverCode!=null">
-  			and serverCode = #{serverCode,jdbcType=INTEGER}
-  		</if>
-  	</where>
-  </select>
 </mapper>
