@@ -14,33 +14,12 @@
 		<%@include file="../common/header.jsp"%>
 		<!-- leftNav before-->
 		<div class="container-fluid all">
-        <div class="sidebar">
-            <ul class="nav">
-                <li id="index"><a href="index.html">首页</a></li>
-		<li><a href="#">资源管理</a></li>
-		<li><a href="#">前台管理</a></li>
-		 <li class="has-sub active">
-			<a href="javascript:void(0);"><span>服务器管理</span>
-			<i class="fa fa-caret-right fa-fw pull-right"></i></a>
-			<ul class="sub-menu" style="display: block;">
-				<li><a href="<%=basePath %>#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器管理</a></li>
-				<li class="active"><a href="<%=basePath %>/ServerType/queryServerTypeInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器类型管理</a></li>
-				<li><a href="<%=basePath %>/servicer/queryServerInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器属性管理</a></li>
-			</ul>
-		</li>
-			<li><a href="#">工作站管理</a></li>
-			<li><a href="#">硬件库管理</a></li>
-			<li><a href="#">后台管理</a></li>
-			<li><a href="#">用户管理</a></li>
-			<li><a href="#">反馈处理</a></li>
-          </ul>
-       			 </div>
-       	<!-- leftNav end -->
-       			 <div class="maincontent">
+		<%@include file="../common/leftnav.jsp"%>
+       <div class="maincontent">
             <!--我是主要内容 start-->
-	            <ul class="breadcrumb">
-	                <li class="active">首页</li>
-	            </ul>
+	     <ul class="breadcrumb">
+	         <li class="active">首页</li>
+	     </ul>
 	     <div class="row" id="form-datepicker">
            <div class="col-xs-12 col-md-12">
               	<!--style="margin-left:20.0%;"-->
@@ -68,7 +47,7 @@
 		              		</div>
 		              	
 		              		<div class="form-group pull-right">
-		              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>/ServerType/toaddServerType.do'" value="添加服务器类型>>>">
+		              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>ServerType/toaddServerType.do'" value="添加服务器类型>>>">
 		              		</div>
 		              	</form>
 	              		</div>

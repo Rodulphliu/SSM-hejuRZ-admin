@@ -60,7 +60,7 @@ public class ServicerController {
       
       	/** 
 	     * @Title addServicer 
-	     * @Description TODO(添加服务器属性) 
+	     * @Description TODO(添加服务器属性)
 	     * @author RodulphLiu
 	     * @Date 2017年8月11日
 	     */
@@ -80,7 +80,7 @@ public class ServicerController {
       
       /** 
 	    * @Title queryServerType 
-	    * @Description TODO(这里用一句话描述这个方法的作用) 
+	    * @Description TODO(获取全部/条件查询) 
 	    * @author RodulphLiu
 	    * @Date 2017年8月15日
 	   */
@@ -105,7 +105,7 @@ public class ServicerController {
      * @author RodulphLiu
      * @Date 2017年8月15日
      */
-    @RequestMapping(value="serverDetail.do")
+    @RequestMapping(value="/serverDetail.do")
     public ModelAndView getInit(Integer serverCode
     		,HttpServletRequest request,HttpServletResponse response){
     	ModelAndView modelAndView = new ModelAndView();

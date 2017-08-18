@@ -12,28 +12,7 @@
 <body>
 		<%@include file="../common/header.jsp"%>
 		<!-- leftNav before-->
-		<div class="container-fluid all">
-        <div class="sidebar">
-            <ul class="nav">
-                <li id="index"><a href="index.html">首页</a></li>
-		<li><a href="#">资源管理</a></li>
-		<li><a href="#">前台管理</a></li>
-		 <li class="has-sub active">
-			<a href="javascript:void(0);"><span>服务器管理</span>
-			<i class="fa fa-caret-right fa-fw pull-right"></i></a>
-			<ul class="sub-menu" style="display: block;">
-				<li><a href="<%=basePath %>#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器管理</a></li>
-				<li><a href="<%=basePath %>/ServerType/queryServerTypeInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器类型管理</a></li>
-				<li class="active"><a href="<%=basePath %>/ServerType/queryServerTypeInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器属性管理</a></li>
-			</ul>
-		</li>
-			<li><a href="#">工作站管理</a></li>
-			<li><a href="#">硬件库管理</a></li>
-			<li><a href="#">后台管理</a></li>
-			<li><a href="#">用户管理</a></li>
-			<li><a href="#">反馈处理</a></li>
-          </ul>
-       			 </div>
+		<%@include file="../common/leftnav.jsp" %>
        	<!-- leftNav end -->
 	       	 <div class="maincontent">
 	       	 	 <!--我是主要内容 start-->
@@ -43,6 +22,11 @@
 		            <div class="row" id="form-datepicker">
 		            	<div class="col-xs-7 col-md-7" style="margin-left:15.0%;">
 		            		<div class="component">
+				            		<div style="margin-bottom:30px;">
+										<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>servicer/queryServerInit.do'">
+										<span class="glyphicon glyphicon-menu-left"></span>&nbsp;返回&nbsp;
+										</button>
+		              				</div>
 		            			<form>
               				<div class="form-horizontal">
 								  <div class="form-group">

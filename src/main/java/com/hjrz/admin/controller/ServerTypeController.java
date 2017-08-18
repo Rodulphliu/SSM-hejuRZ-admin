@@ -138,18 +138,17 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月11日 上午10:51:16
        */
-    @SuppressWarnings("rawtypes")
-	@RequestMapping(value="/addservertype.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-      public @ResponseBody ExchangeData addServerType(@RequestBody ServerType serverType,HttpServletRequest request)
-      {
-        ExchangeData<Object> exchangeData = new ExchangeData<Object>();
-        try {
-          serverTypeService.addServerType(serverType);
-        } catch (Exception e){
-          exchangeData.markException(e);
-        }
-        return exchangeData;
-      }
-    
+	    @SuppressWarnings("rawtypes")
+		@RequestMapping(value="/addservertype.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	      public @ResponseBody ExchangeData addServerType(@RequestBody ServerType serverType,HttpServletRequest request)
+	      {
+	        ExchangeData<Object> exchangeData = new ExchangeData<Object>();
+	        try {
+	          serverTypeService.addServerType(serverType);
+	        } catch (Exception e){
+	          exchangeData.markException(e);
+	        }
+	        return exchangeData;
+	      }
     
 }

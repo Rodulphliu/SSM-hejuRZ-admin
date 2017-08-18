@@ -14,27 +14,7 @@
 		<%@include file="../common/header.jsp"%>
 		<!-- leftNav before-->
 		<div class="container-fluid all">
-        <div class="sidebar">
-            <ul class="nav">
-                <li id="index"><a href="index.html">首页</a></li>
-		<li><a href="#">资源管理</a></li>
-		<li><a href="#">前台管理</a></li>
-		 <li class="has-sub active">
-			<a href="javascript:void(0);"><span>服务器管理</span>
-			<i class="fa fa-caret-right fa-fw pull-right"></i></a>
-			<ul class="sub-menu" style="display: block;">
-				<li><a href="<%=basePath %>#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器管理</a></li>
-				<li><a href="<%=basePath %>/ServerType/queryServerTypeInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器类型管理</a></li>
-				<li class="active"><a href="<%=basePath %>/servicer/queryServerInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器属性管理</a></li>
-			</ul>
-		</li>
-			<li><a href="#">工作站管理</a></li>
-			<li><a href="#">硬件库管理</a></li>
-			<li><a href="#">后台管理</a></li>
-			<li><a href="#">用户管理</a></li>
-			<li><a href="#">反馈处理</a></li>
-          </ul>
-       	</div>
+        <%@include file="../common/leftnav.jsp" %>
        	<!-- leftNav end -->
        	 <div class="maincontent">
             <!--我是主要内容 start-->
@@ -72,11 +52,11 @@
 			              		 <label>按服务器详细信息：</label>
 			   					 <input type="text" class="form-control" name="typeDetails" placeholder="描述内容，如“高可用”" value="${serverTypeQuery.typeDetails}">
 			              		
-			              	<div class="form-group pull-right">
-			   				<input type="submit" class="btn btn-primary" value="提交查询"/>
-			              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>/ServerType/toaddServerType.do'" value="添加服务器>>>">
-			              		</div>
-			              		</div>
+				              	<div class="form-group pull-right">
+				   				<input type="submit" class="btn btn-primary" value="提交查询"/>
+				              	<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>servicer/toaddservicer.do'" value="添加服务器>>>">
+			              	</div>
+			              </div>
 		              	</form>
 	              		</div>
               		</div>
@@ -106,17 +86,13 @@
 									<td>${s.sioperSystem}</td>
 									<td>${s.productdesc}</td>
 									<td>
-										<button class="btn btn-default" type="submit">查看</button>
-										<button class="btn btn-default" type="submit">编辑</button>
+										<button class="btn btn-default" type="button" onclick="window.location.href='/servicer/serverDetail.do?serverCode=${s.serverCode}'">查看</button>
+										<button class="btn btn-default" type="button">编辑</button>
 									</td>
 								</tr>
 							</c:forEach>
 							</tbody>
 						</table>
-		            	
-		            	
-		            	
-		            	
 		            	</div>
 		            </div>
 	            </div>
