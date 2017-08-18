@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.WorkstationMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Workstation" >
+    <id column="worksCode" property="worksCode" jdbcType="BIGINT" />
+    <result column="worksName" property="worksName" jdbcType="VARCHAR" />
+    <result column="worksType" property="worksType" jdbcType="INTEGER" />
+    <result column="serverState" property="serverState" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    worksCode, worksName, worksType, serverState, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from workstation
+    where worksCode = #{worksCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from workstation
+    where worksCode = #{worksCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Workstation" >
+    <selectKey resultType="java.lang.Long" keyProperty="worksCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into workstation (worksName, worksType, serverState, 
+      create_time)
+    values (#{worksName,jdbcType=VARCHAR}, #{worksType,jdbcType=INTEGER}, #{serverState,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Workstation" >
+    <selectKey resultType="java.lang.Long" keyProperty="worksCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into workstation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="worksName != null" >
+        worksName,
+      </if>
+      <if test="worksType != null" >
+        worksType,
+      </if>
+      <if test="serverState != null" >
+        serverState,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="worksName != null" >
+        #{worksName,jdbcType=VARCHAR},
+      </if>
+      <if test="worksType != null" >
+        #{worksType,jdbcType=INTEGER},
+      </if>
+      <if test="serverState != null" >
+        #{serverState,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.WorkstationExample" resultType="java.lang.Integer" >
+    select count(*) from workstation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Workstation" >
+    update workstation
+    <set >
+      <if test="worksName != null" >
+        worksName = #{worksName,jdbcType=VARCHAR},
+      </if>
+      <if test="worksType != null" >
+        worksType = #{worksType,jdbcType=INTEGER},
+      </if>
+      <if test="serverState != null" >
+        serverState = #{serverState,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where worksCode = #{worksCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Workstation" >
+    update workstation
+    set worksName = #{worksName,jdbcType=VARCHAR},
+      worksType = #{worksType,jdbcType=INTEGER},
+      serverState = #{serverState,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP}
+    where worksCode = #{worksCode,jdbcType=BIGINT}
+  </update>
+</mapper>
