@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.WorkstationInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.WorkstationInfo" >
+    <id column="wsCode" property="wscode" jdbcType="BIGINT" />
+    <result column="workCode" property="workcode" jdbcType="BIGINT" />
+    <result column="wsProcessor" property="wsprocessor" jdbcType="VARCHAR" />
+    <result column="cpuMixNumber" property="cpumixnumber" jdbcType="VARCHAR" />
+    <result column="sibrandName" property="sibrandname" jdbcType="VARCHAR" />
+    <result column="siSize" property="sisize" jdbcType="VARCHAR" />
+    <result column="sihardamout" property="sihardamout" jdbcType="VARCHAR" />
+    <result column="sioperSystem" property="siopersystem" jdbcType="VARCHAR" />
+    <result column="siCPURAM" property="sicpuram" jdbcType="VARCHAR" />
+    <result column="productdesc" property="productdesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.WorkstationInfo" extends="BaseResultMap" >
+    <result column="siDetails" property="sidetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    wsCode, workCode, wsProcessor, cpuMixNumber, sibrandName, siSize, sihardamout, sioperSystem, 
+    siCPURAM, productdesc
+  </sql>
+  <sql id="Blob_Column_List" >
+    siDetails
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.hjrz.admin.entity.WorkstationInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from workstation_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hjrz.admin.entity.WorkstationInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from workstation_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from workstation_info
+    where wsCode = #{wscode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from workstation_info
+    where wsCode = #{wscode,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hjrz.admin.entity.WorkstationInfoExample" >
+    delete from workstation_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.WorkstationInfo" >
+    insert into workstation_info (wsCode, workCode, wsProcessor, 
+      cpuMixNumber, sibrandName, siSize, 
+      sihardamout, sioperSystem, siCPURAM, 
+      productdesc, siDetails)
+    values (#{wscode,jdbcType=BIGINT}, #{workcode,jdbcType=BIGINT}, #{wsprocessor,jdbcType=VARCHAR}, 
+      #{cpumixnumber,jdbcType=VARCHAR}, #{sibrandname,jdbcType=VARCHAR}, #{sisize,jdbcType=VARCHAR}, 
+      #{sihardamout,jdbcType=VARCHAR}, #{siopersystem,jdbcType=VARCHAR}, #{sicpuram,jdbcType=VARCHAR}, 
+      #{productdesc,jdbcType=VARCHAR}, #{sidetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.WorkstationInfo" >
+    insert into workstation_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wscode != null" >
+        wsCode,
+      </if>
+      <if test="workcode != null" >
+        workCode,
+      </if>
+      <if test="wsprocessor != null" >
+        wsProcessor,
+      </if>
+      <if test="cpumixnumber != null" >
+        cpuMixNumber,
+      </if>
+      <if test="sibrandname != null" >
+        sibrandName,
+      </if>
+      <if test="sisize != null" >
+        siSize,
+      </if>
+      <if test="sihardamout != null" >
+        sihardamout,
+      </if>
+      <if test="siopersystem != null" >
+        sioperSystem,
+      </if>
+      <if test="sicpuram != null" >
+        siCPURAM,
+      </if>
+      <if test="productdesc != null" >
+        productdesc,
+      </if>
+      <if test="sidetails != null" >
+        siDetails,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wscode != null" >
+        #{wscode,jdbcType=BIGINT},
+      </if>
+      <if test="workcode != null" >
+        #{workcode,jdbcType=BIGINT},
+      </if>
+      <if test="wsprocessor != null" >
+        #{wsprocessor,jdbcType=VARCHAR},
+      </if>
+      <if test="cpumixnumber != null" >
+        #{cpumixnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sibrandname != null" >
+        #{sibrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="sisize != null" >
+        #{sisize,jdbcType=VARCHAR},
+      </if>
+      <if test="sihardamout != null" >
+        #{sihardamout,jdbcType=VARCHAR},
+      </if>
+      <if test="siopersystem != null" >
+        #{siopersystem,jdbcType=VARCHAR},
+      </if>
+      <if test="sicpuram != null" >
+        #{sicpuram,jdbcType=VARCHAR},
+      </if>
+      <if test="productdesc != null" >
+        #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sidetails != null" >
+        #{sidetails,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.WorkstationInfoExample" resultType="java.lang.Integer" >
+    select count(*) from workstation_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update workstation_info
+    <set >
+      <if test="record.wscode != null" >
+        wsCode = #{record.wscode,jdbcType=BIGINT},
+      </if>
+      <if test="record.workcode != null" >
+        workCode = #{record.workcode,jdbcType=BIGINT},
+      </if>
+      <if test="record.wsprocessor != null" >
+        wsProcessor = #{record.wsprocessor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpumixnumber != null" >
+        cpuMixNumber = #{record.cpumixnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sibrandname != null" >
+        sibrandName = #{record.sibrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sisize != null" >
+        siSize = #{record.sisize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sihardamout != null" >
+        sihardamout = #{record.sihardamout,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siopersystem != null" >
+        sioperSystem = #{record.siopersystem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sicpuram != null" >
+        siCPURAM = #{record.sicpuram,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productdesc != null" >
+        productdesc = #{record.productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sidetails != null" >
+        siDetails = #{record.sidetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update workstation_info
+    set wsCode = #{record.wscode,jdbcType=BIGINT},
+      workCode = #{record.workcode,jdbcType=BIGINT},
+      wsProcessor = #{record.wsprocessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{record.cpumixnumber,jdbcType=VARCHAR},
+      sibrandName = #{record.sibrandname,jdbcType=VARCHAR},
+      siSize = #{record.sisize,jdbcType=VARCHAR},
+      sihardamout = #{record.sihardamout,jdbcType=VARCHAR},
+      sioperSystem = #{record.siopersystem,jdbcType=VARCHAR},
+      siCPURAM = #{record.sicpuram,jdbcType=VARCHAR},
+      productdesc = #{record.productdesc,jdbcType=VARCHAR},
+      siDetails = #{record.sidetails,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update workstation_info
+    set wsCode = #{record.wscode,jdbcType=BIGINT},
+      workCode = #{record.workcode,jdbcType=BIGINT},
+      wsProcessor = #{record.wsprocessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{record.cpumixnumber,jdbcType=VARCHAR},
+      sibrandName = #{record.sibrandname,jdbcType=VARCHAR},
+      siSize = #{record.sisize,jdbcType=VARCHAR},
+      sihardamout = #{record.sihardamout,jdbcType=VARCHAR},
+      sioperSystem = #{record.siopersystem,jdbcType=VARCHAR},
+      siCPURAM = #{record.sicpuram,jdbcType=VARCHAR},
+      productdesc = #{record.productdesc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.WorkstationInfo" >
+    update workstation_info
+    <set >
+      <if test="workcode != null" >
+        workCode = #{workcode,jdbcType=BIGINT},
+      </if>
+      <if test="wsprocessor != null" >
+        wsProcessor = #{wsprocessor,jdbcType=VARCHAR},
+      </if>
+      <if test="cpumixnumber != null" >
+        cpuMixNumber = #{cpumixnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sibrandname != null" >
+        sibrandName = #{sibrandname,jdbcType=VARCHAR},
+      </if>
+      <if test="sisize != null" >
+        siSize = #{sisize,jdbcType=VARCHAR},
+      </if>
+      <if test="sihardamout != null" >
+        sihardamout = #{sihardamout,jdbcType=VARCHAR},
+      </if>
+      <if test="siopersystem != null" >
+        sioperSystem = #{siopersystem,jdbcType=VARCHAR},
+      </if>
+      <if test="sicpuram != null" >
+        siCPURAM = #{sicpuram,jdbcType=VARCHAR},
+      </if>
+      <if test="productdesc != null" >
+        productdesc = #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sidetails != null" >
+        siDetails = #{sidetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where wsCode = #{wscode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.WorkstationInfo" >
+    update workstation_info
+    set workCode = #{workcode,jdbcType=BIGINT},
+      wsProcessor = #{wsprocessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{cpumixnumber,jdbcType=VARCHAR},
+      sibrandName = #{sibrandname,jdbcType=VARCHAR},
+      siSize = #{sisize,jdbcType=VARCHAR},
+      sihardamout = #{sihardamout,jdbcType=VARCHAR},
+      sioperSystem = #{siopersystem,jdbcType=VARCHAR},
+      siCPURAM = #{sicpuram,jdbcType=VARCHAR},
+      productdesc = #{productdesc,jdbcType=VARCHAR},
+      siDetails = #{sidetails,jdbcType=LONGVARCHAR}
+    where wsCode = #{wscode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.WorkstationInfo" >
+    update workstation_info
+    set workCode = #{workcode,jdbcType=BIGINT},
+      wsProcessor = #{wsprocessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{cpumixnumber,jdbcType=VARCHAR},
+      sibrandName = #{sibrandname,jdbcType=VARCHAR},
+      siSize = #{sisize,jdbcType=VARCHAR},
+      sihardamout = #{sihardamout,jdbcType=VARCHAR},
+      sioperSystem = #{siopersystem,jdbcType=VARCHAR},
+      siCPURAM = #{sicpuram,jdbcType=VARCHAR},
+      productdesc = #{productdesc,jdbcType=VARCHAR}
+    where wsCode = #{wscode,jdbcType=BIGINT}
+  </update>
+</mapper>

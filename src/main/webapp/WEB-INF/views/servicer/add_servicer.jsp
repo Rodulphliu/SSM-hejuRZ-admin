@@ -20,7 +20,7 @@
 		                <li class="active">添加服务器属性</li>
 		            </ul>
 		            <div class="row" id="form-datepicker">
-		            	<div class="col-xs-7 col-md-7" style="margin-left:15.0%;">
+		            	<div class="col-xs-7 col-md-7" style="margin-left:20.0%;">
 		            		<div class="component">
 				            		<div style="margin-bottom:30px;">
 										<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>servicer/queryServerInit.do'">

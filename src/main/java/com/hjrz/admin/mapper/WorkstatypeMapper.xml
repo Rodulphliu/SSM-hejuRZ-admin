@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.WorkstatypeMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Workstatype" >
+    <id column="wks_typeCode" property="wksTypecode" jdbcType="INTEGER" />
+    <result column="wks_typeName" property="wksTypename" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="wks_typeTitle" property="wksTypetitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Workstatype" extends="BaseResultMap" >
+    <result column="wks_typeDetails" property="wksTypedetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    wks_typeCode, wks_typeName, create_time, wks_typeTitle
+  </sql>
+  <sql id="Blob_Column_List" >
+    wks_typeDetails
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.hjrz.admin.entity.WorkstatypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from workstatype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hjrz.admin.entity.WorkstatypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from workstatype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from workstatype
+    where wks_typeCode = #{wksTypecode,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+  	select 
+  	<include refid="Base_Column_List" />
+  	,
+  	<include refid="Blob_Column_List"/>
+  	from workstatype
+  </select>
+  
+  
+  <!-- 根据工作站类型名称、工作站类型标题、工作站类型描述，进行模糊查询 -->
+  <select id="selectByLike" resultMap="BaseResultMap" parameterType="com.hjrz.admin.entity.Workstatype">
+  	select
+  	<include refid="Base_Column_List"/>
+  	,
+  	<include refid="Blob_Column_List"/>
+  	from workstatype
+  	<where>
+  		<if test="wksTypename!=null">
+  			and wks_typeName like CONCAT('%',#{wksTypename,jdbcType=VARCHAR},'%')
+  		</if>
+  		
+  		<if test="wksTypetitle!=null">
+  			and wks_typeTitle like CONCAT('%',#{wksTypetitle,jdbcType=VARCHAR},'%')
+  		</if>
+  		
+  		<if test="wksTypedetails!=null">
+  			and wks_typeDetails like CONCAT('%',#{wksTypedetails,jdbcType=VARCHAR},'%')
+  		</if>
+  	</where>
+  </select>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from workstatype
+    where wks_typeCode = #{wksTypecode,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hjrz.admin.entity.WorkstatypeExample" >
+    delete from workstatype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Workstatype" >
+    insert into workstatype (wks_typeCode, wks_typeName, create_time, 
+      wks_typeTitle, wks_typeDetails)
+    values (#{wksTypecode,jdbcType=INTEGER}, #{wksTypename,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{wksTypetitle,jdbcType=VARCHAR}, #{wksTypedetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Workstatype" >
+    insert into workstatype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wksTypecode != null" >
+        wks_typeCode,
+      </if>
+      <if test="wksTypename != null" >
+        wks_typeName,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="wksTypetitle != null" >
+        wks_typeTitle,
+      </if>
+      <if test="wksTypedetails != null" >
+        wks_typeDetails,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wksTypecode != null" >
+        #{wksTypecode,jdbcType=INTEGER},
+      </if>
+      <if test="wksTypename != null" >
+        #{wksTypename,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wksTypetitle != null" >
+        #{wksTypetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="wksTypedetails != null" >
+        #{wksTypedetails,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.WorkstatypeExample" resultType="java.lang.Integer" >
+    select count(*) from workstatype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update workstatype
+    <set >
+      <if test="record.wksTypecode != null" >
+        wks_typeCode = #{record.wksTypecode,jdbcType=INTEGER},
+      </if>
+      <if test="record.wksTypename != null" >
+        wks_typeName = #{record.wksTypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.wksTypetitle != null" >
+        wks_typeTitle = #{record.wksTypetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wksTypedetails != null" >
+        wks_typeDetails = #{record.wksTypedetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update workstatype
+    set wks_typeCode = #{record.wksTypecode,jdbcType=INTEGER},
+      wks_typeName = #{record.wksTypename,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      wks_typeTitle = #{record.wksTypetitle,jdbcType=VARCHAR},
+      wks_typeDetails = #{record.wksTypedetails,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update workstatype
+    set wks_typeCode = #{record.wksTypecode,jdbcType=INTEGER},
+      wks_typeName = #{record.wksTypename,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      wks_typeTitle = #{record.wksTypetitle,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Workstatype" >
+    update workstatype
+    <set >
+      <if test="wksTypename != null" >
+        wks_typeName = #{wksTypename,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wksTypetitle != null" >
+        wks_typeTitle = #{wksTypetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="wksTypedetails != null" >
+        wks_typeDetails = #{wksTypedetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where wks_typeCode = #{wksTypecode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.Workstatype" >
+    update workstatype
+    set wks_typeName = #{wksTypename,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      wks_typeTitle = #{wksTypetitle,jdbcType=VARCHAR},
+      wks_typeDetails = #{wksTypedetails,jdbcType=LONGVARCHAR}
+    where wks_typeCode = #{wksTypecode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Workstatype" >
+    update workstatype
+    set wks_typeName = #{wksTypename,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      wks_typeTitle = #{wksTypetitle,jdbcType=VARCHAR}
+    where wks_typeCode = #{wksTypecode,jdbcType=INTEGER}
+  </update>
+</mapper>
