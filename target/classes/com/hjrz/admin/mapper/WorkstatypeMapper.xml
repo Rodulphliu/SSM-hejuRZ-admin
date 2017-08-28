@@ -121,7 +121,6 @@
   	from workstatype
   </select>
   
-  
   <!-- 根据工作站类型名称、工作站类型标题、工作站类型描述，进行模糊查询 -->
   <select id="selectByLike" resultMap="BaseResultMap" parameterType="com.hjrz.admin.entity.Workstatype">
   	select

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjrz.admin.dao.BrandMapper">
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Brand">
+    <id column="brandCode" jdbcType="BIGINT" property="brandCode" />
+    <result column="brandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="brandImgPath" jdbcType="VARCHAR" property="brandImgPath" />
+    <result column="brandIntroduction" jdbcType="VARCHAR" property="brandIntroduction" />
+    <result column="brandstate" jdbcType="VARCHAR" property="brandstate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    brandCode, brandName, brandImgPath, brandIntroduction, brandstate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from brand
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from brand
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Brand">
+    <selectKey keyProperty="brandCode" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into brand (brandName, brandImgPath, brandIntroduction, 
+      brandstate)
+    values (#{brandName,jdbcType=VARCHAR}, #{brandImgPath,jdbcType=VARCHAR}, #{brandIntroduction,jdbcType=VARCHAR}, 
+      #{brandstate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Brand">
+    <selectKey keyProperty="brandCode" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into brand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="brandName != null">
+        brandName,
+      </if>
+      <if test="brandImgPath != null">
+        brandImgPath,
+      </if>
+      <if test="brandIntroduction != null">
+        brandIntroduction,
+      </if>
+      <if test="brandstate != null">
+        brandstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandImgPath != null">
+        #{brandImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIntroduction != null">
+        #{brandIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="brandstate != null">
+        #{brandstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.BrandExample" resultType="java.lang.Integer">
+    select count(*) from brand
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Brand">
+    update brand
+    <set>
+      <if test="brandName != null">
+        brandName = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandImgPath != null">
+        brandImgPath = #{brandImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIntroduction != null">
+        brandIntroduction = #{brandIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="brandstate != null">
+        brandstate = #{brandstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Brand">
+    update brand
+    set brandName = #{brandName,jdbcType=VARCHAR},
+      brandImgPath = #{brandImgPath,jdbcType=VARCHAR},
+      brandIntroduction = #{brandIntroduction,jdbcType=VARCHAR},
+      brandstate = #{brandstate,jdbcType=VARCHAR}
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Brand">
+    <id column="brandCode" jdbcType="BIGINT" property="brandCode" />
+    <result column="brandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="brandImgPath" jdbcType="VARCHAR" property="brandImgPath" />
+    <result column="brandIntroduction" jdbcType="VARCHAR" property="brandIntroduction" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    brandCode, brandName, brandImgPath, brandIntroduction
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from brand
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from brand
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Brand">
+    <selectKey keyProperty="brandCode" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into brand (brandName, brandImgPath, brandIntroduction
+      )
+    values (#{brandName,jdbcType=VARCHAR}, #{brandImgPath,jdbcType=VARCHAR}, #{brandIntroduction,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Brand">
+    <selectKey keyProperty="brandCode" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into brand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="brandName != null">
+        brandName,
+      </if>
+      <if test="brandImgPath != null">
+        brandImgPath,
+      </if>
+      <if test="brandIntroduction != null">
+        brandIntroduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandImgPath != null">
+        #{brandImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIntroduction != null">
+        #{brandIntroduction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hjrz.admin.entity.BrandExample" resultType="java.lang.Integer">
+    select count(*) from brand
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Brand">
+    update brand
+    <set>
+      <if test="brandName != null">
+        brandName = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandImgPath != null">
+        brandImgPath = #{brandImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIntroduction != null">
+        brandIntroduction = #{brandIntroduction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Brand">
+    update brand
+    set brandName = #{brandName,jdbcType=VARCHAR},
+      brandImgPath = #{brandImgPath,jdbcType=VARCHAR},
+      brandIntroduction = #{brandIntroduction,jdbcType=VARCHAR}
+    where brandCode = #{brandCode,jdbcType=BIGINT}
+  </update>
+</mapper>
