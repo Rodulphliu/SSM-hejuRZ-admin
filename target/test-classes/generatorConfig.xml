@@ -50,8 +50,12 @@
         </javaClientGenerator>
 
         <!--对应数据库表名 -->
-       <table tableName="${table.tablename}" domainObjectName="${table.classname}" enableSelectByExample="false" 
-	    enableDeleteByExample="false" enableUpdateByExample="false">
+       <table tableName="${table.tablename}" domainObjectName="${table.classname}" 
+		       enableCountByExample="false" 
+		       enableUpdateByExample="false"
+	        enableDeleteByExample="false"
+	         enableSelectByExample="false"
+          selectByExampleQueryId="false">
 	    	<property name="useActualColumnNames" value="true"/>
 	    	<generatedKey column="${table.tableid}" sqlStatement="MySql" identity="true"/>
 	    </table>
