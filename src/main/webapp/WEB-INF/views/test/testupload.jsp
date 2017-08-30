@@ -11,19 +11,29 @@
 <body>
 		<h2>ajax upload</h2>
 			<form id="uploadForm">
-			<input type="file" name="uploadFileId">
-			<input type="button" id="upload" value="上传" onclick="ajaxFileUpload()">
-			<span class="tofileupload">..</span>
+				<input type="file" name="uploadFileId" onchange="showPreview(this)">
+				<img id="previewImg" style="width: 200px;height: 200px;"/>
+				<input type="button" id="upload" value="上传" onclick="ajaxFileUpload()">
+				<span class="tofileupload">..</span>
 			</form>
-		<script>
+	<script>
+			$("#myfile").change(function(){
+		        var file = this.files[0];
+		        var reader = new FileReader();
+		        reader.readAsDataURL(file);
+		        reader.onload = function(e){
+		            $("#previewImg").attr("src", e.target.result);
+		        };
+		    });
+			
 		function ajaxFileUpload(){
 			var formData = new FormData($("#uploadForm")[0]);  
-		     $.ajax({  
-		          url: 'http://localhost:8168/toupload/ajax/uploadFile.do' ,  
+		     $.ajax({
+		          url: '/toupload/ajax/uploadFile.do' ,  
 		          type: 'POST',  
-		          data: formData,  
+		          data: formData,
 		          async: false,  
-		          cache: false,  
+		          cache: false,
 		          contentType: false,  
 		          processData: false,  
 		          success: function (data) {
@@ -31,7 +41,7 @@
 		        		  alert(data.message);  
 		        	  }
 		         	 }
-		     });  
+		     	});  
 		     }
 	</script>
 </body>

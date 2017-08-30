@@ -33,7 +33,7 @@ public class BrandService {
 	 * @author RodulphLiu
 	 * @Date 2017年8月28日
 	 */
-	public List<Brand> findbyContion(Brand brand)
+	public List<Brand> findbyContion(Brand brand)throws Exception
 	{
 		List<Brand> brands = brandMapper.selectByCondition(brand);
 		return brands;
