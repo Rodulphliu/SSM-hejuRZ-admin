@@ -148,7 +148,6 @@
 		            </div>
 	       	 	 <!--我是主要内容 end-->
 	       	 </div>
-       </div>
 </body>
 <script src="<%=contextPath %>/js/admin/servicer/add_servicer.js"></script>
 </html>

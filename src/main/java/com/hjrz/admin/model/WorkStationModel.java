@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class WorkStationModel {
 	
-		private Integer worksCode;
+		private Long worksCode;
 		
 		private String worksName;
 		
@@ -32,11 +32,11 @@ public class WorkStationModel {
 		
 		private String siDetails;
 
-		public Integer getWorksCode() {
+		public Long getWorksCode() {
 			return worksCode;
 		}
 
-		public void setWorksCode(Integer worksCode) {
+		public void setWorksCode(Long worksCode) {
 			this.worksCode = worksCode;
 		}
 

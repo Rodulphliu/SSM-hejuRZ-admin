@@ -14,11 +14,11 @@
 				<li><a href="/servicer/queryServerInit.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;服务器属性管理</a></li>
 			</ul>
 		</li>
-			 <li class="has-sub">
+		 <li class="has-sub">
 			<a href="javascript:void(0);"><span>工作站管理</span>
 			<i class="fa fa-caret-right fa-fw pull-right"></i></a>
 			<ul class="sub-menu" style="display:none;">
-				<li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;工作站管理</a></li>
+				<li><a href="/worksatation/queryworkstation.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;工作站管理</a></li>
 				<li><a href="/WorkstationType/queryAll.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;工作站类型管理</a></li>
 				<li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;工作站属性管理</a></li>
 			</ul>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.Workstation_infoMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Workstation_info" >
+    <id column="wsinfoCode" property="wsinfoCode" jdbcType="BIGINT" />
+    <result column="worksCode" property="worksCode" jdbcType="BIGINT" />
+    <result column="wsProcessor" property="wsProcessor" jdbcType="VARCHAR" />
+    <result column="cpuMixNumber" property="cpuMixNumber" jdbcType="VARCHAR" />
+    <result column="wsbrandName" property="wsbrandName" jdbcType="VARCHAR" />
+    <result column="wsSize" property="wsSize" jdbcType="VARCHAR" />
+    <result column="wshardamout" property="wshardamout" jdbcType="VARCHAR" />
+    <result column="wsoperSystem" property="wsoperSystem" jdbcType="VARCHAR" />
+    <result column="wsCPURAM" property="wsCPURAM" jdbcType="VARCHAR" />
+    <result column="productdesc" property="productdesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Workstation_info" extends="BaseResultMap" >
+    <result column="wsDetails" property="wsDetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wsinfoCode, worksCode, wsProcessor, cpuMixNumber, wsbrandName, wsSize, wshardamout, 
+    wsoperSystem, wsCPURAM, productdesc
+  </sql>
+  <sql id="Blob_Column_List" >
+    wsDetails
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from workstation_info
+    where wsinfoCode = #{wsinfoCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from workstation_info
+    where wsinfoCode = #{wsinfoCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Workstation_info" >
+    <selectKey resultType="java.lang.Long" keyProperty="wsinfoCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into workstation_info (worksCode, wsProcessor, cpuMixNumber, 
+      wsbrandName, wsSize, wshardamout, 
+      wsoperSystem, wsCPURAM, productdesc, 
+      wsDetails)
+    values (#{worksCode,jdbcType=BIGINT}, #{wsProcessor,jdbcType=VARCHAR}, #{cpuMixNumber,jdbcType=VARCHAR}, 
+      #{wsbrandName,jdbcType=VARCHAR}, #{wsSize,jdbcType=VARCHAR}, #{wshardamout,jdbcType=VARCHAR}, 
+      #{wsoperSystem,jdbcType=VARCHAR}, #{wsCPURAM,jdbcType=VARCHAR}, #{productdesc,jdbcType=VARCHAR}, 
+      #{wsDetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Workstation_info" >
+    <selectKey resultType="java.lang.Long" keyProperty="wsinfoCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into workstation_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="worksCode != null" >
+        worksCode,
+      </if>
+      <if test="wsProcessor != null" >
+        wsProcessor,
+      </if>
+      <if test="cpuMixNumber != null" >
+        cpuMixNumber,
+      </if>
+      <if test="wsbrandName != null" >
+        wsbrandName,
+      </if>
+      <if test="wsSize != null" >
+        wsSize,
+      </if>
+      <if test="wshardamout != null" >
+        wshardamout,
+      </if>
+      <if test="wsoperSystem != null" >
+        wsoperSystem,
+      </if>
+      <if test="wsCPURAM != null" >
+        wsCPURAM,
+      </if>
+      <if test="productdesc != null" >
+        productdesc,
+      </if>
+      <if test="wsDetails != null" >
+        wsDetails,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="worksCode != null" >
+        #{worksCode,jdbcType=BIGINT},
+      </if>
+      <if test="wsProcessor != null" >
+        #{wsProcessor,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuMixNumber != null" >
+        #{cpuMixNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wsbrandName != null" >
+        #{wsbrandName,jdbcType=VARCHAR},
+      </if>
+      <if test="wsSize != null" >
+        #{wsSize,jdbcType=VARCHAR},
+      </if>
+      <if test="wshardamout != null" >
+        #{wshardamout,jdbcType=VARCHAR},
+      </if>
+      <if test="wsoperSystem != null" >
+        #{wsoperSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="wsCPURAM != null" >
+        #{wsCPURAM,jdbcType=VARCHAR},
+      </if>
+      <if test="productdesc != null" >
+        #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="wsDetails != null" >
+        #{wsDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Workstation_info" >
+    update workstation_info
+    <set >
+      <if test="worksCode != null" >
+        worksCode = #{worksCode,jdbcType=BIGINT},
+      </if>
+      <if test="wsProcessor != null" >
+        wsProcessor = #{wsProcessor,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuMixNumber != null" >
+        cpuMixNumber = #{cpuMixNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wsbrandName != null" >
+        wsbrandName = #{wsbrandName,jdbcType=VARCHAR},
+      </if>
+      <if test="wsSize != null" >
+        wsSize = #{wsSize,jdbcType=VARCHAR},
+      </if>
+      <if test="wshardamout != null" >
+        wshardamout = #{wshardamout,jdbcType=VARCHAR},
+      </if>
+      <if test="wsoperSystem != null" >
+        wsoperSystem = #{wsoperSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="wsCPURAM != null" >
+        wsCPURAM = #{wsCPURAM,jdbcType=VARCHAR},
+      </if>
+      <if test="productdesc != null" >
+        productdesc = #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="wsDetails != null" >
+        wsDetails = #{wsDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where wsinfoCode = #{wsinfoCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.Workstation_info" >
+    update workstation_info
+    set worksCode = #{worksCode,jdbcType=BIGINT},
+      wsProcessor = #{wsProcessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{cpuMixNumber,jdbcType=VARCHAR},
+      wsbrandName = #{wsbrandName,jdbcType=VARCHAR},
+      wsSize = #{wsSize,jdbcType=VARCHAR},
+      wshardamout = #{wshardamout,jdbcType=VARCHAR},
+      wsoperSystem = #{wsoperSystem,jdbcType=VARCHAR},
+      wsCPURAM = #{wsCPURAM,jdbcType=VARCHAR},
+      productdesc = #{productdesc,jdbcType=VARCHAR},
+      wsDetails = #{wsDetails,jdbcType=LONGVARCHAR}
+    where wsinfoCode = #{wsinfoCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Workstation_info" >
+    update workstation_info
+    set worksCode = #{worksCode,jdbcType=BIGINT},
+      wsProcessor = #{wsProcessor,jdbcType=VARCHAR},
+      cpuMixNumber = #{cpuMixNumber,jdbcType=VARCHAR},
+      wsbrandName = #{wsbrandName,jdbcType=VARCHAR},
+      wsSize = #{wsSize,jdbcType=VARCHAR},
+      wshardamout = #{wshardamout,jdbcType=VARCHAR},
+      wsoperSystem = #{wsoperSystem,jdbcType=VARCHAR},
+      wsCPURAM = #{wsCPURAM,jdbcType=VARCHAR},
+      productdesc = #{productdesc,jdbcType=VARCHAR}
+    where wsinfoCode = #{wsinfoCode,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -2,210 +2,94 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hjrz.admin.dao.WorkstationMapper" >
   <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Workstation" >
-    <id column="worksCode" property="workscode" jdbcType="BIGINT" />
-    <result column="worksName" property="worksname" jdbcType="VARCHAR" />
-    <result column="worksType" property="workstype" jdbcType="INTEGER" />
-    <result column="serverState" property="serverstate" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <id column="worksCode" property="worksCode" jdbcType="BIGINT" />
+    <result column="worksName" property="worksName" jdbcType="VARCHAR" />
+    <result column="worksType" property="worksType" jdbcType="INTEGER" />
+    <result column="worksState" property="worksState" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
   <sql id="Base_Column_List" >
-    worksCode, worksName, worksType, serverState, create_time
+    worksCode, worksName, worksType, worksState, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hjrz.admin.entity.WorkstationExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from workstation
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from workstation
-    where worksCode = #{workscode,jdbcType=BIGINT}
+    where worksCode = #{worksCode,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from workstation
-    where worksCode = #{workscode,jdbcType=BIGINT}
+    where worksCode = #{worksCode,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hjrz.admin.entity.WorkstationExample" >
-    delete from workstation
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
+  
   <insert id="insert" parameterType="com.hjrz.admin.entity.Workstation" >
-    insert into workstation (worksCode, worksName, worksType, 
-      serverState, create_time)
-    values (#{workscode,jdbcType=BIGINT}, #{worksname,jdbcType=VARCHAR}, #{workstype,jdbcType=INTEGER}, 
-      #{serverstate,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+    <selectKey resultType="java.lang.Long" keyProperty="worksCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into workstation (worksName, worksType, worksState, 
+      create_time)
+    values (#{worksName,jdbcType=VARCHAR}, #{worksType,jdbcType=INTEGER}, #{worksState,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Workstation" >
+    <selectKey resultType="java.lang.Long" keyProperty="worksCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into workstation
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="workscode != null" >
-        worksCode,
-      </if>
-      <if test="worksname != null" >
+      <if test="worksName != null" >
         worksName,
       </if>
-      <if test="workstype != null" >
+      <if test="worksType != null" >
         worksType,
       </if>
-      <if test="serverstate != null" >
-        serverState,
+      <if test="worksState != null" >
+        worksState,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="workscode != null" >
-        #{workscode,jdbcType=BIGINT},
+      <if test="worksName != null" >
+        #{worksName,jdbcType=VARCHAR},
       </if>
-      <if test="worksname != null" >
-        #{worksname,jdbcType=VARCHAR},
+      <if test="worksType != null" >
+        #{worksType,jdbcType=INTEGER},
       </if>
-      <if test="workstype != null" >
-        #{workstype,jdbcType=INTEGER},
+      <if test="worksState != null" >
+        #{worksState,jdbcType=VARCHAR},
       </if>
-      <if test="serverstate != null" >
-        #{serverstate,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hjrz.admin.entity.WorkstationExample" resultType="java.lang.Integer" >
-    select count(*) from workstation
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update workstation
-    <set >
-      <if test="record.workscode != null" >
-        worksCode = #{record.workscode,jdbcType=BIGINT},
-      </if>
-      <if test="record.worksname != null" >
-        worksName = #{record.worksname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.workstype != null" >
-        worksType = #{record.workstype,jdbcType=INTEGER},
-      </if>
-      <if test="record.serverstate != null" >
-        serverState = #{record.serverstate,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null" >
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update workstation
-    set worksCode = #{record.workscode,jdbcType=BIGINT},
-      worksName = #{record.worksname,jdbcType=VARCHAR},
-      worksType = #{record.workstype,jdbcType=INTEGER},
-      serverState = #{record.serverstate,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Workstation" >
     update workstation
     <set >
-      <if test="worksname != null" >
-        worksName = #{worksname,jdbcType=VARCHAR},
+      <if test="worksName != null" >
+        worksName = #{worksName,jdbcType=VARCHAR},
       </if>
-      <if test="workstype != null" >
-        worksType = #{workstype,jdbcType=INTEGER},
+      <if test="worksType != null" >
+        worksType = #{worksType,jdbcType=INTEGER},
       </if>
-      <if test="serverstate != null" >
-        serverState = #{serverstate,jdbcType=VARCHAR},
+      <if test="worksState != null" >
+        worksState = #{worksState,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where worksCode = #{workscode,jdbcType=BIGINT}
+    where worksCode = #{worksCode,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Workstation" >
     update workstation
-    set worksName = #{worksname,jdbcType=VARCHAR},
-      worksType = #{workstype,jdbcType=INTEGER},
-      serverState = #{serverstate,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
-    where worksCode = #{workscode,jdbcType=BIGINT}
+    set worksName = #{worksName,jdbcType=VARCHAR},
+      worksType = #{worksType,jdbcType=INTEGER},
+      worksState = #{worksState,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP}
+    where worksCode = #{worksCode,jdbcType=BIGINT}
   </update>
 </mapper>
