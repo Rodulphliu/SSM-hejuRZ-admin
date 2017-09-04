@@ -35,6 +35,7 @@
     delete from workstation_info
     where wsinfoCode = #{wsinfoCode,jdbcType=BIGINT}
   </delete>
+  
   <insert id="insert" parameterType="com.hjrz.admin.entity.Workstation_info" >
     <selectKey resultType="java.lang.Long" keyProperty="wsinfoCode" order="AFTER" >
       SELECT LAST_INSERT_ID()
@@ -48,6 +49,7 @@
       #{wsoperSystem,jdbcType=VARCHAR}, #{wsCPURAM,jdbcType=VARCHAR}, #{productdesc,jdbcType=VARCHAR}, 
       #{wsDetails,jdbcType=LONGVARCHAR})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Workstation_info" >
     <selectKey resultType="java.lang.Long" keyProperty="wsinfoCode" order="AFTER" >
       SELECT LAST_INSERT_ID()

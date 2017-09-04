@@ -8,9 +8,85 @@
     <result column="worksState" property="worksState" jdbcType="VARCHAR" />
     <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
   </resultMap>
+  
+  <resultMap id="QueryforWorkStationMap" type="com.hjrz.admin.model.WorkStationModel" >
+    <id column="worksCode" property="worksCode" jdbcType="BIGINT" />
+    <result column="worksName" property="worksName" jdbcType="VARCHAR" />
+    <result column="wks_typeName" property="wksTypename" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="wsProcessor" property="wsProcessor" jdbcType="VARCHAR" />
+    <result column="cpuMixNumber" property="cpuMixNumber" jdbcType="VARCHAR" />
+    <result column="wsbrandName" property="wsbrandName" jdbcType="VARCHAR" />
+    <result column="wsSize" property="wsSize" jdbcType="VARCHAR" />
+    <result column="wshardamout" property="wshardamout" jdbcType="VARCHAR" />
+    <result column="wsoperSystem" property="wsoperSystem" jdbcType="VARCHAR" />
+    <result column="wsCPURAM" property="wsCPURAM" jdbcType="VARCHAR" />
+    <result column="productdesc" property="productdesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.model.WorkStationModel" extends="QueryforWorkStationMap" >
+    <result column="wsDetails" property="wsDetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
   <sql id="Base_Column_List" >
     worksCode, worksName, worksType, worksState, create_time
   </sql>
+  
+  <select id="queryforworkstationInfo" resultMap="QueryforWorkStationMap"
+  	parameterType="com.hjrz.admin.form.WorkStationQuery">
+	  SELECT
+				w.worksCode,
+				w.worksName,
+				wt.wks_typeName,
+				w.create_time,
+				wi.wsProcessor,
+				wi.cpuMixNumber,
+				wi.wsbrandName,
+				wi.wsSize,
+				wi.wshardamout,
+				wi.wsoperSystem,
+				wi.wsCPURAM,
+				wi.productdesc,
+				wi.wsDetails
+	FROM
+				workstation w
+	LEFT JOIN workstation_info wi ON w.worksCode = wi.worksCode
+	LEFT JOIN workstatype wt ON w.worksType = wt.wks_typeCode
+	  <where>
+	  		<if test="worksName!=null">
+	  			and w.worksName like CONCAT('%',#{worksName,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="wksTypename!=null">
+	  			and wt.wks_typeName like CONCAT('%',#{wksTypename,jdbcType=VARCHAR},'%')
+	  		</if>
+	  </where>
+  </select>
+ 
+  <select id="queryforworkstationInfobyworksCode" resultMap="ResultMapWithBLOBs"
+  		parameterType="java.lang.Long">
+  		 SELECT
+				w.worksCode,
+				w.worksName,
+				wt.wks_typeName,
+				w.create_time,
+				wi.wsProcessor,
+				wi.cpuMixNumber,
+				wi.wsbrandName,
+				wi.wsSize,
+				wi.wshardamout,
+				wi.wsoperSystem,
+				wi.wsCPURAM,
+				wi.productdesc,
+				wi.wsDetails
+	FROM
+				workstation w
+	LEFT JOIN workstation_info wi ON w.worksCode = wi.worksCode
+	LEFT JOIN workstatype wt ON w.worksType = wt.wks_typeCode
+  	where
+			w.worksCode = #{worksCode,jdbcType=INTEGER}
+  </select>
+  
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -66,6 +142,8 @@
       </if>
     </trim>
   </insert>
+  
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Workstation" >
     update workstation
     <set >

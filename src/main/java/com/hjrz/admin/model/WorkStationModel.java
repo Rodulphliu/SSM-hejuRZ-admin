@@ -10,7 +10,7 @@ public class WorkStationModel {
 		
 		private Integer worksType;
 		
-		private String wks_typeName;
+		private String wksTypename;
 		
 		private Date create_time;
 		
@@ -18,19 +18,19 @@ public class WorkStationModel {
 		
 		private String cpuMixNumber;
 		
-		private String sibrandName;
+		private String wsbrandName;
 		
-		private String siSize;
+		private String wsSize;
 		
-		private String sihardamout;
+		private String wshardamout;
 		
-		private String sioperSystem;
+		private String wsoperSystem;
 		
-		private String siCPURAM;
+		private String wsCPURAM;
 		
 		private String productdesc;
 		
-		private String siDetails;
+		private String wsDetails;
 
 		public Long getWorksCode() {
 			return worksCode;
@@ -56,12 +56,12 @@ public class WorkStationModel {
 			this.worksType = worksType;
 		}
 
-		public String getWks_typeName() {
-			return wks_typeName;
+		public String getWksTypename() {
+			return wksTypename;
 		}
 
-		public void setWks_typeName(String wks_typeName) {
-			this.wks_typeName = wks_typeName;
+		public void setWksTypename(String wksTypename) {
+			this.wksTypename = wksTypename;
 		}
 
 		public Date getCreate_time() {
@@ -88,44 +88,44 @@ public class WorkStationModel {
 			this.cpuMixNumber = cpuMixNumber;
 		}
 
-		public String getSibrandName() {
-			return sibrandName;
+		public String getWsbrandName() {
+			return wsbrandName;
 		}
 
-		public void setSibrandName(String sibrandName) {
-			this.sibrandName = sibrandName;
+		public void setWsbrandName(String wsbrandName) {
+			this.wsbrandName = wsbrandName;
 		}
 
-		public String getSiSize() {
-			return siSize;
+		public String getWsSize() {
+			return wsSize;
 		}
 
-		public void setSiSize(String siSize) {
-			this.siSize = siSize;
+		public void setWsSize(String wsSize) {
+			this.wsSize = wsSize;
 		}
 
-		public String getSihardamout() {
-			return sihardamout;
+		public String getWshardamout() {
+			return wshardamout;
 		}
 
-		public void setSihardamout(String sihardamout) {
-			this.sihardamout = sihardamout;
+		public void setWshardamout(String wshardamout) {
+			this.wshardamout = wshardamout;
 		}
 
-		public String getSioperSystem() {
-			return sioperSystem;
+		public String getWsoperSystem() {
+			return wsoperSystem;
 		}
 
-		public void setSioperSystem(String sioperSystem) {
-			this.sioperSystem = sioperSystem;
+		public void setWsoperSystem(String wsoperSystem) {
+			this.wsoperSystem = wsoperSystem;
 		}
 
-		public String getSiCPURAM() {
-			return siCPURAM;
+		public String getWsCPURAM() {
+			return wsCPURAM;
 		}
 
-		public void setSiCPURAM(String siCPURAM) {
-			this.siCPURAM = siCPURAM;
+		public void setWsCPURAM(String wsCPURAM) {
+			this.wsCPURAM = wsCPURAM;
 		}
 
 		public String getProductdesc() {
@@ -136,12 +136,13 @@ public class WorkStationModel {
 			this.productdesc = productdesc;
 		}
 
-		public String getSiDetails() {
-			return siDetails;
+		public String getWsDetails() {
+			return wsDetails;
 		}
 
-		public void setSiDetails(String siDetails) {
-			this.siDetails = siDetails;
+		public void setWsDetails(String wsDetails) {
+			this.wsDetails = wsDetails;
 		}
+
 		
 }

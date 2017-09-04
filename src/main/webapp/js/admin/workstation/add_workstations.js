@@ -5,13 +5,13 @@ $(function(){
 					WorkStationModel.worksType = $("#worksType").val();
 					WorkStationModel.wsProcessor = $("#wsProcessor option:selected").text();
 					WorkStationModel.cpuMixNumber = $("#cpuMixNumber").val();
-					WorkStationModel.sibrandName = $("#sibrandName option:selected").text();
-					WorkStationModel.siSize = $("#siSize").val();
-					WorkStationModel.sihardamount = $("#sihardamout").val();
-					WorkStationModel.sioperSystem = $("#sioperSystem option:selected").text();
-					WorkStationModel.siCPURAM = $("#siCPURAM").val();
+					WorkStationModel.wsbrandName = $("#wsbrandName option:selected").text();
+					WorkStationModel.wsSize = $("#wsSize").val();
+					WorkStationModel.wshardamout = $("#wshardamout").val();
+					WorkStationModel.wsoperSystem = $("#wsoperSystem option:selected").text();
+					WorkStationModel.wsCPURAM = $("#wsCPURAM").val();
 					WorkStationModel.productdesc = $("#productdesc").val();
-					WorkStationModel.siDetails = $("#siDetails").val();
+					WorkStationModel.wsDetails = $("#wsDetails").val();
 					
 					if( $("#worksName").val()!="" && $("#worksType").val()!="" && $("#wsProcessor").val()!=""){
 						$.ajax({

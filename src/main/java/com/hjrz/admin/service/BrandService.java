@@ -39,5 +39,14 @@ public class BrandService {
 		return brands;
 	}
 	
-	
+	/** 
+	 * @Title getbyId 
+	 * @Description TODO(根据ID获取品牌) 
+	 * @author RodulphLiu
+	 * @Date 2017年9月4日
+	 */
+	public Brand getbyId(Long brandCode)throws Exception{
+		Brand brand = brandMapper.selectByPrimaryKey(brandCode);
+		return brand;
+	}
 }

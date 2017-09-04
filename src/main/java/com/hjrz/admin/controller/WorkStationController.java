@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.data.ExchangeData;
 import com.hjrz.admin.entity.Workstatype;
+import com.hjrz.admin.form.WorkStationQuery;
 import com.hjrz.admin.model.WorkStationModel;
 import com.hjrz.admin.service.WorkStationService;
 import com.hjrz.admin.service.WorkstatypeService;
@@ -66,4 +68,41 @@ public class WorkStationController {
 			return exchangeData;
 		}
 		
+		/** 
+		 * @Title queryWorkstation 
+		 * @Description TODO(获取全部/条件查询) 
+		 * @author RodulphLiu
+		 * @Date 2017年9月4日
+		 */
+		public ModelAndView queryWorkstation(WorkStationQuery workStationQuery){
+			ModelAndView modelAndView = new ModelAndView();
+			try {
+				List<WorkStationModel> workStationModels = workStationService.findbyContion(workStationQuery);
+				modelAndView.addObject(workStationModels);
+				modelAndView.setViewName("workstation/workstainfo_list");
+			} catch (Exception e) {
+				modelAndView.addObject("message","获取工作站失败，请联系管理员");
+				modelAndView.setViewName("500");
+			}
+			return modelAndView;
+		}
+		
+		/** 
+		 * @Title queryWorkstationById 
+		 * @Description TODO(根据ID获取工作站详细信息) 
+		 * @author RodulphLiu
+		 * @Date 2017年9月4日
+		 */
+		public ModelAndView queryWorkstationById(Long worksCode){
+			ModelAndView modelAndView = new ModelAndView();
+			try {
+				WorkStationModel workStationModel = workStationService.getbyid(worksCode);
+				modelAndView.addObject("workStationModel",workStationModel);
+				modelAndView.setViewName("workstation/workstainfo_detail");
+			} catch (Exception e) {
+				modelAndView.addObject("message","获取工作站信息失败，请联系管理员");
+				modelAndView.setViewName("500");
+			}
+			return modelAndView;
+		}
 }

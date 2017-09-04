@@ -73,7 +73,7 @@
 								   <div class="form-group">
 								    <label class="col-sm-2 control-label">工作站品牌</label>
 								    <div class="col-sm-7">
-								      <select class="selectpicker form-control" data-live-search="true" data-size="5" id="sibrandName">
+								      <select class="selectpicker form-control" data-live-search="true" data-size="5" id="wsbrandName">
 								 	  <option value="" disabled selected="selected">请选择品牌</option>
 									  <option>戴尔（DELL）</option>
 									  <option>联想（Lenovo）</option>
@@ -89,21 +89,21 @@
 								   <div class="form-group">
 								    <label class="col-sm-2 control-label">尺寸规格</label>
 								    <div class="col-sm-7">
-								      <input type="text" class="form-control" placeholder="如1U、2U、3U、4U" id="siSize">
+								      <input type="text" class="form-control" placeholder="如1U、2U、3U、4U" id="wsSize">
 								    </div>
 								  </div>
 								  
 								  <div class="form-group">
 								    <label class="col-sm-2 control-label">硬盘容量</label>
 								    <div class="col-sm-7">
-								      <input type="text" class="form-control" placeholder="如“1T-2T”，“8T以上”" id="sihardamount">
+								      <input type="text" class="form-control" placeholder="如“1T-2T”，“8T以上”" id="wshardamout">
 								    </div>
 								  </div>
 								  
 								  <div class="form-group">
 								    <label class="col-sm-2 control-label">操作系统</label>
 								    <div class="col-sm-7">
-								      <select class="selectpicker form-control" data-live-search="true" data-size="5" id="sioperSystem">
+								      <select class="selectpicker form-control" data-live-search="true" data-size="5" id="wsoperSystem">
 								 	  <option value="" disabled selected="selected">请选择服务器操作系统</option>
 									  <option>Microsoft Windows10</option>
 									  <option>Microsoft Windows7</option>
@@ -118,7 +118,7 @@
 								  <div class="form-group">
 								    <label class="col-sm-2 control-label">内存容量</label>
 								    <div class="col-sm-7">
-								      <input type="text" class="form-control" placeholder="如“8GB”、“16GB”、“32GB”" id="siCPURAM">
+								      <input type="text" class="form-control" placeholder="如“8GB”、“16GB”、“32GB”" id="wsCPURAM">
 								    </div>
 								  </div>
 								  
@@ -132,7 +132,7 @@
 								  <div class="form-group">
 								    <label class="col-sm-2 control-label">详细描述</label>
 								    <div class="col-sm-7">
-								    <textarea class="form-control" rows="3" style="resize:none" placeholder="详细的描述产品的特点和功能" id="siDetails"></textarea>
+								    <textarea class="form-control" rows="3" style="resize:none" placeholder="详细的描述产品的特点和功能" id="wsDetails"></textarea>
 								    </div>
 								  </div>
 								  

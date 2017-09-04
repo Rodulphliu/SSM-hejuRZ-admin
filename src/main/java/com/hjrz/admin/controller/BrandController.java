@@ -1,5 +1,7 @@
 package com.hjrz.admin.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.data.ExchangeData;
 import com.hjrz.admin.entity.Brand;
@@ -50,5 +53,41 @@ public class BrandController {
 		return exchangeData;
 	}
 	
+	/** 
+	 * @Title queryBrand 
+	 * @Description TODO(获取全部/条件查询) 
+	 * @author RodulphLiu
+	 * @Date 2017年9月4日
+	 */
+	public ModelAndView queryBrand(Brand brand){
+		ModelAndView modelAndView = new ModelAndView();
+		try {
+			List<Brand> brands = brandService.findbyContion(brand);
+			modelAndView.addObject("brands",brands);
+			modelAndView.setViewName("brand/brand_list");
+		} catch (Exception e) {
+			modelAndView.addObject("message","获取品牌失败,请联系管理员");
+			modelAndView.setViewName("500");
+		}
+		return modelAndView;
+	}
 	
+	/** 
+	 * @Title querybrandById 
+	 * @Description TODO(根据ID获取品牌详细信息) 
+	 * @author RodulphLiu
+	 * @Date 2017年9月4日
+	 */
+	public ModelAndView querybrandById(Long brandCode){
+		ModelAndView modelAndView = new ModelAndView();
+		try {
+			Brand brand = brandService.getbyId(brandCode);
+			modelAndView.addObject(brand);
+			modelAndView.setViewName("");
+		} catch (Exception e) {
+			modelAndView.addObject("message","获取品牌失败，请联系管理员");
+			modelAndView.setViewName("brand/brand_detail");
+		}
+		return modelAndView;
+	}
 }

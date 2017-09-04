@@ -27,7 +27,7 @@
     <result column="siDetails" property="siDetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   
-  <select id="queryforServerInfo" resultMap="QueryforListMap" 
+  <select id="queryforServerInfo" resultMap="ResultMapWithBLOBs" 
   		parameterType="com.hjrz.admin.form.ServicerQuery">  
       SELECT
 			s.serverCode,

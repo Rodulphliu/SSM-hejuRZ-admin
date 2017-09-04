@@ -12,12 +12,14 @@
   <sql id="Base_Column_List" >
     brandCode, brandName, brandImgPath, brandIntroduction, brandstate, create_time
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from brand
     where brandCode = #{brandCode,jdbcType=BIGINT}
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from brand
     where brandCode = #{brandCode,jdbcType=BIGINT}
