@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.HardwareMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Hardware" >
+    <id column="hardwareCode" property="hardwareCode" jdbcType="BIGINT" />
+    <result column="hardwareName" property="hardwareName" jdbcType="VARCHAR" />
+    <result column="brandCode" property="brandCode" jdbcType="BIGINT" />
+    <result column="hardwareType" property="hardwareType" jdbcType="BIGINT" />
+    <result column="hardwareState" property="hardwareState" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hardwareCode, hardwareName, brandCode, hardwareType, hardwareState, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hardware
+    where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hardware
+    where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Hardware" >
+    <selectKey resultType="java.lang.Long" keyProperty="hardwareCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into hardware (hardwareName, brandCode, hardwareType, 
+      hardwareState, create_time)
+    values (#{hardwareName,jdbcType=VARCHAR}, #{brandCode,jdbcType=BIGINT}, #{hardwareType,jdbcType=BIGINT}, 
+      #{hardwareState,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Hardware" >
+    <selectKey resultType="java.lang.Long" keyProperty="hardwareCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into hardware
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hardwareName != null" >
+        hardwareName,
+      </if>
+      <if test="brandCode != null" >
+        brandCode,
+      </if>
+      <if test="hardwareType != null" >
+        hardwareType,
+      </if>
+      <if test="hardwareState != null" >
+        hardwareState,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hardwareName != null" >
+        #{hardwareName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCode != null" >
+        #{brandCode,jdbcType=BIGINT},
+      </if>
+      <if test="hardwareType != null" >
+        #{hardwareType,jdbcType=BIGINT},
+      </if>
+      <if test="hardwareState != null" >
+        #{hardwareState,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Hardware" >
+    update hardware
+    <set >
+      <if test="hardwareName != null" >
+        hardwareName = #{hardwareName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandCode != null" >
+        brandCode = #{brandCode,jdbcType=BIGINT},
+      </if>
+      <if test="hardwareType != null" >
+        hardwareType = #{hardwareType,jdbcType=BIGINT},
+      </if>
+      <if test="hardwareState != null" >
+        hardwareState = #{hardwareState,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Hardware" >
+    update hardware
+    set hardwareName = #{hardwareName,jdbcType=VARCHAR},
+      brandCode = #{brandCode,jdbcType=BIGINT},
+      hardwareType = #{hardwareType,jdbcType=BIGINT},
+      hardwareState = #{hardwareState,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP}
+    where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
+  </update>
+</mapper>

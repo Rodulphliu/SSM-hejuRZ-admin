@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.HardwaretypeMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Hardwaretype" >
+    <id column="hardtypeCode" property="hardtypeCode" jdbcType="BIGINT" />
+    <result column="hardtypeName" property="hardtypeName" jdbcType="VARCHAR" />
+    <result column="hardtypeImgPath" property="hardtypeImgPath" jdbcType="VARCHAR" />
+    <result column="hardtypeIntroduction" property="hardtypeIntroduction" jdbcType="VARCHAR" />
+    <result column="hardtypestate" property="hardtypestate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hardtypeCode, hardtypeName, hardtypeImgPath, hardtypeIntroduction, hardtypestate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hardwaretype
+    where hardtypeCode = #{hardtypeCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hardwaretype
+    where hardtypeCode = #{hardtypeCode,jdbcType=BIGINT}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Hardwaretype" >
+    insert into hardwaretype (hardtypeCode, hardtypeName, hardtypeImgPath, 
+      hardtypeIntroduction, hardtypestate)
+    values (#{hardtypeCode,jdbcType=BIGINT}, #{hardtypeName,jdbcType=VARCHAR}, #{hardtypeImgPath,jdbcType=VARCHAR}, 
+      #{hardtypeIntroduction,jdbcType=VARCHAR}, #{hardtypestate,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Hardwaretype" >
+    insert into hardwaretype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hardtypeCode != null" >
+        hardtypeCode,
+      </if>
+      <if test="hardtypeName != null" >
+        hardtypeName,
+      </if>
+      <if test="hardtypeImgPath != null" >
+        hardtypeImgPath,
+      </if>
+      <if test="hardtypeIntroduction != null" >
+        hardtypeIntroduction,
+      </if>
+      <if test="hardtypestate != null" >
+        hardtypestate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hardtypeCode != null" >
+        #{hardtypeCode,jdbcType=BIGINT},
+      </if>
+      <if test="hardtypeName != null" >
+        #{hardtypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="hardtypeImgPath != null" >
+        #{hardtypeImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="hardtypeIntroduction != null" >
+        #{hardtypeIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="hardtypestate != null" >
+        #{hardtypestate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Hardwaretype" >
+    update hardwaretype
+    <set >
+      <if test="hardtypeName != null" >
+        hardtypeName = #{hardtypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="hardtypeImgPath != null" >
+        hardtypeImgPath = #{hardtypeImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="hardtypeIntroduction != null" >
+        hardtypeIntroduction = #{hardtypeIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="hardtypestate != null" >
+        hardtypestate = #{hardtypestate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hardtypeCode = #{hardtypeCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Hardwaretype" >
+    update hardwaretype
+    set hardtypeName = #{hardtypeName,jdbcType=VARCHAR},
+      hardtypeImgPath = #{hardtypeImgPath,jdbcType=VARCHAR},
+      hardtypeIntroduction = #{hardtypeIntroduction,jdbcType=VARCHAR},
+      hardtypestate = #{hardtypestate,jdbcType=VARCHAR}
+    where hardtypeCode = #{hardtypeCode,jdbcType=BIGINT}
+  </update>
+</mapper>

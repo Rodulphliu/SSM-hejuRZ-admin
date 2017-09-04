@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.Hardware_infoMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Hardware_info" >
+    <id column="hardwareinfoCode" property="hardwareinfoCode" jdbcType="BIGINT" />
+    <result column="hardwareCode" property="hardwareCode" jdbcType="BIGINT" />
+    <result column="hardwareImgpath" property="hardwareImgpath" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Hardware_info" extends="BaseResultMap" >
+    <result column="hardwareinfoDetail" property="hardwareinfoDetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hardwareinfoCode, hardwareCode, hardwareImgpath
+  </sql>
+  <sql id="Blob_Column_List" >
+    hardwareinfoDetail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from hardware_info
+    where hardwareinfoCode = #{hardwareinfoCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hardware_info
+    where hardwareinfoCode = #{hardwareinfoCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Hardware_info" >
+    <selectKey resultType="java.lang.Long" keyProperty="hardwareinfoCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into hardware_info (hardwareCode, hardwareImgpath, hardwareinfoDetail
+      )
+    values (#{hardwareCode,jdbcType=BIGINT}, #{hardwareImgpath,jdbcType=VARCHAR}, #{hardwareinfoDetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Hardware_info" >
+    <selectKey resultType="java.lang.Long" keyProperty="hardwareinfoCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into hardware_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hardwareCode != null" >
+        hardwareCode,
+      </if>
+      <if test="hardwareImgpath != null" >
+        hardwareImgpath,
+      </if>
+      <if test="hardwareinfoDetail != null" >
+        hardwareinfoDetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hardwareCode != null" >
+        #{hardwareCode,jdbcType=BIGINT},
+      </if>
+      <if test="hardwareImgpath != null" >
+        #{hardwareImgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareinfoDetail != null" >
+        #{hardwareinfoDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Hardware_info" >
+    update hardware_info
+    <set >
+      <if test="hardwareCode != null" >
+        hardwareCode = #{hardwareCode,jdbcType=BIGINT},
+      </if>
+      <if test="hardwareImgpath != null" >
+        hardwareImgpath = #{hardwareImgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareinfoDetail != null" >
+        hardwareinfoDetail = #{hardwareinfoDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where hardwareinfoCode = #{hardwareinfoCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.Hardware_info" >
+    update hardware_info
+    set hardwareCode = #{hardwareCode,jdbcType=BIGINT},
+      hardwareImgpath = #{hardwareImgpath,jdbcType=VARCHAR},
+      hardwareinfoDetail = #{hardwareinfoDetail,jdbcType=LONGVARCHAR}
+    where hardwareinfoCode = #{hardwareinfoCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Hardware_info" >
+    update hardware_info
+    set hardwareCode = #{hardwareCode,jdbcType=BIGINT},
+      hardwareImgpath = #{hardwareImgpath,jdbcType=VARCHAR}
+    where hardwareinfoCode = #{hardwareinfoCode,jdbcType=BIGINT}
+  </update>
+</mapper>
