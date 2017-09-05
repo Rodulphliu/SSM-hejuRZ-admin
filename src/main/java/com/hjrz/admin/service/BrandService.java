@@ -40,7 +40,7 @@ public class BrandService {
 	}
 	
 	/** 
-	 * @Title getbyId 
+	 * @Title getbyId
 	 * @Description TODO(根据ID获取品牌) 
 	 * @author RodulphLiu
 	 * @Date 2017年9月4日

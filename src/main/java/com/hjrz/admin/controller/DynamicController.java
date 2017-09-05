@@ -37,7 +37,7 @@ public class DynamicController {
         try {
            dynamicService.addDynamic(dynamicForm);
         } catch (Exception e) {
-          // TODO: handle exception
+        	
         }
         return modelAndView;
       }

@@ -22,7 +22,7 @@ public class UploadController {
 	}
 	
 	
-	@SuppressWarnings({ "rawtypes", "unused" })
+	@SuppressWarnings({ "rawtypes" })
 	@RequestMapping(value="/ajax/uploadFile.do",produces = {"application/json"})
 	public @ResponseBody ExchangeData uploadfile(@RequestParam("uploadFileId") MultipartFile file,
 			HttpServletRequest request)

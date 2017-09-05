@@ -32,7 +32,7 @@ public class BrandController {
 	 */
 	@RequestMapping(value="/addbrand.do")
 	public String toaddBrand(HttpServletRequest request){
-		return "brand/add_brand";
+		return "brand/brand_add";
 	}
 	
 	/** 
@@ -72,7 +72,7 @@ public class BrandController {
 		return modelAndView;
 	}
 	
-	/** 
+	/**
 	 * @Title querybrandById 
 	 * @Description TODO(根据ID获取品牌详细信息) 
 	 * @author RodulphLiu

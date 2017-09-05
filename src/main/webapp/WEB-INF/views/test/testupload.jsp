@@ -11,10 +11,9 @@
 <body>
 		<h2>ajax upload</h2>
 			<form id="uploadForm">
-				<input type="file" name="uploadFileId" onchange="showPreview(this)">
-				<img id="previewImg" style="width: 200px;height: 200px;"/>
-				<input type="button" id="upload" value="上传" onclick="ajaxFileUpload()">
-				<span class="tofileupload">..</span>
+				<input id="myfile"  name="uploadFileId" type="file" onchange="showPreview(this)" style="display:none"/>
+				<img id="previewImg" src="img/hu.jpg" style="width:200px; height:200px;" onclick="F_Open_dialog()"/>
+				<input type="button" id="upload" value="上传" onclick="ajaxFileUpload()"/>
 			</form>
 	<script>
 			$("#myfile").change(function(){
@@ -24,22 +23,27 @@
 		        reader.onload = function(e){
 		            $("#previewImg").attr("src", e.target.result);
 		        };
-		    });
+		 });
+ 
+			function F_Open_dialog() 
+			{ 
+			   $("#myfile").click(); 
+			} 
 			
-		function ajaxFileUpload(){
+			function ajaxFileUpload(){
 			var formData = new FormData($("#uploadForm")[0]);  
 		     $.ajax({
-		          url: '/toupload/ajax/uploadFile.do' ,  
-		          type: 'POST',  
-		          data: formData,
-		          async: false,  
-		          cache: false,
-		          contentType: false,  
-		          processData: false,  
-		          success: function (data) {
-		        	  if(data.callStatus == "SUCCESS"){
-		        		  alert(data.message);  
-		        	  }
+		    	 url: 'http://localhost:8168/toupload/ajax/uploadFile.do' ,  
+		    		          type: 'POST',  
+		    	 	          data: formData,  
+		    	 	          async: false,  
+		    	 	          cache: false,  
+		    	 	          contentType: false,  
+		    	 	          processData: false,  
+		    	 	          success: function (data) {
+		    	 	        	  if(data.callStatus == "SUCCESS"){
+		    	 	        		  alert(data.message);  
+		    	 	        	  }
 		         	 }
 		     	});  
 		     }
