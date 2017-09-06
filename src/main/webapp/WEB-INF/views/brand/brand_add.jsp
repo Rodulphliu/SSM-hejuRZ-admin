@@ -39,7 +39,7 @@
 							  </div>
 							  <div class="form-group">
 							   <label>品牌LOGO:</label><br />
-								    <input id="myfile" name="myfile" type="file" onchange="showPreview(this)" style="display:none"/>
+								    <input id="myfile" name="brandlogo" type="file" onchange="showPreview(this)" style="display:none"/>
 		  							<img id="previewImg" src="<%=basePath %>/images/common/noimage.png" style="width:168px;height:128px;border-radius:10px;" onclick="F_Open_dialog()"/>
 							  </div>
 							  	<div class="form-group">

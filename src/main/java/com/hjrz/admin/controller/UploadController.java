@@ -1,9 +1,8 @@
 package com.hjrz.admin.controller;
 
-import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,35 +10,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hjrz.admin.data.ExchangeData;
+import com.hjrz.admin.service.common.UploadService;
 
 @Controller
 @RequestMapping(value="/toupload")
 public class UploadController {
+	
+	@Autowired
+	private UploadService uploadservice; 
 	
 	@RequestMapping(value="/toupload.do")
 	public String toupload(HttpServletRequest request){
 		return "test/testupload";
 	}
 	
-	
-	@SuppressWarnings({ "rawtypes" })
+	/** 
+	 * @Title uploadfile 
+	 * @Description TODO(AJAX上传文件控制器) 
+	 * @author RodulphLiu
+	 * @Date 2017年9月6日
+	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value="/ajax/uploadFile.do",produces = {"application/json"})
 	public @ResponseBody ExchangeData uploadfile(@RequestParam("uploadFileId") MultipartFile file,
 			HttpServletRequest request)
 	{
 		ExchangeData exchangeData = new ExchangeData();
-		String path = request.getSession().getServletContext().getRealPath("/upload/");
-		String fileName = file.getOriginalFilename();
-		File targetFile = new File(path,fileName);
-		if(!targetFile.exists()){
-			targetFile.mkdirs();
-		}
 		try {
-			file.transferTo(targetFile);
-			exchangeData.markSuccess("上传成功");
+			uploadservice.uploadFile(file, request);
+			exchangeData.setMessage("上传成功");
 		}catch (Exception e) {
-			exchangeData.markFail("上传失败");
+			exchangeData.markFail();
+			exchangeData.setMessage(e.getMessage());
 		}
 		return exchangeData;
 	}
+	
 }

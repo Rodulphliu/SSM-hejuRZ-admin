@@ -3,6 +3,7 @@ package com.hjrz.admin.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -10,12 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hjrz.admin.data.ExchangeData;
 import com.hjrz.admin.entity.Brand;
 import com.hjrz.admin.service.BrandService;
+import com.hjrz.admin.service.common.UploadService;
 
 @Controller
 @RequestMapping(value="/brands")
@@ -23,6 +27,9 @@ public class BrandController {
 	
 	@Autowired
 	private BrandService brandService;
+		
+	@Autowired
+	private UploadService uploadService;
 	
 	/** 
 	 * @Title addBrand 
@@ -43,9 +50,13 @@ public class BrandController {
 	 */
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value="/add.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public @ResponseBody ExchangeData addBrand(@RequestBody Brand brand,HttpServletRequest request){
+	public @ResponseBody ExchangeData addBrand(@RequestBody Brand brand,@RequestParam("brandlogo") MultipartFile file,
+			HttpServletRequest request,HttpServletResponse response){
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {
+			String filepath = uploadService.uploadFile(file, request);
+			brand.setBrandImgPath(filepath);
+			//添加品牌
 			brandService.add(brand);
 		} catch (Exception e) {
 			exchangeData.markException("添加失败，系统异常", e);

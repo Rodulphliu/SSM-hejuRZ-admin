@@ -14,6 +14,8 @@
 				<input id="myfile"  name="uploadFileId" type="file" onchange="showPreview(this)" style="display:none"/>
 				<img id="previewImg" src="img/hu.jpg" style="width:200px; height:200px;" onclick="F_Open_dialog()"/>
 				<input type="button" id="upload" value="上传" onclick="ajaxFileUpload()"/>
+				<br/>
+				<img src="/upload/YlZBNW5QZGRrV2wrU0w0eithaXNxVE1xNHdZWG0rRTd3T29wbzZlb2NxZkJQNUNkamc2UE9BPT020170906152606667.jpg" style="width:200px; height:200px;">
 			</form>
 	<script>
 			$("#myfile").change(function(){
@@ -33,7 +35,7 @@
 			function ajaxFileUpload(){
 			var formData = new FormData($("#uploadForm")[0]);  
 		     $.ajax({
-		    	 url: 'http://localhost:8168/toupload/ajax/uploadFile.do' ,  
+		    	 url: '/toupload/ajax/uploadFile.do' ,  
 		    		          type: 'POST',  
 		    	 	          data: formData,  
 		    	 	          async: false,  
@@ -43,6 +45,9 @@
 		    	 	          success: function (data) {
 		    	 	        	  if(data.callStatus == "SUCCESS"){
 		    	 	        		  alert(data.message);  
+		    	 	        	  }
+		    	 	        	  else{
+		    	 	        		  alert(data.message);
 		    	 	        	  }
 		         	 }
 		     	});  
