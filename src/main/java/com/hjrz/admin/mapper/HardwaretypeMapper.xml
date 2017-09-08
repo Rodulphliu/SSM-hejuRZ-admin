@@ -8,9 +8,11 @@
     <result column="hardtypeIntroduction" property="hardtypeIntroduction" jdbcType="VARCHAR" />
     <result column="hardtypestate" property="hardtypestate" jdbcType="VARCHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     hardtypeCode, hardtypeName, hardtypeImgPath, hardtypeIntroduction, hardtypestate
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -94,4 +96,19 @@
       hardtypestate = #{hardtypestate,jdbcType=VARCHAR}
     where hardtypeCode = #{hardtypeCode,jdbcType=BIGINT}
   </update>
+  
+  <select id="selectByCondition" resultMap="BaseResultMap" 
+  	 parameterType="com.hjrz.admin.entity.Hardwaretype">
+  		select
+  		<include refid="Base_Column_List" />
+			from hardwaretype
+		<where>
+		 	<if test="hardtypeName!=null">
+				and hardtypeName like CONCAT('%',#{hardtypeName,jdbcType=VARCHAR},'%')
+			</if> 
+	  		<if test="hardtypeIntroduction!=null">
+	  			and hardtypeIntroduction like CONCAT('%',#{hardtypeIntroduction,jdbcType=VARCHAR},'%')
+	  		</if>
+  	</where>
+  </select>
 </mapper>

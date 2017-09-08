@@ -46,18 +46,18 @@ public class AdminController {
     @RequestMapping(value="/add.do",method=RequestMethod.POST)
     public ModelAndView add(AdminAccountModel adminAccountModel,HttpServletRequest request)
     {
-            ModelAndView modelAndView = new ModelAndView();
-            ExchangeData<Object> exchangeData = new ExchangeData<Object>();
-            try {
+        ModelAndView modelAndView = new ModelAndView();
+        ExchangeData<Object> exchangeData = new ExchangeData<Object>();
+        try {
               adminAccService.addAdminAccount(adminAccountModel);
               modelAndView.setViewName("success");
               modelAndView.addObject("exchangeData",exchangeData);
-            } catch (Exception e) {
+        } catch (Exception e) {
               modelAndView.setViewName("500");
               exchangeData.setCallStatus(CallStatusEnum.FAIL);
               exchangeData.setMessage("系统错误，请联系管理员");
-            }
-            return modelAndView;
+        }
+        return modelAndView;
     }
     
     

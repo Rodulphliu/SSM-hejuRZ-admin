@@ -16,8 +16,6 @@
 	            <ul class="breadcrumb">
 	                <li class="active">添加服务器类型</li>
 	            </ul>
-	     <div class="row" id="form-datepicker">
-            
             <div class="col-xs-7 col-md-7" style="margin-left:20.0%;">
               	<!--style="margin-left:20.0%;"-->
               	<div class="component">
@@ -26,7 +24,6 @@
               			
               	</div>
               </div>
-             </div>	
 			</div>
 		</div>
 </body>

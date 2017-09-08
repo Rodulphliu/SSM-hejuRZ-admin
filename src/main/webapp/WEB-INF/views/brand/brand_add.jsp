@@ -39,7 +39,7 @@
 							  </div>
 							  <div class="form-group">
 							   <label>品牌LOGO:</label><br />
-								    <input id="myfile" name="brandlogo" type="file" onchange="showPreview(this)" style="display:none"/>
+								    <input id="brandlogo" type="file" onchange="showPreview(this)" style="display:none"/>
 		  							<img id="previewImg" src="<%=basePath %>/images/common/noimage.png" style="width:168px;height:128px;border-radius:10px;" onclick="F_Open_dialog()"/>
 							  </div>
 							  	<div class="form-group">
@@ -47,7 +47,7 @@
 									<div class="summernote"></div>
 								</div>
 						  		<div class="form-group" align="center">
-									<button type="button" class="btn btn-default">确认添加</button>
+									<button type="button" id="submit" class="btn btn-default">确认添加</button>
 									<button type="button" class="btn btn-default" onclick="Form_reset()">重置表单</button>
 							    </div>
 						</form>

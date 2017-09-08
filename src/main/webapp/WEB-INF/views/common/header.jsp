@@ -7,7 +7,9 @@
                 <button type="button" class="navbar-toggle show pull-left" data-target="sidebar">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                <a  href="index.html"><img src="<%=request.getContextPath() %>/images/common/adminhjrzlogo.png" style="height:30px;width:220px;margin-top:11px;"/></a>
+                <a  href="index.html">
+                <img src="<%=request.getContextPath() %>/images/common/hejurz-background system logo.png" style="height:35px;width:220px;margin-top:8px"/>
+                </a>
             </div>
              <div id="navbar" class="collapse navbar-collapse">
              		<ul class="nav navbar-nav navbar-right">

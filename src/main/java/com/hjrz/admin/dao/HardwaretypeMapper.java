@@ -1,5 +1,7 @@
 package com.hjrz.admin.dao;
 
+import java.util.List;
+
 import com.hjrz.admin.entity.Hardwaretype;
 
 public interface HardwaretypeMapper {
@@ -14,4 +16,6 @@ public interface HardwaretypeMapper {
     int updateByPrimaryKeySelective(Hardwaretype record);
 
     int updateByPrimaryKey(Hardwaretype record);
+    
+    List<Hardwaretype> selectByCondition(Hardwaretype hardwaretype);
 }

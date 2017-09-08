@@ -12,6 +12,7 @@
 <script type="text/javascript" src="<%=contextPath %>/js/jquery/jquery-3.1.1.min.js"></script>
 <!--bootstrap库-->
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap/bootstrap-theme.css"/>
 <script type="text/javascript" src="<%=contextPath %>/js/bootstrap/bootstrap.min.js" ></script>
 <!--font-awesome字体库-->
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/font-awesome.min.css" />
@@ -31,7 +32,4 @@
 <!-- 通知提示框 -->
 <link href="<%=contextPath %>/css/jquery.toastr/toastr.min.css" rel="stylesheet" />
 <script src="<%=contextPath %>/js/jquery.toastr/toastr.min.js"></script>
-
-
-
 
