@@ -32,7 +32,7 @@
               	<div class="component">
               		<!-- 内容start -->
               		<div class="panel-body col-md-7">
-						  	<form class="form-horizontal">
+						 <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
 						  	 <div class="form-group">
 							    <label>品牌名称:</label>
 								<input type="text" id="brandName" class="form-control" placeholder="请输入品牌名称">
@@ -44,7 +44,7 @@
 							  </div>
 							  	<div class="form-group">
 								    <label>品牌内容描述:</label>
-									<div class="summernote"></div>
+									<textarea class="form-control" rows="10" style="resize:none"></textarea>
 								</div>
 						  		<div class="form-group" align="center">
 									<button type="button" id="submit" class="btn btn-default">确认添加</button>

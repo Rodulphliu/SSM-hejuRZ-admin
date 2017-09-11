@@ -53,27 +53,21 @@ var Common = (function(){
  
         /*
          * 上传图片组件
-         * [description] 参见 '/gys/goods/gotoAddGoods.do' 图片上传的dom结构
         */ 
-        imageUpload: function(box) {
-            // box: 包裹整个label的容器，里面必须包含type=file 的输入框，用样式隐藏
-            // 如果有附加的参数，则直接包裹在box的type="hidden"的input里
-
-            var boxDom = $(box);
-            var fileDom = boxDom.find('input[type=file]');
-            var fileBox = boxDom.find('.w_filebox');
-
-            // 初始化
-            fileDom.fileupload({
-                url: '/toupload/ajax/uploadFile.do',
-                dataType: 'json',
-                add: function (e, data) {
-                    data.submit();
-                },
-                done: function (e, data) {
-                	alert("success");
-                }
-            });
+        imageUpload: function(formname){
+        	var data = new FormData(formname[0]); 
+			$.ajax({
+			      url: "/toupload/ajax/uploadFile.do",
+			      type: "POST",
+			      data : data, 
+			      dataType : 'JSON',
+			      cache : false,
+			      processData : false,
+			      contentType : false,
+			      success: function (data) {
+			        alert(data.message);
+			      }
+			    });
         },
 	}
 	return common;

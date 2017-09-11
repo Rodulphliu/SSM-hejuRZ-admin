@@ -44,13 +44,13 @@ public class BrandController {
 	
 	/** 
 	 * @Title addBrand 
-	 * @Description TODO(添加品牌) 
+	 * @Description TODO(添加品牌)
 	 * @author RodulphLiu
 	 * @Date 2017年8月28日
 	 */
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/add.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public @ResponseBody ExchangeData addBrand(@RequestBody Brand brand,@RequestParam("brandlogo") MultipartFile file,
+	@RequestMapping(value="/add.do",method=RequestMethod.POST)
+	public ExchangeData addBrand(@RequestBody Brand brand,@RequestParam("brandlogo") MultipartFile file,
 			HttpServletRequest request,HttpServletResponse response){
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {
@@ -70,6 +70,7 @@ public class BrandController {
 	 * @author RodulphLiu
 	 * @Date 2017年9月4日
 	 */
+	@RequestMapping(value="/brand.do")
 	public ModelAndView queryBrand(Brand brand){
 		ModelAndView modelAndView = new ModelAndView();
 		try {

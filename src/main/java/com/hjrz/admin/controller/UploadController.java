@@ -32,7 +32,7 @@ public class UploadController {
 	 */
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value="/ajax/uploadFile.do",produces = {"application/json"})
-	public @ResponseBody ExchangeData uploadfile(@RequestParam("uploadFileId") MultipartFile file,
+	public @ResponseBody ExchangeData uploadfile(@RequestParam("file") MultipartFile file,
 			HttpServletRequest request)
 	{
 		ExchangeData exchangeData = new ExchangeData();
