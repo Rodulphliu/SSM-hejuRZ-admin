@@ -45,7 +45,7 @@ public class UploadService {
 			if(file.getSize()==0){
 				throw new SYSException("请选择上传的文件");
 			}
-			if (fileName.endsWith("jpg") || fileName.endsWith("png")) {
+			if (fileName.endsWith("jpg") || fileName.endsWith("png") || fileName.endsWith("jpeg")) {
 				//创建新文件
 				File targetFile = new File(path,dateorgname);
 				if(!targetFile.exists()){

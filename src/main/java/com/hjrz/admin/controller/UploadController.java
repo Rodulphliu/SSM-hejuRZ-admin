@@ -37,7 +37,8 @@ public class UploadController {
 	{
 		ExchangeData exchangeData = new ExchangeData();
 		try {
-			uploadservice.uploadFile(file, request);
+			String Thefinalfilename = uploadservice.uploadFile(file, request);
+			request.setAttribute("FileName",Thefinalfilename);
 			exchangeData.setMessage("上传成功");
 		}catch (Exception e) {
 			exchangeData.markFail();

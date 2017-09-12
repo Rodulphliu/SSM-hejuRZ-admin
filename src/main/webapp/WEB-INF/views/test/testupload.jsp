@@ -17,7 +17,7 @@
 					<input id="myfile"  name="file" type="file" onchange="showPreview(this)" style="display:none"/>
 					<img id="previewImg" src="img/hu.jpg" style="width:200px; height:200px;" onclick="F_Open_dialog()"/>
 		</div>
-					<button type="button" id="upload">Upload</button>
+					<button type="button" id="submit">Upload</button>
 	<script>
 			$("#myfile").change(function(){
 		        var file = this.files[0];
@@ -40,7 +40,7 @@
 			    	url: '/toupload/ajax/uploadFile.do',
 			        dataType: 'json',
 				        add: function (e, data) {
-				            data.context = $('#upload').text('Upload')
+				            data.context = $('#submit').text('Upload')
 				                .appendTo(document.body)
 				                .click(function () {
 				                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));

@@ -1,5 +1,9 @@
 /*
-*此文件定义公用的函数
+* h			
+* h			
+* hhhhhh		
+* h    h
+* h	   h
 */
 var Common = (function(){
 	var common = {
