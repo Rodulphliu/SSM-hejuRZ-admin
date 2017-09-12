@@ -1,9 +1,7 @@
 /*
-* h			
-* h			
-* hhhhhh		
-* h    h
-* h	   h
+	COMMON HJRZ-JS-ADMIN
+	RUDOLPHLIU
+	2017-09-12
 */
 var Common = (function(){
 	var common = {
@@ -58,20 +56,24 @@ var Common = (function(){
         /*
          * 上传图片组件
         */ 
-        imageUpload: function(formname){
-        	var data = new FormData(formname[0]); 
-			$.ajax({
-			      url: "/toupload/ajax/uploadFile.do",
-			      type: "POST",
-			      data : data, 
-			      dataType : 'JSON',
-			      cache : false,
-			      processData : false,
-			      contentType : false,
-			      success: function (data) {
-			        alert(data.message);
-			      }
-			    });
+        imageUpload: function(box){
+        	 var boxDom = box;
+			 var fileDom = boxDom.find('input[type=file]');
+			 	fileDom.fileupload({
+		    	url: '/toupload/ajax/uploadFile.do',
+		        dataType: 'json',
+			        add: function (e, data) {
+			            data.context = $('#submit').text('Upload')
+			                .appendTo(document.body)
+			                .click(function (){
+			                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+			                    data.submit();
+			                });
+			        },
+			        done: function (e, data) {
+			            data.context.text('Upload finished.');
+			        }
+		    });
         },
 	}
 	return common;

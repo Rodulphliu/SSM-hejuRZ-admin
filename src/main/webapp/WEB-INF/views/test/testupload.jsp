@@ -31,7 +31,7 @@
 			function F_Open_dialog() 
 			{ 
 			   $("#myfile").click();
-			} 
+			}
 			
 			$(function (){
 				 var boxDom = $('#image_box');
@@ -42,7 +42,7 @@
 				        add: function (e, data) {
 				            data.context = $('#submit').text('Upload')
 				                .appendTo(document.body)
-				                .click(function () {
+				                .click(function (){
 				                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));
 				                    data.submit();
 				                });
