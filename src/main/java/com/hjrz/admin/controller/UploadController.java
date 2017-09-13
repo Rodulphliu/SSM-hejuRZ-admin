@@ -35,10 +35,10 @@ public class UploadController {
 	public @ResponseBody ExchangeData uploadfile(@RequestParam("file") MultipartFile file,
 			HttpServletRequest request)
 	{
-		ExchangeData exchangeData = new ExchangeData();
+		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {
 			String Thefinalfilename = uploadservice.uploadFile(file, request);
-			request.setAttribute("FileName",Thefinalfilename);
+			exchangeData.setData(Thefinalfilename);
 			exchangeData.setMessage("上传成功");
 		}catch (Exception e) {
 			exchangeData.markFail();

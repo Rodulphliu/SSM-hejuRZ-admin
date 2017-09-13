@@ -57,21 +57,19 @@ var Common = (function(){
          * 上传图片组件
         */ 
         imageUpload: function(box){
-        	 var boxDom = box;
+        	 var boxDom = $(box);
 			 var fileDom = boxDom.find('input[type=file]');
 			 	fileDom.fileupload({
 		    	url: '/toupload/ajax/uploadFile.do',
 		        dataType: 'json',
 			        add: function (e, data) {
-			            data.context = $('#submit').text('Upload')
-			                .appendTo(document.body)
+			            data.context = $('#submit')
 			                .click(function (){
-			                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));
 			                    data.submit();
 			                });
 			        },
 			        done: function (e, data) {
-			            data.context.text('Upload finished.');
+			        	$("#filename").val(data.result.data)
 			        }
 		    });
         },

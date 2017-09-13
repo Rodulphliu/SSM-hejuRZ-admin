@@ -6,17 +6,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>添加服务器类型</title>
 		<%@include file="../common/share_static.jsp" %>
-		<script src="/js/summernote.min.js" type="text/javascript"></script>
-	    <script src="/js/summernote-zh-CN.js" type="text/javascript"></script>
-	    <link href="/js/summernote.css" rel="stylesheet" type="text/css"/>
-			<script>
-				$(function(){
-				 $('.summernote').summernote({
-				        height: 300,
-				        lang: 'zh-CN'
-				    });
-				});
-			</script>
+		<script type="text/javascript" src="<%=contextPath %>/js/admin/common/hjrz.common.js"></script>
+		<script type="text/javascript" src="<%=contextPath %>/js/jqueryupload/jquery.ui.widget.js"></script>
+		<script type="text/javascript" src="<%=contextPath %>/js/jqueryupload/jquery.iframe-transport.js"></script>
+		<script type="text/javascript" src="<%=contextPath %>/js/jqueryupload/jquery.fileupload.js"></script>
 </head>
 <body>
 		<%@include file="../common/header.jsp"%>
@@ -32,33 +25,31 @@
               	<div class="component">
               		<!-- 内容start -->
               		<div class="panel-body col-md-7">
-						 <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
 						  	 <div class="form-group">
 							    <label>品牌名称:</label>
 								<input type="text" id="brandName" class="form-control" placeholder="请输入品牌名称">
 							  </div>
 							  <div class="form-group">
 							   <label>品牌LOGO:</label><br />
-							   <div id="image_box">
-								    <input id="brandlogo" type="file" onchange="showPreview(this)" style="display:none"/>
-		  							<img id="previewImg" src="<%=basePath %>/images/common/noimage.png" style="width:168px;height:128px;border-radius:10px;" onclick="F_Open_dialog()"/>
-							  	</div>
+								   <div id="image_box">
+									    <input id="myfile" type="file" name="file" onchange="showPreview(this)" style="display:none"/>
+			  							<img id="previewImg" src="<%=basePath %>/images/common/noimage.png" style="width:168px;height:128px;border-radius:10px;" onclick="F_Open_dialog()"/>
+								   		<input type="hidden" id="filename" name="filename"/>
+								   </div>
 							  </div>
-							  	<div class="form-group">
-								    <label>品牌内容描述:</label>
-									<textarea class="form-control" rows="10" style="resize:none"></textarea>
-								</div>
-						  		<div class="form-group" align="center">
-									<button type="button" id="submit" class="btn btn-default">确认添加</button>
-									<button type="button" class="btn btn-default" onclick="Form_reset()">重置表单</button>
-							    </div>
-						</form>
+								  	<div class="form-group">
+									    <label>品牌内容描述:</label>
+										<textarea class="form-control" id="brandIntroduction" rows="10" style="resize:none"></textarea>
+									</div>
+							<div class="form-group" align="center">
+										<button type="button" id="submit" class="btn btn-default">确认添加</button>
+							</div>
 		       		 </div>
               	<!-- 内容end -->	
               	</div>
               </div>
 			</div>
 		</div>
-</body>
 <script src="<%=contextPath %>/js/admin/brand/brand_add.js"></script>
+</body>
 </html>

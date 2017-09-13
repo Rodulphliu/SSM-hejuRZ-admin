@@ -27,9 +27,6 @@ public class BrandController {
 	
 	@Autowired
 	private BrandService brandService;
-		
-	@Autowired
-	private UploadService uploadService;
 	
 	/** 
 	 * @Title addBrand 
@@ -49,14 +46,10 @@ public class BrandController {
 	 * @Date 2017年8月28日
 	 */
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/add.do",method=RequestMethod.POST)
-	public ExchangeData addBrand(@RequestBody Brand brand,@RequestParam("brandlogo") MultipartFile file,
-			HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="/addbrandinfo.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody ExchangeData addBrand(@RequestBody Brand brand,HttpServletRequest request){
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {
-			String filepath = uploadService.uploadFile(file, request);
-			brand.setBrandImgPath(filepath);
-			//添加品牌
 			brandService.add(brand);
 		} catch (Exception e) {
 			exchangeData.markException("添加失败，系统异常", e);

@@ -27,19 +27,19 @@
 				  	<div style="text-align: center;">
 				   		<div class="col-lg-3">
 				   			<p>&nbsp;&nbsp;后台消息 >></p>
-				   			<h1>0</h1>
+				   			<h1>28</h1>
 				   		</div>
 				   		<div class="col-lg-3">
 				   			<p>&nbsp;&nbsp;新增用户 >></p>
-				   			<h1>0</h1>
+				   			<h1>4</h1>
 				   		</div>
 				   		<div class="col-lg-3">
 				   			<p>&nbsp;&nbsp;用户反馈 >></p>
-				   			<h1>0</h1>
+				   			<h1>10</h1>
 				   		</div>
 				   		<div class="col-lg-3">
 				   			<p>&nbsp;&nbsp;总用户 >></p>
-				   			<h1>0</h1>
+				   			<h1>32</h1>
 				   		</div>
 				    </div>
 				  </div>
