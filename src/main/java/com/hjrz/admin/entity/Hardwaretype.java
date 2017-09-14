@@ -1,5 +1,7 @@
 package com.hjrz.admin.entity;
 
+import com.hjrz.admin.constants.HardWareTypeEnum;
+
 public class Hardwaretype {
     private Long hardtypeCode;
 
@@ -9,7 +11,7 @@ public class Hardwaretype {
 
     private String hardtypeIntroduction;
 
-    private String hardtypestate;
+    private HardWareTypeEnum hardtypestate;
 
     public Long getHardtypeCode() {
         return hardtypeCode;
@@ -42,16 +44,16 @@ public class Hardwaretype {
     public void setHardtypeIntroduction(String hardtypeIntroduction) {
         this.hardtypeIntroduction = hardtypeIntroduction == null ? null : hardtypeIntroduction.trim();
     }
+   
+    public HardWareTypeEnum getHardtypestate() {
+		return hardtypestate;
+	}
 
-    public String getHardtypestate() {
-        return hardtypestate;
-    }
+	public void setHardtypestate(HardWareTypeEnum hardtypestate) {
+		this.hardtypestate = hardtypestate;
+	}
 
-    public void setHardtypestate(String hardtypestate) {
-        this.hardtypestate = hardtypestate == null ? null : hardtypestate.trim();
-    }
-
-    @Override
+	@Override
     public boolean equals(Object that) {
         if (this == that) {
             return true;

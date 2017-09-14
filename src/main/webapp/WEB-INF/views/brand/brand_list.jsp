@@ -1,5 +1,5 @@
 
-+<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,6 +7,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>添加服务器类型</title>
 		<%@include file="../common/share_static.jsp" %>
+		<!-- ServerTypeList CSS -->
+		<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/servicer.css/component.css" />
+		<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/servicer.css/normalize.css" />
 </head>
 <body>
 		<%@include file="../common/header.jsp"%>
@@ -17,11 +20,33 @@
 	            <ul class="breadcrumb">
 	                <li class="active">添加服务器类型</li>
 	            </ul>
-            <div class="col-xs-7 col-md-7" style="margin-left:20.0%;">
+            <div class="col-xs-12 col-md-12">
               	<!--style="margin-left:20.0%;"-->
               	<div class="component">
+              	<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>brands/addbrand.do'" value="添加品牌>>>">
               		<!-- 内容start -->
-              			
+              		  	<table>
+					<thead>
+						<tr style="background-color:#009ACD;color: #FFFFFF;">
+							<th>编号</th>
+							<th>品牌名称</th>
+							<th>品牌logo</th>
+							<th>品牌描述</th>
+							<th>创建时间</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${brands}" var="b" begin="0" varStatus="status">
+						<tr>
+							<td>${status.index+1}</td>
+							<td>${b.brandName}</td>
+							<td><img src="/upload/${b.brandImgPath}" style="width:100px;height:40px"/></td>
+							<td>${fn:substring(b.brandIntroduction, 0, 30)}...</td>
+							<td><fmt:formatDate value="${b.create_time}" pattern="yyyy年 MM月 dd日 HH:mm"/></td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
               		
               			
               	</div>

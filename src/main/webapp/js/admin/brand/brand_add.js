@@ -13,10 +13,10 @@
 		       $("#myfile").click(); 
 		    }
 	        	
+	        Common.imageAutoUpload("#image_box");
 	        
 	        $(function(){
 	        	$("#submit").click(function(){
-	        	Common.imageUpload("#image_box");
 				var Brand = {};
 				Brand.brandName = $("#brandName").val();
 				Brand.brandImgPath = $("#filename").val();

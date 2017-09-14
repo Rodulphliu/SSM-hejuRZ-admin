@@ -24,7 +24,15 @@
 				<li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;工作站属性管理</a></li>
 			</ul>
 		</li>
-			<li><a href="#"><i class="fa fa-microchip fa-fw" aria-hidden="true"></i>硬件库管理</a></li>
+		<li class="has-sub">
+			<a href="/HardwareType/hardwaretype.do"><i class="fa fa-microchip fa-fw" aria-hidden="true"></i>硬件库管理
+			<i id="menuicon" class="fa fa-angle-down fa-fw pull-right"></i></a>
+			<ul class="sub-menu" style="display:none;">
+				<li><a href="/HardwareType/queryworkstation.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;硬件库管理</a></li>
+				<li><a href="/HardwareType/hardwaretype.do"><i class="fa fa-circle-o fa-fw"></i>&nbsp;硬件类型管理</a></li>
+				<li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;硬件属性管理</a></li>
+			</ul>
+		</li>
 			<li><a href="#"><i class="fa fa-users fa-fw" aria-hidden="true"></i>用户管理</a></li>
 			<li><a href="#"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>反馈处理</a></li>
           </ul>

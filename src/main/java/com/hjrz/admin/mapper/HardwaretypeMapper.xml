@@ -13,12 +13,14 @@
     hardtypeCode, hardtypeName, hardtypeImgPath, hardtypeIntroduction, hardtypestate
   </sql>
   
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from hardwaretype
     where hardtypeCode = #{hardtypeCode,jdbcType=BIGINT}
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from hardwaretype
     where hardtypeCode = #{hardtypeCode,jdbcType=BIGINT}
@@ -34,11 +36,11 @@
   
   
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Hardwaretype" >
+ 	<selectKey resultType="java.lang.Long" keyProperty="hardtypeCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into hardwaretype
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="hardtypeCode != null" >
-        hardtypeCode,
-      </if>
       <if test="hardtypeName != null" >
         hardtypeName,
       </if>
@@ -53,9 +55,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="hardtypeCode != null" >
-        #{hardtypeCode,jdbcType=BIGINT},
-      </if>
       <if test="hardtypeName != null" >
         #{hardtypeName,jdbcType=VARCHAR},
       </if>
@@ -70,6 +69,7 @@
       </if>
     </trim>
   </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Hardwaretype" >
     update hardwaretype
     <set >

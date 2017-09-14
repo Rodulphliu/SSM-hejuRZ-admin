@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.hjrz.admin.constants.HardWareTypeEnum;
 import com.hjrz.admin.dao.HardwaretypeMapper;
-import com.hjrz.admin.entity.Hardware;
 import com.hjrz.admin.entity.Hardwaretype;
 
 @Service("HardwareTypeService")
@@ -22,17 +21,30 @@ public class HardwareTypeService {
 	 * @Date 2017年9月4日
 	 */
 	public void addhardwareType(Hardwaretype hardwaretype)throws Exception{
-		hardwaretypeMapper.insert(hardwaretype);
+		hardwaretype.setHardtypestate(HardWareTypeEnum.EXIST);
+		hardwaretypeMapper.insertSelective(hardwaretype);
 	}
 	
 	/** 
-	 * @Title findbyContion 
-	 * @Description TODO(获取全部/条件查询) 
+	 * @Title findbyContion
+	 * @Description TODO(获取全部/条件查询)
 	 * @author RodulphLiu
 	 * @Date 2017年9月8日
 	 */
 	public List<Hardwaretype> findbyContion(Hardwaretype hardwaretype)throws Exception{
 		List<Hardwaretype> hardwaretypes = hardwaretypeMapper.selectByCondition(hardwaretype);
 		return hardwaretypes;
+	}	
+	
+	/** 
+	 * @Title getByid 
+	 * @Description TODO(根据ID获取相关对象) 
+	 * @author RodulphLiu
+	 * @Date 2017年9月14日
+	 */
+	public Hardwaretype getByid(Long hardwaretypeCode)throws Exception
+	{
+		Hardwaretype hardwaretype = hardwaretypeMapper.selectByPrimaryKey(hardwaretypeCode);
+		return hardwaretype;
 	}
 }

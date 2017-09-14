@@ -73,6 +73,23 @@ var Common = (function(){
 			        }
 		    });
         },
+        
+        imageAutoUpload:function(box){
+        	var boxDom = $(box);
+        	var fileDom = boxDom.find('input[type=file]');
+        		fileDom.fileupload({
+        			url:'/toupload/ajax/uploadFile.do',
+        			dataType:'json',
+        			add:function(e,data)
+        			{
+        				data.submit();
+        			},
+        			done:function(e,data)
+        			{
+        				$("#filename").val(data.result.data)
+        			}
+        		});
+        }
 	}
 	return common;
 })();
