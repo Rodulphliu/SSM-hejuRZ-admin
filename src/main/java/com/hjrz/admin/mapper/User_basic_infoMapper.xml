@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.User_basic_infoMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.User_basic_info" >
+    <id column="user_basic_Code" property="user_basic_Code" jdbcType="INTEGER" />
+    <result column="user_login_phone" property="user_login_phone" jdbcType="VARCHAR" />
+    <result column="user_password" property="user_password" jdbcType="VARCHAR" />
+    <result column="user_info_state" property="user_info_state" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="last_login_time" property="last_login_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap id="QueryforListMap" type="com.hjrz.admin.model.UserModel" >
+	    <id column="user_basic_Code" property="user_basic_Code" jdbcType="INTEGER" />
+	    <result column="user_login_phone" property="user_login_phone" jdbcType="VARCHAR" />
+	    <result column="user_email" property="user_email" jdbcType="VARCHAR" />
+	    <result column="user_realname" property="user_realname" jdbcType="VARCHAR" />
+	    <result column="user_sex" property="user_sex" jdbcType="VARCHAR" />
+	    <result column="user_address" property="user_address" jdbcType="VARCHAR" />
+	    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+	    <result column="last_login_time" property="last_login_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    user_basic_Code, user_login_phone, user_password, user_info_state, create_time, last_login_time
+  </sql>
+  
+  <select id="queryforUserinfo" resultMap="QueryforListMap" 
+  		parameterType="com.hjrz.admin.form.ServicerQuery">
+  		select 
+			b.user_basic_Code,
+			b.user_login_phone,
+			d.user_email,
+			d.user_realname,
+			d.user_sex,
+			d.user_address,
+			b.create_time,
+			b.last_login_time
+		from 
+					user_basic_info b
+		LEFT JOIN user_detail_info d ON b.user_basic_Code = d.user_basic_Code
+  		 <where>
+	        <if test="user_login_phone!=null">
+				and b.user_login_phone like CONCAT('%',#{user_login_phone,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="user_email!=null">
+  				and d.user_email = like CONCAT('%',#{user_email,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="user_realname!=null">
+	  			and d.user_realname = like CONCAT('%',#{user_realname,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="user_sex!=null">
+	  			and d.user_sex = like CONCAT('%',#{user_sex,jdbcType=VARCHAR},'%')
+	  		</if>
+	  		<if test="user_address!=null">
+	  			and d.user_address = like CONCAT('%',#{user_address,jdbcType=VARCHAR},'%')
+	  		</if>
+        </where>
+  </select>
+  
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_basic_info
+    where user_basic_Code = #{user_basic_Code,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_basic_info
+    where user_basic_Code = #{user_basic_Code,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.hjrz.admin.entity.User_basic_info" >
+    <selectKey resultType="java.lang.Integer" keyProperty="user_basic_Code" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_basic_info (user_login_phone, user_password, 
+      user_info_state, create_time, last_login_time
+      )
+    values (#{user_login_phone,jdbcType=VARCHAR}, #{user_password,jdbcType=VARCHAR}, 
+      #{user_info_state,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{last_login_time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.User_basic_info" >
+    <selectKey resultType="java.lang.Integer" keyProperty="user_basic_Code" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_basic_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user_login_phone != null" >
+        user_login_phone,
+      </if>
+      <if test="user_password != null" >
+        user_password,
+      </if>
+      <if test="user_info_state != null" >
+        user_info_state,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="last_login_time != null" >
+        last_login_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user_login_phone != null" >
+        #{user_login_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="user_password != null" >
+        #{user_password,jdbcType=VARCHAR},
+      </if>
+      <if test="user_info_state != null" >
+        #{user_info_state,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_login_time != null" >
+        #{last_login_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.User_basic_info" >
+    update user_basic_info
+    <set >
+      <if test="user_login_phone != null" >
+        user_login_phone = #{user_login_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="user_password != null" >
+        user_password = #{user_password,jdbcType=VARCHAR},
+      </if>
+      <if test="user_info_state != null" >
+        user_info_state = #{user_info_state,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="last_login_time != null" >
+        last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_basic_Code = #{user_basic_Code,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.User_basic_info" >
+    update user_basic_info
+    set user_login_phone = #{user_login_phone,jdbcType=VARCHAR},
+      user_password = #{user_password,jdbcType=VARCHAR},
+      user_info_state = #{user_info_state,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      last_login_time = #{last_login_time,jdbcType=TIMESTAMP}
+    where user_basic_Code = #{user_basic_Code,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

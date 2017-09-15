@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.User_detail_infoMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.User_detail_info" >
+    <id column="user_detail_Code" property="user_detail_Code" jdbcType="INTEGER" />
+    <result column="user_basic_Code" property="user_basic_Code" jdbcType="INTEGER" />
+    <result column="user_email" property="user_email" jdbcType="VARCHAR" />
+    <result column="user_realname" property="user_realname" jdbcType="VARCHAR" />
+    <result column="user_sex" property="user_sex" jdbcType="VARCHAR" />
+    <result column="user_address" property="user_address" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    user_detail_Code, user_basic_Code, user_email, user_realname, user_sex, user_address
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_detail_info
+    where user_detail_Code = #{user_detail_Code,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_detail_info
+    where user_detail_Code = #{user_detail_Code,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.hjrz.admin.entity.User_detail_info" >
+    <selectKey resultType="java.lang.Integer" keyProperty="user_detail_Code" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_detail_info (user_basic_Code, user_email, user_realname, 
+      user_sex, user_address)
+    values (#{user_basic_Code,jdbcType=INTEGER}, #{user_email,jdbcType=VARCHAR}, #{user_realname,jdbcType=VARCHAR}, 
+      #{user_sex,jdbcType=VARCHAR}, #{user_address,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.User_detail_info" >
+    <selectKey resultType="java.lang.Integer" keyProperty="user_detail_Code" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_detail_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user_basic_Code != null" >
+        user_basic_Code,
+      </if>
+      <if test="user_email != null" >
+        user_email,
+      </if>
+      <if test="user_realname != null" >
+        user_realname,
+      </if>
+      <if test="user_sex != null" >
+        user_sex,
+      </if>
+      <if test="user_address != null" >
+        user_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user_basic_Code != null" >
+        #{user_basic_Code,jdbcType=INTEGER},
+      </if>
+      <if test="user_email != null" >
+        #{user_email,jdbcType=VARCHAR},
+      </if>
+      <if test="user_realname != null" >
+        #{user_realname,jdbcType=VARCHAR},
+      </if>
+      <if test="user_sex != null" >
+        #{user_sex,jdbcType=VARCHAR},
+      </if>
+      <if test="user_address != null" >
+        #{user_address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.User_detail_info" >
+    update user_detail_info
+    <set >
+      <if test="user_basic_Code != null" >
+        user_basic_Code = #{user_basic_Code,jdbcType=INTEGER},
+      </if>
+      <if test="user_email != null" >
+        user_email = #{user_email,jdbcType=VARCHAR},
+      </if>
+      <if test="user_realname != null" >
+        user_realname = #{user_realname,jdbcType=VARCHAR},
+      </if>
+      <if test="user_sex != null" >
+        user_sex = #{user_sex,jdbcType=VARCHAR},
+      </if>
+      <if test="user_address != null" >
+        user_address = #{user_address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_detail_Code = #{user_detail_Code,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.User_detail_info" >
+    update user_detail_info
+    set user_basic_Code = #{user_basic_Code,jdbcType=INTEGER},
+      user_email = #{user_email,jdbcType=VARCHAR},
+      user_realname = #{user_realname,jdbcType=VARCHAR},
+      user_sex = #{user_sex,jdbcType=VARCHAR},
+      user_address = #{user_address,jdbcType=VARCHAR}
+    where user_detail_Code = #{user_detail_Code,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

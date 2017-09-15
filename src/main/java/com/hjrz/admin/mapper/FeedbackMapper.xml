@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.FeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Feedback" >
+    <id column="fbCode" property="fbCode" jdbcType="BIGINT" />
+    <result column="fb_user_name" property="fb_user_name" jdbcType="VARCHAR" />
+    <result column="fbuseremail" property="fbuseremail" jdbcType="VARCHAR" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="link_handle_state" property="link_handle_state" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Feedback" extends="BaseResultMap" >
+    <result column="link_message" property="link_message" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fbCode, fb_user_name, fbuseremail, create_time, link_handle_state
+  </sql>
+  <sql id="Blob_Column_List" >
+    link_message
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from feedback
+    where fbCode = #{fbCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from feedback
+    where fbCode = #{fbCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Feedback" >
+    <selectKey resultType="java.lang.Long" keyProperty="fbCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into feedback (fb_user_name, fbuseremail, create_time, 
+      link_handle_state, link_message)
+    values (#{fb_user_name,jdbcType=VARCHAR}, #{fbuseremail,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{link_handle_state,jdbcType=VARCHAR}, #{link_message,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Feedback" >
+    <selectKey resultType="java.lang.Long" keyProperty="fbCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fb_user_name != null" >
+        fb_user_name,
+      </if>
+      <if test="fbuseremail != null" >
+        fbuseremail,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="link_handle_state != null" >
+        link_handle_state,
+      </if>
+      <if test="link_message != null" >
+        link_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fb_user_name != null" >
+        #{fb_user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="fbuseremail != null" >
+        #{fbuseremail,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="link_handle_state != null" >
+        #{link_handle_state,jdbcType=VARCHAR},
+      </if>
+      <if test="link_message != null" >
+        #{link_message,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Feedback" >
+    update feedback
+    <set >
+      <if test="fb_user_name != null" >
+        fb_user_name = #{fb_user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="fbuseremail != null" >
+        fbuseremail = #{fbuseremail,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="link_handle_state != null" >
+        link_handle_state = #{link_handle_state,jdbcType=VARCHAR},
+      </if>
+      <if test="link_message != null" >
+        link_message = #{link_message,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where fbCode = #{fbCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hjrz.admin.entity.Feedback" >
+    update feedback
+    set fb_user_name = #{fb_user_name,jdbcType=VARCHAR},
+      fbuseremail = #{fbuseremail,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      link_handle_state = #{link_handle_state,jdbcType=VARCHAR},
+      link_message = #{link_message,jdbcType=LONGVARCHAR}
+    where fbCode = #{fbCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Feedback" >
+    update feedback
+    set fb_user_name = #{fb_user_name,jdbcType=VARCHAR},
+      fbuseremail = #{fbuseremail,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      link_handle_state = #{link_handle_state,jdbcType=VARCHAR}
+    where fbCode = #{fbCode,jdbcType=BIGINT}
+  </update>
+</mapper>

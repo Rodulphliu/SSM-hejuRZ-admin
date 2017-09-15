@@ -33,7 +33,7 @@
 				<li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;硬件属性管理</a></li>
 			</ul>
 		</li>
-			<li><a href="#"><i class="fa fa-users fa-fw" aria-hidden="true"></i>用户管理</a></li>
+			<li><a href="/users/userlist.do"><i class="fa fa-users fa-fw" aria-hidden="true"></i>用户管理</a></li>
 			<li><a href="#"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>反馈处理</a></li>
           </ul>
        			 </div>
