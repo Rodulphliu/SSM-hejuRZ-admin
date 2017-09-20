@@ -1,5 +1,7 @@
 package com.hjrz.admin.entity;
 
+import java.util.Date;
+
 public class Stationcontext {
     private Long scCode;
 
@@ -14,6 +16,10 @@ public class Stationcontext {
     private String scSource;
 
     private String scStatus;
+
+    private Date create_time;
+
+    private Date change_time;
 
     public Long getScCode() {
         return scCode;
@@ -71,6 +77,22 @@ public class Stationcontext {
         this.scStatus = scStatus == null ? null : scStatus.trim();
     }
 
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public Date getChange_time() {
+        return change_time;
+    }
+
+    public void setChange_time(Date change_time) {
+        this.change_time = change_time;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -89,7 +111,9 @@ public class Stationcontext {
             && (this.getScImageCode() == null ? other.getScImageCode() == null : this.getScImageCode().equals(other.getScImageCode()))
             && (this.getScApath() == null ? other.getScApath() == null : this.getScApath().equals(other.getScApath()))
             && (this.getScSource() == null ? other.getScSource() == null : this.getScSource().equals(other.getScSource()))
-            && (this.getScStatus() == null ? other.getScStatus() == null : this.getScStatus().equals(other.getScStatus()));
+            && (this.getScStatus() == null ? other.getScStatus() == null : this.getScStatus().equals(other.getScStatus()))
+            && (this.getCreate_time() == null ? other.getCreate_time() == null : this.getCreate_time().equals(other.getCreate_time()))
+            && (this.getChange_time() == null ? other.getChange_time() == null : this.getChange_time().equals(other.getChange_time()));
     }
 
     @Override
@@ -103,6 +127,8 @@ public class Stationcontext {
         result = prime * result + ((getScApath() == null) ? 0 : getScApath().hashCode());
         result = prime * result + ((getScSource() == null) ? 0 : getScSource().hashCode());
         result = prime * result + ((getScStatus() == null) ? 0 : getScStatus().hashCode());
+        result = prime * result + ((getCreate_time() == null) ? 0 : getCreate_time().hashCode());
+        result = prime * result + ((getChange_time() == null) ? 0 : getChange_time().hashCode());
         return result;
     }
 }
