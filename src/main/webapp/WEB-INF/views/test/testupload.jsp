@@ -1,4 +1,3 @@
-+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,6 +18,7 @@
 					<input id="myfile"  name="file" type="file" onchange="showPreview(this)" style="display:none"/>
 					<img id="previewImg" src="img/hu.jpg" style="width:200px; height:200px;" onclick="F_Open_dialog()"/>
 					<input type="hidden" id="filename" name="filename"/>
+					<img src="/upload/vladimir-somov-vladimir-somov-for-honor-katana-0120170920114604228.jpg" style="width:200px; height:200px;"/>
 		</div>
 					<button type="button" id="submit">Upload</button>
 	<script>

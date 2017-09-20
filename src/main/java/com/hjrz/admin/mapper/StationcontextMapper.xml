@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hjrz.admin.dao.StationcontextMapper" >
+  <resultMap id="BaseResultMap" type="com.hjrz.admin.entity.Stationcontext" >
+    <id column="scCode" property="scCode" jdbcType="BIGINT" />
+    <result column="scTitle" property="scTitle" jdbcType="VARCHAR" />
+    <result column="scContext" property="scContext" jdbcType="VARCHAR" />
+    <result column="scImageCode" property="scImageCode" jdbcType="VARCHAR" />
+    <result column="scApath" property="scApath" jdbcType="VARCHAR" />
+    <result column="scSource" property="scSource" jdbcType="VARCHAR" />
+    <result column="scStatus" property="scStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    scCode, scTitle, scContext, scImageCode, scApath, scSource, scStatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from stationcontext
+    where scCode = #{scCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from stationcontext
+    where scCode = #{scCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjrz.admin.entity.Stationcontext" >
+    <selectKey resultType="java.lang.Long" keyProperty="scCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into stationcontext (scTitle, scContext, scImageCode, 
+      scApath, scSource, scStatus
+      )
+    values (#{scTitle,jdbcType=VARCHAR}, #{scContext,jdbcType=VARCHAR}, #{scImageCode,jdbcType=VARCHAR}, 
+      #{scApath,jdbcType=VARCHAR}, #{scSource,jdbcType=VARCHAR}, #{scStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Stationcontext" >
+    <selectKey resultType="java.lang.Long" keyProperty="scCode" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into stationcontext
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scTitle != null" >
+        scTitle,
+      </if>
+      <if test="scContext != null" >
+        scContext,
+      </if>
+      <if test="scImageCode != null" >
+        scImageCode,
+      </if>
+      <if test="scApath != null" >
+        scApath,
+      </if>
+      <if test="scSource != null" >
+        scSource,
+      </if>
+      <if test="scStatus != null" >
+        scStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scTitle != null" >
+        #{scTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="scContext != null" >
+        #{scContext,jdbcType=VARCHAR},
+      </if>
+      <if test="scImageCode != null" >
+        #{scImageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="scApath != null" >
+        #{scApath,jdbcType=VARCHAR},
+      </if>
+      <if test="scSource != null" >
+        #{scSource,jdbcType=VARCHAR},
+      </if>
+      <if test="scStatus != null" >
+        #{scStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Stationcontext" >
+    update stationcontext
+    <set >
+      <if test="scTitle != null" >
+        scTitle = #{scTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="scContext != null" >
+        scContext = #{scContext,jdbcType=VARCHAR},
+      </if>
+      <if test="scImageCode != null" >
+        scImageCode = #{scImageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="scApath != null" >
+        scApath = #{scApath,jdbcType=VARCHAR},
+      </if>
+      <if test="scSource != null" >
+        scSource = #{scSource,jdbcType=VARCHAR},
+      </if>
+      <if test="scStatus != null" >
+        scStatus = #{scStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where scCode = #{scCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Stationcontext" >
+    update stationcontext
+    set scTitle = #{scTitle,jdbcType=VARCHAR},
+      scContext = #{scContext,jdbcType=VARCHAR},
+      scImageCode = #{scImageCode,jdbcType=VARCHAR},
+      scApath = #{scApath,jdbcType=VARCHAR},
+      scSource = #{scSource,jdbcType=VARCHAR},
+      scStatus = #{scStatus,jdbcType=VARCHAR}
+    where scCode = #{scCode,jdbcType=BIGINT}
+  </update>
+</mapper>

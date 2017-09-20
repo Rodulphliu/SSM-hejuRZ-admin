@@ -37,6 +37,7 @@ public class UploadController {
 	{
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {
+			//上传图片 
 			String Thefinalfilename = uploadservice.uploadFile(file, request);
 			exchangeData.setData(Thefinalfilename);
 			exchangeData.setMessage("上传成功");
@@ -46,5 +47,4 @@ public class UploadController {
 		}
 		return exchangeData;
 	}
-	
 }

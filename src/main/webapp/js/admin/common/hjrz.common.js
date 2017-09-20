@@ -69,10 +69,10 @@ var Common = (function(){
 			                });
 			        },
 			        done: function (e, data) {
-			        	$("#filename").val(data.result.data)
+			        	alert(data.result.message);
 			        }
 		    });
-        },
+        }, 
         
         imageAutoUpload:function(box){
         	var boxDom = $(box);
