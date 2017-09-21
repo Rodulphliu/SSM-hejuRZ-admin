@@ -4,7 +4,7 @@
             <ul class="nav">
                 <li id="index"><a href="/common/home/index.do"><i class="fa fa-home fa-fw" aria-hidden="true"></i>首页</a></li>
 		<li><a href="#"><i class="fa fa-folder-open fa-fw" aria-hidden="true"></i>资源管理</a></li>
-		<li><a href="#"><i class="fa fa-building fa-fw" aria-hidden="true"></i>前台管理</a></li>
+		<li><a href="/StationContext/addStationContext.do"><i class="fa fa-building fa-fw" aria-hidden="true"></i>前台管理</a></li>
 		<li><a href="/brands/brand.do"><i class="fa fa-shopping-bag fa-fw" aria-hidden="true"></i>品牌管理</a></li>
 		<li class="has-sub">
 			<a href="/ServerType/queryServerTypeInit.do"><i class="fa fa-server fa-fw" aria-hidden="true"></i>服务器管理
