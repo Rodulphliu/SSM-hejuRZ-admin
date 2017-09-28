@@ -31,6 +31,7 @@
     values (#{hardwareName,jdbcType=VARCHAR}, #{brandCode,jdbcType=BIGINT}, #{hardwareType,jdbcType=BIGINT}, 
       #{hardwareState,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.hjrz.admin.entity.Hardware" >
     <selectKey resultType="java.lang.Long" keyProperty="hardwareCode" order="AFTER" >
       SELECT LAST_INSERT_ID()
@@ -71,6 +72,8 @@
       </if>
     </trim>
   </insert>
+  
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.hjrz.admin.entity.Hardware" >
     update hardware
     <set >

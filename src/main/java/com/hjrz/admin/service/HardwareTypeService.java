@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.hjrz.admin.constants.HardWareTypeEnum;
+import com.hjrz.admin.constants.HardWareStateEnum;
 import com.hjrz.admin.dao.HardwaretypeMapper;
 import com.hjrz.admin.entity.Hardwaretype;
 
@@ -21,7 +21,7 @@ public class HardwareTypeService {
 	 * @Date 2017年9月4日
 	 */
 	public void addhardwareType(Hardwaretype hardwaretype)throws Exception{
-		hardwaretype.setHardtypestate(HardWareTypeEnum.EXIST);
+		hardwaretype.setHardtypestate(HardWareStateEnum.EXIST);
 		hardwaretypeMapper.insertSelective(hardwaretype);
 	}
 	

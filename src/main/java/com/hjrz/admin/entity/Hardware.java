@@ -2,6 +2,8 @@ package com.hjrz.admin.entity;
 
 import java.util.Date;
 
+import com.hjrz.admin.constants.HardWareStateEnum;
+
 public class Hardware {
     private Long hardwareCode;
 
@@ -11,7 +13,7 @@ public class Hardware {
 
     private Long hardwareType;
 
-    private String hardwareState;
+    private HardWareStateEnum hardwareState;
 
     private Date create_time;
 
@@ -47,15 +49,15 @@ public class Hardware {
         this.hardwareType = hardwareType;
     }
 
-    public String getHardwareState() {
-        return hardwareState;
-    }
+    public HardWareStateEnum getHardwareState() {
+		return hardwareState;
+	}
 
-    public void setHardwareState(String hardwareState) {
-        this.hardwareState = hardwareState == null ? null : hardwareState.trim();
-    }
+	public void setHardwareState(HardWareStateEnum hardwareState) {
+		this.hardwareState = hardwareState;
+	}
 
-    public Date getCreate_time() {
+	public Date getCreate_time() {
         return create_time;
     }
 

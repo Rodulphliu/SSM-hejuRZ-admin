@@ -74,11 +74,12 @@ public class WorkStationController {
 		 * @author RodulphLiu
 		 * @Date 2017年9月4日
 		 */
+		@RequestMapping(value="/workStation.do")
 		public ModelAndView queryWorkstation(WorkStationQuery workStationQuery){
 			ModelAndView modelAndView = new ModelAndView();
 			try {
 				List<WorkStationModel> workStationModels = workStationService.findbyContion(workStationQuery);
-				modelAndView.addObject(workStationModels);
+				modelAndView.addObject("workStationModels",workStationModels);
 				modelAndView.setViewName("workstation/workstainfo_list");
 			} catch (Exception e) {
 				modelAndView.addObject("message","获取工作站失败，请联系管理员");

@@ -6,11 +6,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>添加服务器属性</title>
 		 <%@include file="../common/share_static.jsp" %>
-    	<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap.select/bootstrap-select.min.css" />
-		<script type="text/javascript" src="<%=contextPath %>/js/bootstrap.select/bootstrap-select.min.js"></script>
 </head>
 <body>
 		<%@include file="../common/header.jsp"%>
+		<div class="container-fluid all">
 		<!-- leftNav before-->
 		<%@include file="../common/leftnav.jsp" %>
        	<!-- leftNav end -->
