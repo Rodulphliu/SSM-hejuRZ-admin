@@ -29,7 +29,7 @@
 						<label> <input type="checkbox">记住密码
 						</label>
 					</div> -->
-					<button id="login" class="btn btn-default">提交</button>
+					<button id="login" class="btn btn-default">login in</button>
 					<!-- <a>注册</a> -->
 				</form>
 			</div>

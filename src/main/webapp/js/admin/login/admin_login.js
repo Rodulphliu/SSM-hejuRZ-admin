@@ -4,43 +4,109 @@ var admin_login = (function () {
         login:function(){
             var self = this;
             // 按钮正在登录
-            $("#login").val('正在登录');
-            var user_name = $.trim($("#username").val());
-            var user_pass = $.trim($("#upassword").val());
+            $("#login").html('正在登录..');
+            var user_name = $.trim($("#login_mobile").val());
+            var user_pass = $.trim($("#login_password").val());
             var ajax_data = {
-            		admname:user_name,
-            		admpassword:user_pass
+            		login_mobile:user_name,
+            		login_password:user_pass
             }
             $.ajax({
-                url: '/login/logininit.do',
+                url: '/zz/user/ajax/login.do',
                 type: 'post',
                 dataType: 'json',
                 contentType:"application/json",
                 data: JSON.stringify(ajax_data),
+                global:false,
                 success:function(data){
                     if(data.callStatus == "SUCCESS"){
-                        $("#login").html('<button class="btn btn-default">登录成功...</button>');
-                        window.location.href='/common/home/index.do';      
+                        $("#login").html('<i class="fa fa-check"></i> 登录成功');
+                        self.loginSuccess(data);
                     }else{
                         $("#login").html('登 录');
-                        alert("NOnono");
+                        Common.kxpw_tishi(data.message);
                     }
                 },
-                error:function(){
-            		alert("ERROR");
-            	}
             });
         },
 
+        // 自动登录
+        autoLogin:function(){
+            var self = this;
+            $.ajax({
+                url: '/zz/user/ajax/autoLogin.do',
+                type: 'post',
+                dataType: 'json',
+                data: {},
+                global:false,
+                success:function(data){
+                    if(data.callStatus == "SUCCESS"){
+                        self.loginSuccess(data);
+                    }else{
+                    	  $("#login_mobile").focus();
+                    }
+                },
+                error:function(){
+                    //$("#loginBtn").html('失败重试');
+                }
+            });
+        },
+
+        // 登录成功
+        loginSuccess:function(data){
+        	window.location.href='/zz/user/gotoDashboard.do';      
+        },
+        
+        validLogin:function(){
+        	return $('#zz_login_form').validationEngine('validate');
+        },
+
+        // 初始化页面的函数
+        initPage:function(){
+            var self = this;
+            // 先自动登录
+            self.autoLogin();
+            //绑定表单验证
+            Common.validator($("#zz_login_form"));
+            // 绑定快捷键
+            $("#login_mobile").on('keyup', function(event) {
+                if(event.keyCode == 13){
+                    var user_name = $.trim($("#login_mobile").val());
+                    var user_pass = $.trim($("#login_password").val());
+                    if(user_name !== "" && user_pass !== ""){
+                        $(".login").trigger('click');
+                    }else{
+                        if(user_name !== ""){
+                            $("#login_password").focus();
+                        }
+                    }
+                }
+            });
+            $("#login_password").on('keyup', function(event) {
+                if(event.keyCode == 13){
+                    var user_name = $.trim($("#login_mobile").val());
+                    var user_pass = $.trim($("#login_password").val());
+                    if(user_name !== "" && user_pass !== ""){
+                        $(".login").trigger('click');
+                    }
+                }
+            });
+            // 绑定登录事件
+            $(".form_btn").on('click', '.login', function(event) {
+                event.preventDefault();
+                if(self.validLogin()){
+                    self.login();
+                }
+            });
+            
+        }
     }
     return index;
 })();
 
-$(function(){
-	$("#submit").click(function(){
-		if($("#username").val()!=null && $("#upassword").val()!=null){
-			admin_login.login();
-		}
-	});
+$(document).ready(function() {
+	admin_login.initPage();
+    setTimeout(function(){
+        $("#login_mobile").focus();
+    },300);
 });
-			
