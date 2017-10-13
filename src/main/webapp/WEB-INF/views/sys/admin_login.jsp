@@ -10,28 +10,27 @@
 </head>
 <body class="login">
 	<div class="ad_m">
-		<img src="/images/loginview/login_left_bg.png" />
+		<img src="/images/loginview/login_left_bg.png"/>
 	</div>
 	<!--登录框begin-->
 	<div class="login_m">
 		<div class="login_boder">
 			<div class="login_padding" id="login_model">
-				<form id="contact" autocomplete = "off" >
+				<form id="contact">
 					<div class="form-group">
-						<label for="exampleInputEmail1">用户名：</label> <input type="text"
-							id="username" class="form-control" required placeholder="用户名" autocomplete="off"/>
+						<label>用户名：</label> 
+						<input type="text" id="username" class="form-control" required placeholder="用户名" autocomplete="off"/>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">密码：</label> <input
-							type="password" id="upassword" class="form-control"
-							placeholder="密码" required autocomplete="off"/>
+						<label>密码：</label> 
+						<input type="password" id="upassword" class="form-control" placeholder="密码" required autocomplete="off"/>
 					</div>
-					<div class="checkbox">
+					<!-- <div class="checkbox">
 						<label> <input type="checkbox">记住密码
 						</label>
-					</div>
-					<button type="submit" class="btn btn-default">提交</button>
-					<a>注册</a>
+					</div> -->
+					<button id="login" class="btn btn-default">提交</button>
+					<!-- <a>注册</a> -->
 				</form>
 			</div>
 		</div>

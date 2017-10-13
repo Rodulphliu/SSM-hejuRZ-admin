@@ -16,6 +16,8 @@ public class Hardware {
     private HardWareStateEnum hardwareState;
 
     private Date create_time;
+    
+    private Brand brand;
 
     private Hardwaretype hardwaretype;
     
@@ -53,15 +55,23 @@ public class Hardware {
         this.hardwareName = hardwareName == null ? null : hardwareName.trim();
     }
 
-    public Long getBrandCode() {
-        return brandCode;
-    }
+	public Long getBrandCode() {
+		return brandCode;
+	}
 
-    public void setBrandCode(Long brandCode) {
-        this.brandCode = brandCode;
-    }
+	public void setBrandCode(Long brandCode) {
+		this.brandCode = brandCode;
+	}
 
-    public Long getHardwareType() {
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public Long getHardwareType() {
         return hardwareType;
     }
 

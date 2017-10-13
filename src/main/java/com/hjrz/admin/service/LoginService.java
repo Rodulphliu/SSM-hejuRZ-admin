@@ -46,8 +46,7 @@ public class LoginService {
      * @author RodulphLiu
      * @Date 2017年4月28日 下午5:24:32
      */
-    public AdminAccountModel adminLogin(LoginForm loginForm,HttpServletRequest request,
-        HttpServletResponse response)
+    public AdminAccountModel adminLogin(LoginForm loginForm,HttpServletRequest request)
             throws LoginException,SYSException,IllegalAccessException, InvocationTargetException
     {
             AdminAccountModel aam = new AdminAccountModel();

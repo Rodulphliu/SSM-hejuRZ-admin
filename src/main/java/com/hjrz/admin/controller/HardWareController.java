@@ -65,4 +65,16 @@ public class HardWareController {
 			}
 			return exchangeData;
 		}
+		
+		@RequestMapping(value="/Hardware.do")
+		public ModelAndView selectallhardware()
+		{
+			ModelAndView modelAndView = new ModelAndView();
+			try {
+				
+			} catch (Exception e) {
+				
+			}
+			return modelAndView;
+		}
 }

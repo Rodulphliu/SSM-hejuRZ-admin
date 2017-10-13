@@ -8,7 +8,6 @@ package com.hjrz.admin.form;
  * @version 1.0.0
  */
 public class LoginForm {
-            
             private String  admname;
             
             private String admpassword;
@@ -28,6 +27,4 @@ public class LoginForm {
             public void setAdmpassword(String admpassword) {
               this.admpassword = admpassword;
             }
-            
-            
 }

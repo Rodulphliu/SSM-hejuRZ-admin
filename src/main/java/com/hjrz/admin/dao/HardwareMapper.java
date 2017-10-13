@@ -1,5 +1,7 @@
 package com.hjrz.admin.dao;
 
+import java.util.List;
+
 import com.hjrz.admin.entity.Hardware;
 
 public interface HardwareMapper {
@@ -15,5 +17,5 @@ public interface HardwareMapper {
 
     int updateByPrimaryKey(Hardware record);
     
-    
+    List<Hardware> selectallhardware();
 }
