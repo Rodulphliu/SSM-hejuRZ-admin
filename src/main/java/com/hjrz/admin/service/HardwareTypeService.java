@@ -36,6 +36,19 @@ public class HardwareTypeService {
 		return hardwaretypes;
 	}	
 	
+	/**
+	 * @author RodulphLiu
+	 * @description findallHardwareTypes(无形参查询所有的类型)
+	 * @date 2017年10月10日
+	 * @version 1.0
+	 */
+	public List<Hardwaretype> findallHardwareTypes()throws Exception
+	{
+		Hardwaretype hardwaretype = null;
+		List<Hardwaretype> hardwaretypes= hardwaretypeMapper.selectByCondition(hardwaretype);
+		return hardwaretypes;
+	}
+	
 	/** 
 	 * @Title getByid 
 	 * @Description TODO(根据ID获取相关对象) 

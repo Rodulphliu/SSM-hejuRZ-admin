@@ -50,7 +50,7 @@ public class AdminController {
         ExchangeData<Object> exchangeData = new ExchangeData<Object>();
         try {
               adminAccService.addAdminAccount(adminAccountModel);
-              modelAndView.setViewName("success");
+              modelAndView.setViewName("success");                                                        
               modelAndView.addObject("exchangeData",exchangeData);
         } catch (Exception e) {
               modelAndView.setViewName("500");
@@ -59,6 +59,4 @@ public class AdminController {
         }
         return modelAndView;
     }
-    
-    
 }

@@ -14,4 +14,6 @@ public interface HardwareMapper {
     int updateByPrimaryKeySelective(Hardware record);
 
     int updateByPrimaryKey(Hardware record);
+    
+    
 }

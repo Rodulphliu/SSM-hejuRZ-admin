@@ -8,20 +8,37 @@
     <result column="hardwareType" property="hardwareType" jdbcType="BIGINT" />
     <result column="hardwareState" property="hardwareState" jdbcType="VARCHAR" />
     <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <association property="hardwaretype" javaType="com.hjrz.admin.entity.Hardwaretype">
+    	<id column="hardtypeCode" property="hardtypeName"/>
+    	<result column="hardtypeName" property="hardtypeName"/>
+    	<result column="hardtypeImgPath" property="hardtypeImgPath"/>
+    	<result column="hardtypeIntroduction" property="hardtypeIntroduction"/>
+    	<result column="hardtypestate" property="hardtypestate"/>
+    </association>
+    <association property="hardware_info" javaType="com.hjrz.admin.entity.Hardware_info">
+    	<id column="hardwareinfoCode" property="hardwareinfoCode"/>
+    	<result column="hardwareImgpath" property="hardwareImgpath"/>
+    	<result column="hardwareinfoDetail" property="hardwareinfoDetail"/>
+    </association>
   </resultMap>
+  
   <sql id="Base_Column_List" >
     hardwareCode, hardwareName, brandCode, hardwareType, hardwareState, create_time
   </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from hardware
     where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
   </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from hardware
     where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
   </delete>
+  
   <insert id="insert" parameterType="com.hjrz.admin.entity.Hardware" >
     <selectKey resultType="java.lang.Long" keyProperty="hardwareCode" order="AFTER" >
       SELECT LAST_INSERT_ID()
@@ -95,6 +112,7 @@
     </set>
     where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Hardware" >
     update hardware
     set hardwareName = #{hardwareName,jdbcType=VARCHAR},
@@ -104,4 +122,6 @@
       create_time = #{create_time,jdbcType=TIMESTAMP}
     where hardwareCode = #{hardwareCode,jdbcType=BIGINT}
   </update>
+  
+  
 </mapper>

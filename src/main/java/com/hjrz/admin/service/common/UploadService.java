@@ -33,7 +33,7 @@ public class UploadService {
 		 */
 		public String uploadFile(MultipartFile file,HttpServletRequest request) throws SYSException,IOException{
 			//获取文件上传位置路径
-			String path = request.getSession().getServletContext().getRealPath("/uploadimages/");
+			String path = request.getSession().getServletContext().getRealPath("/WEB-INF/upload/");
 			//文件原名(无后缀)
 			String orgname = file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf("."));
 			//文件类型

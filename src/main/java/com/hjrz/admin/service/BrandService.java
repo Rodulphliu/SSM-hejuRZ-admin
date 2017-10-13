@@ -39,6 +39,13 @@ public class BrandService {
 		return brands;
 	}
 	
+	public List<Brand> findallBrands()throws Exception
+	{
+		Brand brand = null;
+		List<Brand> brands = brandMapper.selectByCondition(brand);
+		return brands;
+	}
+	
 	/** 
 	 * @Title getbyId
 	 * @Description TODO(根据ID获取品牌) 

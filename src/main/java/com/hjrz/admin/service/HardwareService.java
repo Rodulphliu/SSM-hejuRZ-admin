@@ -1,6 +1,7 @@
 package com.hjrz.admin.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,10 @@ public class HardwareService {
 		hardwareInfoService.addHardWareInfo(hardware_info);
 	}
 	
+	public List<Hardware> getallhardwareinfo()throws Exception
+	{
+		List<Hardware> hardwares = null;
+		return hardwares;
+	}
 	
 }

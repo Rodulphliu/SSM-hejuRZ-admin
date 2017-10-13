@@ -79,7 +79,7 @@ public class BrandController {
 	 * @author RodulphLiu
 	 * @Date 2017年9月4日
 	 */
-	public ModelAndView querybrandById(Long brandCode){
+	/*public ModelAndView querybrandById(Long brandCode){
 		ModelAndView modelAndView = new ModelAndView();
 		try {
 			Brand brand = brandService.getbyId(brandCode);
@@ -90,5 +90,5 @@ public class BrandController {
 			modelAndView.setViewName("brand/brand_detail");
 		}
 		return modelAndView;
-	}
+	}*/
 }

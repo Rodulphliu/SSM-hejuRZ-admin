@@ -38,8 +38,8 @@
 							<c:forEach items="${hardwaretypes}" var="h" begin="0" varStatus="status">
 							<tr>
 								<td>${status.index+1}</td>
+								<td><img src="/upload/${h.hardtypeImgPath}" style="width:200px;height:60px"/></td>
 								<td>${h.hardtypeName}</td>
-								<td><img src="/upload/${h.hardtypeImgPath}" style="width:100px;height:40px"/></td>
 								<td>${fn:substring(h.hardtypeIntroduction, 0, 40)}...</td>
 							</tr>
 							</c:forEach>

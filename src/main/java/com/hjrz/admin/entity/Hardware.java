@@ -17,7 +17,27 @@ public class Hardware {
 
     private Date create_time;
 
-    public Long getHardwareCode() {
+    private Hardwaretype hardwaretype;
+    
+    private Hardware_info hardware_info;
+    
+    public Hardwaretype getHardwaretype() {
+		return hardwaretype;
+	}
+
+	public void setHardwaretype(Hardwaretype hardwaretype) {
+		this.hardwaretype = hardwaretype;
+	}
+
+	public Hardware_info getHardware_info() {
+		return hardware_info;
+	}
+
+	public void setHardware_info(Hardware_info hardware_info) {
+		this.hardware_info = hardware_info;
+	}
+
+	public Long getHardwareCode() {
         return hardwareCode;
     }
 

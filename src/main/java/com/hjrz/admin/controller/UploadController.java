@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,7 +32,7 @@ public class UploadController {
 	 * @Date 2017年9月6日
 	 */
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/ajax/uploadFile.do",produces = {"application/json"})
+	@RequestMapping(value="/ajax/uploadFile.do",method=RequestMethod.POST,produces = {"application/json"})
 	public @ResponseBody ExchangeData uploadfile(@RequestParam("file") MultipartFile file,
 			HttpServletRequest request)
 	{

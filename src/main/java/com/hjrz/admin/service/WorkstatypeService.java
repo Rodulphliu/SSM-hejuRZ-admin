@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.hjrz.admin.dao.WorkstatypeMapper;
 import com.hjrz.admin.entity.Workstatype;
-import com.hjrz.admin.entity.WorkstatypeExample;
 
 @Service("workstatypeService")
 public class WorkstatypeService {
