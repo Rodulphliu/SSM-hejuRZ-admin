@@ -46,9 +46,15 @@ public class HardwareService {
 		hardwareInfoService.addHardWareInfo(hardware_info);
 	}
 	
+	/**
+	 * @author RodulphLiu
+	 * @description getallhardwareinfo(查询所有硬件)
+	 * @date 2017年10月16日
+	 * @version 1.0
+	 */
 	public List<Hardware> getallhardwareinfo()throws Exception
 	{
-		List<Hardware> hardwares = null;
+		List<Hardware> hardwares = hardwareMapper.selectallhardware();
 		return hardwares;
 	}
 	

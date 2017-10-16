@@ -14,7 +14,7 @@
 			var wksTypecode = $("#wksTypecode").val();
 			if(window.confirm("确定要删除该工作站类型吗？")){
 				$.ajax({
-					url:"../WorkstationType/deleteByCode.do",
+					url:"../WorkstationType/deleteByCode.hjrz",
 					data:JSON.stringify(wksTypecode),
 					contentType:"application/json",
 					dataType:"json",
@@ -28,7 +28,7 @@
 							    }
 							toastr.success("删除成功！","提示"); */
 							alert("删除成功！")
-							$(location).attr('href', '/WorkstationType/queryAll.do');
+							$(location).attr('href', '/WorkstationType/queryAll.hjrz');
 							
 						}else{
 							 toastr.options = {  
@@ -86,10 +86,10 @@
 							</div>
 							<div class="panel panel-default">
 								  <div class="panel-body">
-								  	 <a href="/ServerType/ServerTypeModify.do?id=${workstatype.wksTypecode}" class="button button-primary"><b>编辑</b></a>
+								  	 <a href="/ServerType/ServerTypeModify.hjrz?id=${workstatype.wksTypecode}" class="button button-primary"><b>编辑</b></a>
 								  	 <input type="hidden" value="${workstatype.wksTypecode }" id="wksTypecode"/>
 								  	 <a  class="button button-caution " id="delete"><b>删除</b></a>
-								  	 <a href="<%=contextPath %>/WorkstationType/queryAll.do" class="button " id="back"><b>返回</b></a>
+								  	 <a href="<%=contextPath %>/WorkstationType/queryAll.hjrz" class="button " id="back"><b>返回</b></a>
 								  </div>
 							</div>
 	        		

@@ -22,7 +22,7 @@
 		            	<div class="col-xs-7 col-md-7" style="margin-left:20.0%;">
 		            		<div class="component">
 				            		<div style="margin-bottom:30px;">
-										<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>servicer/queryServerInit.do'">
+										<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>servicer/queryServerInit.hjrz'">
 										<span class="glyphicon glyphicon-menu-left"></span>&nbsp;返回&nbsp;
 										</button>
 		              				</div>

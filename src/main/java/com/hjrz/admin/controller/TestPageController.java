@@ -17,7 +17,7 @@ public class TestPageController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value="/gettest1.do",method=RequestMethod.GET)
+	@RequestMapping(value="/gettest1.hjrz",method=RequestMethod.GET)
 	public String toUploadJSP(HttpServletRequest request,HttpServletResponse response){
 		return "test/testupload";
 	}

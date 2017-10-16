@@ -5,6 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,6 @@ import com.hjrz.admin.service.LoginService;
  * @version 1.0.0
  */
 @Controller
-@RequestMapping(value="/login")
 public class LoginController {
     
     @Autowired
@@ -39,7 +40,7 @@ public class LoginController {
      * @author RodulphLiu
      * @Date 2017年4月28日 下午5:35:07
      */
-    @RequestMapping(value="/login.do",method=RequestMethod.GET)
+    @RequestMapping(value="/login.hjrz",method=RequestMethod.GET)
     public ModelAndView loginInit(HttpServletRequest request,HttpServletResponse response)
     {
        ModelAndView modelAndView = new ModelAndView();
@@ -53,17 +54,19 @@ public class LoginController {
      * @Date 2017年4月28日 下午5:38:19
      */
     @SuppressWarnings("rawtypes")
-	@RequestMapping(value="/logininit.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public @ResponseBody ExchangeData login(@RequestBody LoginForm loginForm,HttpServletRequest request)
+	@RequestMapping(value="/logininit.hjrz",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public @ResponseBody ExchangeData login(@Valid @RequestBody LoginForm loginForm,HttpServletRequest request)
     {
     	ExchangeData<Object> exchangeData = new ExchangeData<Object>();
         HttpSession session = request.getSession();
         try {
             AdminAccountModel  adminAccountModel = loginService.adminLogin(loginForm,request);
             session.setAttribute("adminname",adminAccountModel.getAdmname());
-        } catch (LoginException | IllegalAccessException | InvocationTargetException e) {
+        }catch (LoginException | IllegalAccessException | InvocationTargetException e) {
+        	exchangeData.markFail();
             exchangeData.setMessage(e.getMessage());
         }catch (Exception e) {
+        	exchangeData.markFail();
             exchangeData.setMessage(e.getMessage());
         }
         return exchangeData;

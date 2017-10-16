@@ -60,12 +60,11 @@ public class LoginService {
             if(admin.getAdminstate()!=AdminStatusEnum.VALID){
               throw new LoginException("管理员账号"+admin.getAdmname()+"不可用，请联系管理员");
             }
-            Admin_info admin_info = admin_infoMapper.selectByAdmCode(admin.getAdmcode());
+          /*  Admin_info admin_info = admin_infoMapper.selectByAdmCode(admin.getAdmcode());
             //赋值给AdminAccountModel
             BeanUtilsBean2.getInstance().copyProperties(aam, admin);
             BeanUtilsBean2.getInstance().copyProperties(aam, admin_info);
-            cacheService.putKey(CachekeyPrefix.ADMIN_ACC_CORE+admin.getAdmcode(),aam,AbstractCacheService.HALFDAY);
+            cacheService.putKey(CachekeyPrefix.ADMIN_ACC_CORE+admin.getAdmcode(),aam,AbstractCacheService.HALFDAY);*/
              return aam;
           } 
-    
     }

@@ -23,7 +23,7 @@
 				hardwareForm.hardwareImgpath = $("#filename").val();
 				hardwareForm.hardwareinfoDetail = $("#hardwareinfoDetail").val();
 					$.ajax({
-						url:"/HardWare/addHardwareInit.do",
+						url:"/HardWare/addHardwareInit.hjrz",
 					    type:'post',
 					    contentType:'application/json',
 					    dataType:'json',

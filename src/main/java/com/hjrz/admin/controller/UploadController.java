@@ -20,7 +20,7 @@ public class UploadController {
 	@Autowired
 	private UploadService uploadservice; 
 	
-	@RequestMapping(value="/toupload.do")
+	@RequestMapping(value="/toupload.hjrz")
 	public String toupload(HttpServletRequest request){
 		return "test/testupload";
 	}
@@ -32,7 +32,7 @@ public class UploadController {
 	 * @Date 2017年9月6日
 	 */
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/ajax/uploadFile.do",method=RequestMethod.POST,produces = {"application/json"})
+	@RequestMapping(value="/ajax/uploadFile.hjrz",method=RequestMethod.POST,produces = {"application/json"})
 	public @ResponseBody ExchangeData uploadfile(@RequestParam("file") MultipartFile file,
 			HttpServletRequest request)
 	{

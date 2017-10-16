@@ -37,7 +37,7 @@ public class WorkStationController {
 		 * @author RodulphLiu
 		 * @Date 2017年9月1日
 		 */
-		@RequestMapping(value="/addWorkStation.do")
+		@RequestMapping(value="/addWorkStation.hjrz")
 		public String toadd(HttpServletRequest request,HttpServletResponse response){
 			try {
 				List<Workstatype> workstatypes;
@@ -56,7 +56,7 @@ public class WorkStationController {
 		 * @Date 2017年9月1日
 		 */
 		@SuppressWarnings("rawtypes")
-		@RequestMapping(value="/addWorkStationinfo.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+		@RequestMapping(value="/addWorkStationinfo.hjrz",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 		@ResponseBody
 		public ExchangeData add(@RequestBody WorkStationModel workStationModel,HttpServletRequest request){
 			ExchangeData<Object> exchangeData = new ExchangeData<Object>();
@@ -74,7 +74,7 @@ public class WorkStationController {
 		 * @author RodulphLiu
 		 * @Date 2017年9月4日
 		 */
-		@RequestMapping(value="/workStation.do")
+		@RequestMapping(value="/workStation.hjrz")
 		public ModelAndView queryWorkstation(WorkStationQuery workStationQuery){
 			ModelAndView modelAndView = new ModelAndView();
 			try {

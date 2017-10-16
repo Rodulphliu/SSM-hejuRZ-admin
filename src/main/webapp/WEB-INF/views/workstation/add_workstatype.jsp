@@ -16,7 +16,7 @@
 			workstatype.wksTypedetails = $("#wksTypedetails").val();
 			if( $("#wksTypename").val()!="" && $("#wksTypetitle").val()!="" && $("#wksTypedetails").val()!=""){
 				$.ajax({
-					url:"../WorkstationType/addWorkstatype.do",
+					url:"../WorkstationType/addWorkstatype.hjrz",
 				    type:'post',
 				    contentType:'application/json',
 				    dataType:'json',
@@ -24,7 +24,7 @@
 				    success:function(data){
 				    	if(data.callStatus == 'SUCCESS'){
 				    			alert("success");
-								$(location).attr('href', '../WorkstationType/queryAll.do');
+								$(location).attr('href', '../WorkstationType/queryAll.hjrz');
 				    	}
 				    	else{
 				    			toastr.options = {
@@ -71,7 +71,7 @@
               	<div class="component">
               		<!-- 添加工作站类型框 -->
               		<div style="margin-bottom:30px;">
-						<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>ServerType/queryServerTypeInit.do'">
+						<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>ServerType/queryServerTypeInit.hjrz'">
 						<span class="glyphicon glyphicon-menu-left"></span>&nbsp;返回&nbsp;
 						</button>
               		</div>

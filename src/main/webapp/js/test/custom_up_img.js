@@ -86,7 +86,7 @@ $(function() {
     	var canvas=$("#image").cropper('getCroppedCanvas');
     	var data=canvas.toDataURL(); //转成base64
         $.ajax( {  
-                url:"/toupload/ajax/uploadFile.do",  
+                url:"/toupload/ajax/uploadFile.hjrz",  
                 dataType:'json',  
                 type: "POST",  
                 data: {"uploadFileId":data.toString()},  

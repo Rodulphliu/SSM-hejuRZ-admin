@@ -30,7 +30,7 @@ public class BrandController {
 	 * @author RodulphLiu
 	 * @Date 2017年8月28日
 	 */
-	@RequestMapping(value="/addbrand.do")
+	@RequestMapping(value="/addbrand.hjrz")
 	public String toaddBrand(HttpServletRequest request){
 		return "brand/brand_add";
 	}
@@ -42,7 +42,7 @@ public class BrandController {
 	 * @Date 2017年8月28日
 	 */
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/addbrandinfo.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/addbrandinfo.hjrz",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ExchangeData addBrand(@RequestBody Brand brand,HttpServletRequest request){
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {
@@ -59,7 +59,7 @@ public class BrandController {
 	 * @author RodulphLiu
 	 * @Date 2017年9月4日
 	 */
-	@RequestMapping(value="/brand.do")
+	@RequestMapping(value="/brand.hjrz")
 	public ModelAndView queryBrand(Brand brand){
 		ModelAndView modelAndView = new ModelAndView();
 		try {

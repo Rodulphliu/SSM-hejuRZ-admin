@@ -60,7 +60,7 @@ var Common = (function(){
         	 var boxDom = $(box);
 			 var fileDom = boxDom.find('input[type=file]');
 			 	fileDom.fileupload({
-		    	url: '/toupload/ajax/uploadFile.do',
+		    	url: '/toupload/ajax/uploadFile.hjrz',
 		        dataType: 'json',
 			        add: function (e, data) {
 			            data.context = $('#submit')
@@ -78,7 +78,7 @@ var Common = (function(){
         	var boxDom = $(box);
         	var fileDom = boxDom.find('input[type=file]');
         		fileDom.fileupload({
-        			url:'/toupload/ajax/uploadFile.do',
+        			url:'/toupload/ajax/uploadFile.hjrz',
         			dataType:'json',
         			add:function(e,data)
         			{

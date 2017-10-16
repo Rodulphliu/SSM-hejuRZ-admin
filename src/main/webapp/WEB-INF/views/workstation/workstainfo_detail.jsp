@@ -48,7 +48,7 @@
 									<td>${s.sioperSystem}</td>
 									<td>${s.productdesc}</td>
 									<td>
-										<button class="btn btn-default" type="button" onclick="window.location.href='/servicer/serverDetail.do?serverCode=${s.serverCode}'">查看</button>
+										<button class="btn btn-default" type="button" onclick="window.location.href='/servicer/serverDetail.hjrz?serverCode=${s.serverCode}'">查看</button>
 										<button class="btn btn-default" type="button">编辑</button>
 									</td>
 								</tr>

@@ -34,7 +34,7 @@ public class HomeColumnController {
        * @author RudolphLiu
        * @Date 2017年5月25日 下午5:02:33
        */
-      @RequestMapping(value="/list.do",method=RequestMethod.GET)
+      @RequestMapping(value="/list.hjrz",method=RequestMethod.GET)
       public ModelAndView queryhomeclumn(HomeColumn homeColumn)
       {
         ModelAndView modelAndView = new ModelAndView();
@@ -54,7 +54,7 @@ public class HomeColumnController {
        * @author RudolphLiu
        * @Date 2017年5月25日 下午4:20:29
        */
-      @RequestMapping(value="/toadd.do",method=RequestMethod.GET)
+      @RequestMapping(value="/toadd.hjrz",method=RequestMethod.GET)
       public ModelAndView addInIt(){
           ModelAndView modelAndView = new ModelAndView();
           try {
@@ -67,7 +67,7 @@ public class HomeColumnController {
           return modelAndView;
       }
       
-      @RequestMapping(value="/add.do",method=RequestMethod.POST)
+      @RequestMapping(value="/add.hjrz",method=RequestMethod.POST)
       public ModelAndView add(HomeColumn homeColumn){
           ModelAndView modelAndView = new ModelAndView();
           ExchangeData<Object> exchangeData = new ExchangeData<Object>();

@@ -28,7 +28,7 @@
 	<!-- 配置DispatcherServlet所需要拦截的 url -->
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.hjrz</url-pattern>
 	</servlet-mapping>
 	
 	 <!-- 配置log4j配置文件路径 -->  

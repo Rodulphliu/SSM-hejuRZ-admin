@@ -7,7 +7,7 @@
 <title>Insert admin</title>
 </head>
 <body>
-	<form action="/Account/add.do" method="post">
+	<form action="/Account/add.hjrz" method="post">
 		<h5>账号:</h5><input type="text" name="admin_name" />
 		<br/>
 		<h5>密码:</h5><input type="password" name="admin_password"/>

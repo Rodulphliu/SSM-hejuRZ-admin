@@ -15,7 +15,7 @@ $(function(){
 					
 					if( $("#worksName").val()!="" && $("#worksType").val()!="" && $("#wsProcessor").val()!=""){
 						$.ajax({
-							url:"/worksatation/addWorkStationinfo.do",
+							url:"/worksatation/addWorkStationinfo.hjrz",
 						    type:'post',
 						    contentType:'application/json',
 						    dataType:'json',
@@ -24,7 +24,7 @@ $(function(){
 						    success:function(data){
 						    	if(data.callStatus == 'SUCCESS'){
 						    			alert("success");
-										$(location).attr('href', '/ServerType/queryServerTypeInit.do');
+										$(location).attr('href', '/ServerType/queryServerTypeInit.hjrz');
 						    	}
 						    	else{
 						    			toastr.options = {

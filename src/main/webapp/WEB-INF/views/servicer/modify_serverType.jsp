@@ -59,7 +59,7 @@
 				              				
 				              				$("#back").click(function(){
 				              					if(window.confirm('确定放弃本次编辑？')){
-				              					 window.location.href='/ServerType/ServerTypeDetail.do?TypeCode=${serverType.typeCode}'
+				              					 window.location.href='/ServerType/ServerTypeDetail.hjrz?TypeCode=${serverType.typeCode}'
 										           return true;
 										        }else{
 										           return false;

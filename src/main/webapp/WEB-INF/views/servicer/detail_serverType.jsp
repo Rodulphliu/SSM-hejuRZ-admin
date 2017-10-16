@@ -47,9 +47,9 @@
 							
 							<div class="panel panel-default">
 								  <div class="panel-body">
-								  	 <a href="/ServerType/ServerTypeModify.do?id=${serverType.typeCode}" class="button button-primary"><b>编辑</b></a>
+								  	 <a href="/ServerType/ServerTypeModify.hjrz?id=${serverType.typeCode}" class="button button-primary"><b>编辑</b></a>
 								  	 <a href="#" class="button button-caution "><b>删除</b></a>
-								  	 <a href="/ServerType/queryServerTypeInit.do" class="button"><b>返回</b></a>
+								  	 <a href="/ServerType/queryServerTypeInit.hjrz" class="button"><b>返回</b></a>
 								  </div>
 							</div>
 	        		</div>

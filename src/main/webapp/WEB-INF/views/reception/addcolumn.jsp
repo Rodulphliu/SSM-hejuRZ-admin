@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-		<form action="/HomeColumn/add.do" method="post">
+		<form action="/HomeColumn/add.hjrz" method="post">
 			<p>首页栏目标题:</p><input type="text" name="columnTitle"/>
 			<p>栏目中的文字:</p><input type="text" name="columnContent"/>
 			<p>所属栏目 :</p><input type="text" name="belongColumn"/>

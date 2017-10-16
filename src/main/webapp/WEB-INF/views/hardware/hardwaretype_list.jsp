@@ -23,7 +23,7 @@
               	<!--style="margin-left:20.0%;"-->
               	<div class="component">
               		<!-- 内容start -->
-              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>HardwareType/addHardwareType.do'" value="添加硬件类型>>>">
+              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>HardwareType/addHardwareType.hjrz'" value="添加硬件类型>>>">
               		<!-- 内容start -->
 	              		  	<table>
 						<thead>

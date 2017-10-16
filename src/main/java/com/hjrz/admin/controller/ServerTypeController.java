@@ -40,7 +40,7 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月16日 下午3:34:05
        */
-      @RequestMapping(value="/queryServerTypeInit.do")
+      @RequestMapping(value="/queryServerTypeInit.hjrz")
       public ModelAndView queryServerType(ServerTypeQuery serverTypeQuery,
           HttpServletRequest request,HttpServletResponse response)
       {
@@ -61,7 +61,7 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月10日 下午5:15:31
        */
-      @RequestMapping(value = "/toaddServerType.do",method=RequestMethod.GET)
+      @RequestMapping(value = "/toaddServerType.hjrz",method=RequestMethod.GET)
       public ModelAndView addInit(){
           ModelAndView modelAndView = new ModelAndView();
           try {
@@ -79,7 +79,7 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月18日 上午11:35:15
        */
-      @RequestMapping(value="/ServerTypeDetail.do")
+      @RequestMapping(value="/ServerTypeDetail.hjrz")
       public ModelAndView getInit(Integer TypeCode,HttpServletRequest request){
           ModelAndView modelAndView = new ModelAndView();
           try {
@@ -99,7 +99,7 @@ public class ServerTypeController {
        * @author RudolphLiu
        * @Date 2017年5月18日 上午11:48:13
        */
-      @RequestMapping(value="/ServerTypeModify.do")
+      @RequestMapping(value="/ServerTypeModify.hjrz")
       public ModelAndView modifyInit(Integer id,HttpServletRequest request,
           HttpServletResponse response){
           ModelAndView modelAndView = new ModelAndView();
@@ -121,7 +121,7 @@ public class ServerTypeController {
        * @Date 2017年5月18日 上午11:59:32
        */
       @SuppressWarnings("rawtypes")
-      @RequestMapping(value="/ModifyInfo.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+      @RequestMapping(value="/ModifyInfo.hjrz",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
       public @ResponseBody ExchangeData modifyServerType(@RequestBody ServerType serverType,HttpServletRequest request)
       {
           ExchangeData<Object> exchangeData = new ExchangeData<Object>();
@@ -139,7 +139,7 @@ public class ServerTypeController {
        * @Date 2017年5月11日 上午10:51:16
        */
 	    @SuppressWarnings("rawtypes")
-		@RequestMapping(value="/addservertype.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+		@RequestMapping(value="/addservertype.hjrz",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	      public @ResponseBody ExchangeData addServerType(@RequestBody ServerType serverType,HttpServletRequest request)
 	      {
 	        ExchangeData<Object> exchangeData = new ExchangeData<Object>();

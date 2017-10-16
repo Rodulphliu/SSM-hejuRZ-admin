@@ -24,7 +24,7 @@
               	<div class="component">
               		<!-- 添加服务器类型框 -->
               		<div style="margin-bottom:30px;">
-						<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>ServerType/queryServerTypeInit.do'">
+						<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>ServerType/queryServerTypeInit.hjrz'">
 						<span class="glyphicon glyphicon-menu-left"></span>&nbsp;返回&nbsp;
 						</button>
               		</div>

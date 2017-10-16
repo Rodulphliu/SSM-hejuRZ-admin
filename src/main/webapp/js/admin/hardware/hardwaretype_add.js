@@ -21,7 +21,7 @@
 				Hardwaretype.hardtypeImgPath = $("#filename").val();
 				Hardwaretype.hardtypeIntroduction = $("#brandIntroduction").val();
 					$.ajax({
-						url:"/HardwareType/hardwareaddinit.do",
+						url:"/HardwareType/hardwareaddinit.hjrz",
 					    type:'post',
 					    contentType:'application/json',
 					    dataType:'json',

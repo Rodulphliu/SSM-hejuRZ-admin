@@ -15,7 +15,7 @@ $(function(){
 					
 					if( $("#serverName").val()!="" && $("#serverType").val()!="" && $("#siProcessor").val()!=""){
 						$.ajax({
-							url:"/servicer/addservicer.do",
+							url:"/servicer/addservicer.hjrz",
 						    type:'post',
 						    contentType:'application/json',
 						    dataType:'json',
@@ -24,9 +24,9 @@ $(function(){
 						    success:function(data){
 						    	if(data.callStatus == 'SUCCESS'){
 						    			alert("success");
-										$(location).attr('href', '/ServerType/queryServerTypeInit.do');
+										$(location).attr('href', '/ServerType/queryServerTypeInit.hjrz');
 						    	}
-						    	else{
+						    	else{l
 						    			toastr.options = {
 											"progressBar": true,
 																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									"positionClass": "toast-bottom-right",

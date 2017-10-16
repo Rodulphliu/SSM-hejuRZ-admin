@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.hjrz.admin.data.ExchangeData;
 import com.hjrz.admin.entity.Brand;
+import com.hjrz.admin.entity.Hardware;
 import com.hjrz.admin.entity.Hardwaretype;
 import com.hjrz.admin.form.HardWareForm;
 import com.hjrz.admin.service.BrandService;
@@ -22,7 +24,7 @@ import com.hjrz.admin.service.HardwareService;
 import com.hjrz.admin.service.HardwareTypeService;
 
 @Controller
-@RequestMapping(value="/HardWare")
+@RequestMapping(value="/Hardwares")
 public class HardWareController {
 	
 		@Autowired
@@ -34,7 +36,7 @@ public class HardWareController {
 		@Autowired
 		private HardwareTypeService hardwareTypeservice;
 		
-		@RequestMapping(value="/addHardware.do")
+		@RequestMapping(value="/addHardware.hjrz")
 		public ModelAndView toaddHardware(HttpServletRequest request,Brand brand)
 		{
 			ModelAndView modelAndView = new ModelAndView();
@@ -52,7 +54,7 @@ public class HardWareController {
 		}
 		
 		@SuppressWarnings("rawtypes")
-		@RequestMapping(value="/addHardwareInit.do",method=RequestMethod.POST,
+		@RequestMapping(value="/addHardwareInit.hjrz",method=RequestMethod.POST,
 		produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 		public @ResponseBody ExchangeData addHardware(
 				@RequestBody HardWareForm hardwareForm,HttpServletRequest request)
@@ -66,14 +68,17 @@ public class HardWareController {
 			return exchangeData;
 		}
 		
-		@RequestMapping(value="/Hardware.do")
+		@RequestMapping(value="/Hardwares.hjrz")
 		public ModelAndView selectallhardware()
 		{
 			ModelAndView modelAndView = new ModelAndView();
 			try {
-				
+				List<Hardware> hardwares = hardwareService.getallhardwareinfo();
+				modelAndView.addObject("hardwares",hardwares);
+				modelAndView.setViewName("hardware/hardware_list");
 			} catch (Exception e) {
-				
+				modelAndView.addObject("message","查询失败，请联系管理员");
+				modelAndView.setViewName("500");
 			}
 			return modelAndView;
 		}

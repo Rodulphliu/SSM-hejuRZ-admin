@@ -35,7 +35,7 @@ public class StationContextController {
 	* @author RodulphLiu
 	* @date 2017年9月20日 下午5:32:45 
 	*/
-	@RequestMapping(value="/addStationContext.do")
+	@RequestMapping(value="/addStationContext.hjrz")
 	public String toaddStationContext(HttpServletRequest request) 
 	{
 		return "stationcontext/stationcontext_add";
@@ -47,7 +47,7 @@ public class StationContextController {
 	* @date 2017年9月20日 下午5:33:02 
 	*/
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/addStationContextInit.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/addStationContextInit.hjrz",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ExchangeData addStationContext(@RequestBody Stationcontext stationcontext,HttpServletRequest request){
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {
@@ -63,7 +63,7 @@ public class StationContextController {
 	* @author RodulphLiu
 	* @date 2017年9月20日 下午5:48:59 
 	*/
-	@RequestMapping(value="/stationContext.do")
+	@RequestMapping(value="/stationContext.hjrz")
 	public ModelAndView getallStationContextInit(Stationcontext stationcontext){
 		ModelAndView modelAndView = new ModelAndView();
 		try {

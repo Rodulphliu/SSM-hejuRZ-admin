@@ -30,7 +30,7 @@ public class HardWareTypeController {
 	 * @author RodulphLiu
 	 * @Date 2017年9月8日
 	 */
-	@RequestMapping(value= "/addHardwareType.do")
+	@RequestMapping(value= "/addHardwareType.hjrz")
 	public String toaddweb(HttpServletRequest request) 
 	{
 		return "hardware/hardwaretype_add";
@@ -42,7 +42,7 @@ public class HardWareTypeController {
 	 * @author RodulphLiu
 	 * @Date 2017年9月8日
 	 */
-	@RequestMapping(value="/hardwareaddinit.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/hardwareaddinit.hjrz",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ExchangeData<Object> add(@RequestBody Hardwaretype hardwaretype,HttpServletRequest request)
 	{
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
@@ -61,7 +61,7 @@ public class HardWareTypeController {
 	 * @author RodulphLiu
 	 * @Date 2017年9月14日
 	 */
-	@RequestMapping(value="/hardwaretype.do")
+	@RequestMapping(value="/hardwaretype.hjrz")
 	public ModelAndView queryHardWareTypes(Hardwaretype hardwaretype){
 		ModelAndView modelAndView = new ModelAndView();
 		try {

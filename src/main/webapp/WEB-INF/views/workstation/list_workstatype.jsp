@@ -33,7 +33,7 @@
               				<h3 class="panel-title">条件查询</h3>
               			</div>
               			<div class="panel-body">
-	              		<form class="form-inline" action="/WorkstationType/queryByLike.do" method="get">
+	              		<form class="form-inline" action="/WorkstationType/queryByLike.hjrz" method="get">
 		              		<div class="form-group">
 		              		 <label>类型名称</label>
 		   					 <input type="text" class="form-control" name="wksTypename" placeholder="工作站类型名称，如“XX工作站”" value="${workstatype.wksTypename}">
@@ -50,7 +50,7 @@
 		              		</div>
 		              	
 		              		<div class="form-group pull-right">
-		              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>WorkstationType/toAddWorkstatype.do'"  value="添加工作站类型>>>">
+		              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>WorkstationType/toAddWorkstatype.hjrz'"  value="添加工作站类型>>>">
 		              		</div>
 		              	</form>
 	              		</div>
@@ -75,7 +75,7 @@
 							<td>${fn:substring(wl.wksTypedetails, 0, 30)}...</td>
 							<td><fmt:formatDate value="${wl.createTime}" pattern="yyyy年 MM月 dd日 HH:mm"/></td>
 							<td>
-								<button type="button" class="btn btn-default" onclick="window.location.href='<%=basePath %>WorkstationType/queryByCode.do?wksTypecode=${wl.wksTypecode}'" >查看</button>
+								<button type="button" class="btn btn-default" onclick="window.location.href='<%=basePath %>WorkstationType/queryByCode.hjrz?wksTypecode=${wl.wksTypecode}'" >查看</button>
 								<button type="button" class="btn btn-default">编辑</button>
 							</td>
 						</tr>

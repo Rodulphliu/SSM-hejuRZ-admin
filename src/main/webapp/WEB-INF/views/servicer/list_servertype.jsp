@@ -30,7 +30,7 @@
               				<h3 class="panel-title">条件查询</h3>
               			</div>
               			<div class="panel-body">
-	              		<form class="form-inline" action="/ServerType/queryServerTypeInit.do" method="get">
+	              		<form class="form-inline" action="/ServerType/queryServerTypeInit.hjrz" method="get">
 		              		<div class="form-group">
 		              		 <label>类型名称</label>
 		   					 <input type="text" class="form-control" name="typeName" placeholder="类型名称，如“刀片”" value="${serverTypeQuery.typeName}">
@@ -47,7 +47,7 @@
 		              		</div>
 		              		
 		              		<div class="form-group pull-right">
-		              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>ServerType/toaddServerType.do'" value="添加服务器类型>>>">
+		              		<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>ServerType/toaddServerType.hjrz'" value="添加服务器类型>>>">
 		              		</div>
 		              	</form>
 	              		</div>
@@ -72,7 +72,7 @@
 							<td>${fn:substring(s.typeDetails, 0, 30)}...</td>
 							<td><fmt:formatDate value="${s.create_time}" pattern="yyyy年 MM月 dd日 HH:mm"/></td>
 							<td>
-								<button type="button" class="btn btn-default" onclick="window.location.href='/ServerType/ServerTypeDetail.do?TypeCode=${s.typeCode}'" >查看</button>
+								<button type="button" class="btn btn-default" onclick="window.location.href='/ServerType/ServerTypeDetail.hjrz?TypeCode=${s.typeCode}'" >查看</button>
 								<button type="button" class="btn btn-default">编辑</button>
 							</td>
 						</tr>

@@ -30,7 +30,7 @@
               				<h3 class="panel-title">条件查询</h3>
               			</div>
               			<div class="panel-body">
-	              		<form class="form-inline" action="/servicer/queryServerInit.do" method="get">
+	              		<form class="form-inline" action="/servicer/queryServerInit.hjrz" method="get">
 		              		<div class="form-group">
 		              		 <label>服务器名称：</label>
 		   					 <input type="text" class="form-control" name="typeName" placeholder="类型名称，如“刀片”" value="${serverTypeQuery.typeName}">
@@ -54,7 +54,7 @@
 			              		
 				              	<div class="form-group pull-right">
 				   				<input type="submit" class="btn btn-primary" value="提交查询"/>
-				              	<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>servicer/toaddservicer.do'" value="添加服务器>>>">
+				              	<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>servicer/toaddservicer.hjrz'" value="添加服务器>>>">
 			              	</div>
 			              </div>
 		              	</form>
@@ -86,7 +86,7 @@
 									<td>${s.sioperSystem}</td>
 									<td>${s.productdesc}</td>
 									<td>
-										<button class="btn btn-default" type="button" onclick="window.location.href='/servicer/serverDetail.do?serverCode=${s.serverCode}'">查看</button>
+										<button class="btn btn-default" type="button" onclick="window.location.href='/servicer/serverDetail.hjrz?serverCode=${s.serverCode}'">查看</button>
 										<button class="btn btn-default" type="button">编辑</button>
 									</td>
 								</tr>

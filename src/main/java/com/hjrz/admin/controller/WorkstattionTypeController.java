@@ -27,7 +27,7 @@ public class WorkstattionTypeController {
 	private WorkstatypeService workstatypeService;
 	
 	//查询所有工作站类型
-	@RequestMapping(value="/queryAll.do")
+	@RequestMapping(value="/queryAll.hjrz")
 	public ModelAndView queryAll(){
 		ModelAndView modelAndView = new ModelAndView();
 		try{
@@ -43,7 +43,7 @@ public class WorkstattionTypeController {
 	}
 	
 	//跳转到add_workstatype.jsp页面
-	@RequestMapping(value="/toAddWorkstatype.do")
+	@RequestMapping(value="/toAddWorkstatype.hjrz")
 	public ModelAndView toAddWorkstatype(){
 		 ModelAndView modelAndView = new ModelAndView();
          try {
@@ -58,7 +58,7 @@ public class WorkstattionTypeController {
 	
 	//添加工作站类型
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/addWorkstatype.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/addWorkstatype.hjrz",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ExchangeData addWorkstatype( @RequestBody Workstatype workstatype , HttpServletRequest resquest,HttpServletResponse response) {
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
         try {
@@ -71,7 +71,7 @@ public class WorkstattionTypeController {
 	
 	//模糊查询工作站类型
 	//@ModelAttribute("")进行数据回显
-	@RequestMapping(value="/queryByLike.do",method=RequestMethod.GET)
+	@RequestMapping(value="/queryByLike.hjrz",method=RequestMethod.GET)
 	public ModelAndView queryByLike(@ModelAttribute("workstatype") Workstatype workstatype){
 		ModelAndView modelAndView = new ModelAndView();
 		try{
@@ -86,7 +86,7 @@ public class WorkstattionTypeController {
 	}
 	
 	//根据工作站类型ID查询
-	@RequestMapping(value="/queryByCode.do")
+	@RequestMapping(value="/queryByCode.hjrz")
 	public ModelAndView queryByCode(Integer wksTypecode){
 		ModelAndView modelAndView = new ModelAndView();
 		try {
@@ -101,7 +101,7 @@ public class WorkstattionTypeController {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/deleteByCode.do",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/deleteByCode.hjrz",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ExchangeData deleteByCode(@RequestBody Integer wksTypecode,HttpServletRequest resquest,HttpServletResponse response){
 		ExchangeData<Object> exchangeData = new ExchangeData<Object>();
 		try {

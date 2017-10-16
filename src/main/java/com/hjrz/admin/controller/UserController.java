@@ -18,7 +18,7 @@ public class UserController {
 	private UserService userService;
 
 	
-	@RequestMapping(value="/userlist.do")
+	@RequestMapping(value="/userlist.hjrz")
 	public ModelAndView getallUser(UserModel userModel){
 		ModelAndView modelAndView = new ModelAndView();
 		try {

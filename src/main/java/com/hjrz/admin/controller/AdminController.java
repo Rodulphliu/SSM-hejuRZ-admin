@@ -32,7 +32,7 @@ public class AdminController {
      * @author RodulphLiu
      * @Date 2017年4月27日 下午6:00:39
      */
-    @RequestMapping(value="/addInit.do")
+    @RequestMapping(value="/addInit.hjrz")
     public String addInIt(HttpServletRequest request,HttpServletResponse response)
     {
           return "add_admin";
@@ -43,7 +43,7 @@ public class AdminController {
      * @author RodulphLiu
      * @Date 2017年5月1日 下午4:20:26
      */
-    @RequestMapping(value="/add.do",method=RequestMethod.POST)
+    @RequestMapping(value="/add.hjrz",method=RequestMethod.POST)
     public ModelAndView add(AdminAccountModel adminAccountModel,HttpServletRequest request)
     {
         ModelAndView modelAndView = new ModelAndView();

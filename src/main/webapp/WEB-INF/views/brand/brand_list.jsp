@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +22,7 @@
             <div class="col-xs-12 col-md-12">
               	<!--style="margin-left:20.0%;"-->
               	<div class="component">
-              	<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>brands/addbrand.do'" value="添加品牌>>>">
+              	<input type="button"  class="btn btn-info" onclick="window.location.href='<%=basePath %>brands/addbrand.hjrz'" value="添加品牌>>>">
               		<!-- 内容start -->
               		  	<table>
 					<thead>
@@ -40,15 +39,13 @@
 						<tr>
 							<td>${status.index+1}</td>
 							<td>${b.brandName}</td>
-							<td><img src="/upload/${b.brandImgPath}" style="width:100px;height:40px"/></td>
+							<td><img src="/upload/${b.brandImgPath}" style="width:100px;height:40px;"/></td>
 							<td>${fn:substring(b.brandIntroduction, 0, 30)}...</td>
 							<td><fmt:formatDate value="${b.create_time}" pattern="yyyy年 MM月 dd日 HH:mm"/></td>
 						</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-              		
-              			
               	</div>
               </div>
 			</div>

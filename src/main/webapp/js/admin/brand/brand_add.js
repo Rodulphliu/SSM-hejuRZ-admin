@@ -22,7 +22,7 @@
 				Brand.brandImgPath = $("#filename").val();
 				Brand.brandIntroduction = $("#brandIntroduction").val();
 					$.ajax({
-						url:"/brands/addbrandinfo.do",
+						url:"/brands/addbrandinfo.hjrz",
 					    type:'post',
 					    contentType:'application/json',
 					    dataType:'json',

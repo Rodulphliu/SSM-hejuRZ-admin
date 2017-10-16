@@ -45,7 +45,7 @@ public class ServicerController {
        * @author RudolphLiu
        * @Date 2017年5月18日 下午5:59:38
        */
-      @RequestMapping(value="/toaddservicer.do")
+      @RequestMapping(value="/toaddservicer.hjrz")
       public String addInit(ServerTypeQuery serverTypeQuery,HttpServletRequest request,HttpServletResponse response){
 		try {
 			List<ServerType> serverTypes;
@@ -65,7 +65,7 @@ public class ServicerController {
 	     * @Date 2017年8月11日
 	     */
       @SuppressWarnings("rawtypes")
-      @RequestMapping(value="/addservicer.do",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+      @RequestMapping(value="/addservicer.hjrz",method= RequestMethod.POST,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
       @ResponseBody
       public ExchangeData addServicer(@RequestBody ServicerModel servicerModel,HttpServletRequest request)
       {
@@ -84,7 +84,7 @@ public class ServicerController {
 	    * @author RodulphLiu
 	    * @Date 2017年8月15日
 	   */
-    @RequestMapping(value="/queryServerInit.do")
+    @RequestMapping(value="/queryServerInit.hjrz")
       public ModelAndView queryServerType(ServicerQuery servicerQuery,
     		  HttpServletRequest request,HttpServletResponse response){
     	  ModelAndView modelAndView = new ModelAndView();
@@ -105,7 +105,7 @@ public class ServicerController {
      * @author RodulphLiu
      * @Date 2017年8月15日
      */
-    @RequestMapping(value="/serverDetail.do")
+    @RequestMapping(value="/serverDetail.hjrz")
     public ModelAndView getInit(Integer serverCode
     		,HttpServletRequest request,HttpServletResponse response){
     	ModelAndView modelAndView = new ModelAndView();
