@@ -9,7 +9,7 @@
 <!--<link rel="icon" href="favicon.ico" />-->
 
 <!--jquery库-->
-<script type="text/javascript" src="<%=contextPath %>/js/jquery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/js/jquery/jquery.min.js"></script>
 <!--bootstrap库-->
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/bootstrap/bootstrap-theme.css"/>

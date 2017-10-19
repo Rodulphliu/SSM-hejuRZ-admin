@@ -30,7 +30,7 @@
               				<h3 class="panel-title">条件查询</h3>
               			</div>
               			<div class="panel-body">
-	              		<form class="form-inline" action="/ServerType/queryServerTypeInit.hjrz" method="get">
+	              		<form class="form-inline" action="<%=contextPath %>/ServerType/queryServerTypeInit.hjrz" method="get">
 		              		<div class="form-group">
 		              		 <label>类型名称</label>
 		   					 <input type="text" class="form-control" name="typeName" placeholder="类型名称，如“刀片”" value="${serverTypeQuery.typeName}">
@@ -86,5 +86,7 @@
     </div>
         </div>
         <!-- leftNav end -->
+<script type="text/javascript" src="<%=contextPath %>/js/table/jquery.ba-throttle-debounce.min.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/js/table/jquery.stickyheader.js"></script>
 </body>
 </html>

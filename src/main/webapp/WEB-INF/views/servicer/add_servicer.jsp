@@ -148,5 +148,5 @@
 	       	 	 <!--我是主要内容 end-->
 	       	 </div>
 </body>
-<script src="<%=contextPath %>/js/admin/servicer/add_servicer.js"></script>
+<script src="<%=basePath %>/js/admin/servicer/add_servicer.js"></script>
 </html>

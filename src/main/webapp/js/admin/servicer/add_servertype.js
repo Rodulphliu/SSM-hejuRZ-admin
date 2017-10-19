@@ -6,7 +6,7 @@ $(function(){
 					ServerType.typeDetails = $("#typeDetails").val();
 					if( $("#typeName").val()!="" && $("#typeTitle").val()!="" && $("#typeDetails").val()!=""){
 						$.ajax({
-							 url:"/ServerType/addservertype.hjrz",
+							 url:"../ServerType/addservertype.hjrz",
 						    type:'post',
 						    contentType:'application/json',
 						    dataType:'json',
@@ -14,7 +14,7 @@ $(function(){
 						    success:function(data){
 						    	if(data.callStatus == 'SUCCESS'){
 						    			alert("success");
-										$(location).attr('href', '/ServerType/queryServerTypeInit.hjrz');
+										$(location).attr('href', '../ServerType/queryServerTypeInit.hjrz');
 						    	}
 						    	else{
 						    			toastr.options = {

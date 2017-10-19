@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>添加服务器类型</title>
     <%@include file="../common/share_static.jsp" %>
-    <link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/user.defined/bootstrap.ufd.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/user.defined/bootstrap.ufd.css" />
 </head>
 <body>
 		<%@include file="../common/header.jsp"%>
@@ -24,7 +24,7 @@
               	<div class="component">
               		<!-- 添加服务器类型框 -->
               		<div style="margin-bottom:30px;">
-						<button type="button" class="btn btn-success" onclick="window.location.href='<%=basePath %>ServerType/queryServerTypeInit.hjrz'">
+						<button type="button" class="btn btn-success" onclick="window.location.href='<%=contextPath %>/ServerType/queryServerTypeInit.hjrz'">
 						<span class="glyphicon glyphicon-menu-left"></span>&nbsp;返回&nbsp;
 						</button>
               		</div>
@@ -58,5 +58,5 @@
     </div>
     <a href="#top" id="goTop"><i class="fa fa-angle-up fa-3x"></i></a>
 </body>
-<script type="text/javascript" src="/js/admin/servicer/add_servertype.js"></script>
+<script src="<%=contextPath %>/js/admin/servicer/add_servertype.js"></script>
 </html>

@@ -1,5 +1,7 @@
 package com.hjrz.admin.dao;
 
+import java.util.List;
+
 import com.hjrz.admin.entity.Feedback;
 
 public interface FeedbackMapper {
@@ -16,4 +18,6 @@ public interface FeedbackMapper {
     int updateByPrimaryKeyWithBLOBs(Feedback record);
 
     int updateByPrimaryKey(Feedback record);
+    
+    List<Feedback> selectAllFeedBack(Feedback feedback);
 }

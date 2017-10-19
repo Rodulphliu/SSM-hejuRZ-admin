@@ -59,13 +59,13 @@ var pageInitModule = (function (mod) {
             $(this).parent().siblings().find(".sub-menu").slideUp();
             $(this).parent().find(".sub-menu").slideToggle();
         })
-        var _strcurrenturl = window.location.pathname.toLowerCase().split("/")[1];
+        var _strcurrenturl = window.location.pathname.toLowerCase().split("/")[2];
         
         $(".navbar-nav a[href],.sidebar a[href]").each(function () {
-            var href = $(this).attr("href").toLowerCase().split("/")[1];
+            var href = $(this).attr("href").toLowerCase().split("/")[2];
             var isActive = false;
             $(".breadcrumb>li a[href]").each(function (index) {
-                if (href == $(this).attr("href").toLowerCase().split("/")[1]) {
+                if (href == $(this).attr("href").toLowerCase().split("/")[2]) {
                     isActive = true;
                     return false;
                 }
