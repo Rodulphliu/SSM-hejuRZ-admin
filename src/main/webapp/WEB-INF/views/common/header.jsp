@@ -8,7 +8,7 @@
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
                 <a  href="index.html">
-                <img src="<%=request.getContextPath() %>/images/common/hejurz-background system logo.png" style="height:35px;width:220px;margin-top:8px"/>
+                <a href="/common/home/index.hjrz"><img src="<%=request.getContextPath() %>/images/common/hejurz-background system logo.png"  style="height:35px;width:220px;margin-top:8px"/></a>
                 </a>
             </div>
              <div id="navbar" class="collapse navbar-collapse">

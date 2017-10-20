@@ -34,7 +34,7 @@
 			</ul>
 		</li>
 			<li><a href="<%=contextPath%>/users/userlist.hjrz"><i class="fa fa-users fa-fw" aria-hidden="true"></i>用户管理</a></li>
-			<li><a href="#"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>反馈处理</a></li>
+			<li><a href="<%=contextPath%>/FeedBack/feedback.hjrz"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>反馈处理</a></li>
           </ul>
        			 </div>
 <!-- leftNav end -->

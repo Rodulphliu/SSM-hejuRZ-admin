@@ -14,9 +14,15 @@ public class FeedbackService {
 	@Autowired
 	private FeedbackMapper feedbackMapper;
 
+	/**
+	 * @author RodulphLiu
+	 * @description findallfeedback
+	 * @date 2017年10月19日
+	 * @version 1.0
+	 */
 	public List<Feedback> findallfeedback(Feedback feedback)throws Exception
 	{
-		List<Feedback> feedbacks = null;
+		List<Feedback> feedbacks = feedbackMapper.selectAllFeedBack(feedback);
 		return feedbacks;
 	}
 }

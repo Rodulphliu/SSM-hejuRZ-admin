@@ -8,15 +8,19 @@
     <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
     <result column="link_handle_state" property="link_handle_state" jdbcType="VARCHAR" />
   </resultMap>
+  
   <resultMap id="ResultMapWithBLOBs" type="com.hjrz.admin.entity.Feedback" extends="BaseResultMap" >
     <result column="link_message" property="link_message" jdbcType="LONGVARCHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     fbCode, fb_user_name, fbuseremail, create_time, link_handle_state
   </sql>
   <sql id="Blob_Column_List" >
     link_message
   </sql>
+  
+  
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -25,6 +29,26 @@
     from feedback
     where fbCode = #{fbCode,jdbcType=BIGINT}
   </select>
+  
+  <select id="selectAllFeedBack" resultMap="ResultMapWithBLOBs" parameterType="com.hjrz.admin.entity.Feedback">
+  		select  
+  		<include refid="Base_Column_List" />
+	    ,
+	    <include refid="Blob_Column_List" />
+	     from feedback
+  		<where> 
+  			<if test="fb_user_name!=null">
+				and fb_user_name like CONCAT('%',#{fb_user_name,jdbcType=VARCHAR},'%')
+			</if> 
+			<if test="fbuseremail!=null">
+				and fbuseremail like CONCAT('%',#{fbuseremail,jdbcType=VARCHAR},'%')
+			</if> 
+			<if test="link_message!=null">
+				and link_message like CONCAT('%',#{link_message,jdbcType=VARCHAR},'%')
+			</if>
+  		</where>
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from feedback
     where fbCode = #{fbCode,jdbcType=BIGINT}
@@ -108,12 +132,12 @@
       link_message = #{link_message,jdbcType=LONGVARCHAR}
     where fbCode = #{fbCode,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Feedback" >
-    update feedback
-    set fb_user_name = #{fb_user_name,jdbcType=VARCHAR},
-      fbuseremail = #{fbuseremail,jdbcType=VARCHAR},
-      create_time = #{create_time,jdbcType=TIMESTAMP},
-      link_handle_state = #{link_handle_state,jdbcType=VARCHAR}
-    where fbCode = #{fbCode,jdbcType=BIGINT}
-  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjrz.admin.entity.Feedback">
+	update feedback
+	set fb_user_name = #{fb_user_name,jdbcType=VARCHAR},
+	fbuseremail = #{fbuseremail,jdbcType=VARCHAR},
+	create_time = #{create_time,jdbcType=TIMESTAMP},
+	link_handle_state = #{link_handle_state,jdbcType=VARCHAR}
+	where fbCode = #{fbCode,jdbcType=BIGINT}
+</update>
 </mapper>
