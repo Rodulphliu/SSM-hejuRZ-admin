@@ -32,14 +32,14 @@
               			<div class="panel-body">
 	              		<form class="form-inline" action="/servicer/queryServerInit.hjrz" method="get">
 		              		<div class="form-group">
-		              		 <label>服务器名称：</label>
-		   					 <input type="text" class="form-control" name="typeName" placeholder="类型名称，如“刀片”" value="${serverTypeQuery.typeName}">
-		   					 <label>服务器类型：</label>
-		   					 <input type="text" class="form-control" name="typeTitle" placeholder="标题内容，如“可插装多个”" value="${serverTypeQuery.typeTitle}">
-		   					 <label>处理器平台：</label>
-		   					 <input type="text" class="form-control" name="typeDetails" placeholder="描述内容，如“高可用”" value="${serverTypeQuery.typeDetails}">
-		   					 <label>服务器品牌：</label>
-			   				 <input type="text" class="form-control" name="typeDetails" placeholder="描述内容，如“高可用”" value="${serverTypeQuery.typeDetails}">
+			              		 <label>服务器名称：</label>
+			   					 <input type="text" class="form-control" name="typeName" placeholder="类型名称，如“刀片”" value="${serverTypeQuery.typeName}">
+			   					 <label>服务器类型：</label>
+			   					 <input type="text" class="form-control" name="typeTitle" placeholder="标题内容，如“可插装多个”" value="${serverTypeQuery.typeTitle}">
+			   					 <label>处理器平台：</label>
+			   					 <input type="text" class="form-control" name="typeDetails" placeholder="描述内容，如“高可用”" value="${serverTypeQuery.typeDetails}">
+			   					 <label>服务器品牌：</label>
+				   				 <input type="text" class="form-control" name="typeDetails" placeholder="描述内容，如“高可用”" value="${serverTypeQuery.typeDetails}">
 		              		</div>
 		              		
 			              	<div style="margin-top: 10px">

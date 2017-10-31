@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.hjrz.admin.constants.CallStatusEnum;
 import com.hjrz.admin.util.AbstractCacheService;
 
 /**
@@ -41,9 +42,23 @@ public class RedisServiceTest {
       
       @Test
       public void test() {
-        cacheservice.putKey("yourname","zibing");
-        String str = cacheservice.getValue("yourname");
-        System.out.println(str);
+    	UserTable table = new UserTable();
+    	table.setId(1);
+    	table.setUsername("liuzibing");
+    	table.setMiaoshu("verygood");
+    	table.setUsersex("男");
+    	table.setCall(CallStatusEnum.SUCCESS);
+    	Bee bee = new Bee();
+    	bee.setBeid(3);
+    	bee.setStrkey("hahhaha");
+    	table.setBee(bee);
+        cacheservice.putKey("kyo",table,12 * 60 * 60);
+        UserTable table2 = cacheservice.getValue("kyo");
+        System.out.println(table2.getId());
+        System.out.println(table2.getUsername());
+        System.out.println(table2.getMiaoshu());
+        System.out.println(table2.getUsersex());
+        System.out.println(table2.getCall());
+        System.out.println(table2.getBee().getStrkey());
       }
-
 }

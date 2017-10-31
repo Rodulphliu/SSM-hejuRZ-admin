@@ -1,6 +1,17 @@
 package com.hjrz.test;
 
-public class UserTable {
+import java.io.Serializable;
+
+import com.hjrz.admin.constants.CallStatusEnum;
+
+public class UserTable implements Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5067261928618917781L;
+
 	private Integer id;
 	
 	private String username;
@@ -8,6 +19,26 @@ public class UserTable {
 	private String usersex;
 	
 	private String miaoshu;
+
+	private CallStatusEnum call;
+	
+	private Bee bee;
+	
+	public Bee getBee() {
+		return bee;
+	}
+
+	public void setBee(Bee bee) {
+		this.bee = bee;
+	}
+
+	public CallStatusEnum getCall() {
+		return call;
+	}
+
+	public void setCall(CallStatusEnum call) {
+		this.call = call;
+	}
 
 	public Integer getId() {
 		return id;
